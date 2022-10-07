@@ -1,10 +1,10 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 export enum MethodType {
-  get = "get",
-  post = "post",
-  patch = "patch",
-  delete = "delete",
+  get = 'get',
+  post = 'post',
+  patch = 'patch',
+  delete = 'delete',
 }
 
 class CustomAxios {
@@ -18,22 +18,9 @@ class CustomAxios {
     url: string | undefined,
     method: MethodType,
     data?: any,
-    params?: any
+    params?: any,
   ) {
     try {
-      // const res: AxiosResponse = await axios(`${this.baseURL}${url}`, {
-      //   method,
-      //   data: {
-      //     data,
-      //   },
-      //   ...options,
-
-      //   headers: {
-      //     ...options.headers,
-      //   },
-      //   withCredentials: true,
-      // });
-      // const res = await axios<T = any, R = AxiosResponse<T>, D = any>(url: string, data?: D, config?: AxiosRequestConfig<D>): Promise<R>{}
       const res = await axios.request({
         url,
         baseURL: this.baseURL,
@@ -46,7 +33,7 @@ class CustomAxios {
         const message: string =
           res.data && res.data.message
             ? res.data.message
-            : "Something went wrong";
+            : 'Something went wrong';
         const error = new Error(message);
         if (res.status === 401) {
           throw error;
@@ -67,7 +54,7 @@ class CustomAxios {
 }
 
 const NetworkService = CustomAxios.getInstance(
-  `${process.env.NEXT_PUBLIC_SERVER}`
+  `${process.env.NEXT_PUBLIC_SERVER}`,
 );
 
 export default NetworkService;
