@@ -8,6 +8,6 @@ export default {
   component: IconBox,
 } as ComponentMeta<typeof IconBox>;
 
-export const icon: ComponentStory<typeof IconBox> = () => (
+export const Icon: ComponentStory<typeof IconBox> = () => (
   <IconBox iconName={IconType.menu}></IconBox>
 );
