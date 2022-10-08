@@ -19,7 +19,7 @@ export const Primary: ComponentStory<typeof Button> = () => <Button></Button>;
 export const Link: ComponentStory<typeof Button> = () => {
   return <LinkButton href={'/blogs'}></LinkButton>;
 };
-export const onlick: ComponentStory<typeof Button> = () => {
+export const Onlick: ComponentStory<typeof Button> = () => {
   const onClick = () => {};
   return <Button onClick={onClick}></Button>;
 };
