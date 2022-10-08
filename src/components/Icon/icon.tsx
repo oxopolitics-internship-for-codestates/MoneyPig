@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNameJoiner } from '../../utils/className';
+import { classNameJoiner } from '../../../utils/className';
 
 type IconBoxProps = {
   id?: string;

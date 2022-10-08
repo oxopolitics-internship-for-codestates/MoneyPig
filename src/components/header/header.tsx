@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { classNameJoiner } from '../../utils/className';
+import { classNameJoiner } from '../../../utils/className';
 import Icon, { IconType } from '../Icon/icon';
 
 type HeaderProps = {
