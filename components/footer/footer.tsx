@@ -27,7 +27,7 @@ const Footer = () => {
             href="https://github.com/tmdqls2257"
             className="mr-4 hover:underline md:mr-6"
           >
-            SungBin
+            SeungBin
           </a>
         </li>
         <li>
