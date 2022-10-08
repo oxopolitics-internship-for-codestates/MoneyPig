@@ -7,7 +7,7 @@ const Layout = () => {
   return (
     <>
       <Header setMenuState={setMenuState} menuState={menuState} />
-      {!menuState && <Sidebar />}
+      <Sidebar menuState={menuState} />
     </>
   );
 };

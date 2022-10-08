@@ -8,4 +8,6 @@ export default {
   component: Sidebar,
 } as ComponentMeta<typeof Sidebar>;
 
-export const NavbarDefault: ComponentStory<typeof Sidebar> = () => <Sidebar />;
+export const NavbarDefault: ComponentStory<typeof Sidebar> = args => (
+  <Sidebar {...args} />
+);
