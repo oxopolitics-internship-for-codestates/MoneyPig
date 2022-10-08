@@ -19,9 +19,12 @@ module.exports = {
         brown: '#5D5656',
         pink: '#EB7C7C',
       },
-    },
-    height: {
-      112: '28rem',
+      height: {
+        112: '28rem',
+      },
+      lineHeight: {
+        '1/2': '100px',
+      },
     },
   },
   variants: {
