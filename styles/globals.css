@@ -27,6 +27,6 @@
   }
 
   p {
-    @apply test-base;
+    @apply text-base;
   }
 }
