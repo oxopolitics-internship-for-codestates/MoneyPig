@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
 import OnboardingDescription from '../components/OnboardingDescription/OnboardingDescription';
+import Footer from '../components/footer/footer';
 
 const Home: NextPage = () => {
   return (
@@ -44,6 +44,7 @@ const Home: NextPage = () => {
         }
         imgLocation={'left'}
       />
+      <Footer />
     </div>
   );
 };
