@@ -20,6 +20,9 @@ module.exports = {
         pink: '#EB7C7C',
       },
     },
+    height: {
+      112: '28rem',
+    },
   },
   variants: {
     extend: {},
