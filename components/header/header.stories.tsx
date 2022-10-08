@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Header from './header';
@@ -8,4 +8,12 @@ export default {
   component: Header,
 } as ComponentMeta<typeof Header>;
 
-export const header: ComponentStory<typeof Header> = () => <Header />;
+export const HeaderDefault: ComponentStory<typeof Header> = args => {
+  const [menuState, setMenuState] = useState(true);
+
+  return <Header {...args} setMenuState={setMenuState} menuState={menuState} />;
+};
+export const HeaderExample = HeaderDefault.bind({});
+HeaderExample.args = {
+  menuState: true,
+};

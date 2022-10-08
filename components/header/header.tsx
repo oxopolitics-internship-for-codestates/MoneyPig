@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { classNameJoiner } from '../../utils/className';
 import Icon, { IconType } from '../Icon/icon';
 
-const Header = () => {
-  const [menuState, setMenuState] = useState(true);
+type HeaderProps = {
+  setMenuState: React.Dispatch<React.SetStateAction<boolean>>;
+  menuState: boolean;
+};
+
+const Header = ({ setMenuState, menuState }: HeaderProps) => {
   const onClick = () => {
     setMenuState(!menuState);
   };
