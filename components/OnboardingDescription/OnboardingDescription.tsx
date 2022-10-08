@@ -19,15 +19,11 @@ const OnboardingDescription = ({
           <div>
             <Image src={image} alt="description" width={300} height={300} />
           </div>
-          <div className="relative text-center w-5">
-            <div className="absolute_center">{description}</div>
-          </div>
+          <div>{description}</div>
         </>
       ) : (
         <>
-          <div className="relative text-center">
-            <div className="absolute_center">{description}</div>
-          </div>
+          <div>{description}</div>
           <div>
             <Image src={image} alt="description" width={300} height={300} />
           </div>
