@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "name": "money-pig",
   "version": "0.1.0",
   "private": true,
@@ -17,9 +16,9 @@
     "@babel/plugin-proposal-decorators": "^7.19.3",
     "@types/axios": "^0.14.0",
     "axios": "^1.1.2",
-    "chalk": "^5.1.0",
-    "commander": "^9.4.1",
-    "inquirer": "^9.1.3",
+    "chalk": "^3.0.0",
+    "commander": "^5.0.0",
+    "inquirer": "^7.1.0",
     "mobx": "^6.6.2",
     "mobx-react": "^7.5.3",
     "next": "12.3.1",
