@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { classNameJoiner } from '../../utils/className';
 import Icon, { IconType } from '../Icon/icon';
 
-type HeaderProps = {
-  onClick?: () => void;
-};
-
-const Header = ({ onClick }: HeaderProps) => {
+const Header = () => {
+  const [menuState, setMenuState] = useState(true);
+  const onClick = () => {
+    setMenuState(!menuState);
+  };
   return (
     <header
       className={classNameJoiner(
@@ -14,7 +14,11 @@ const Header = ({ onClick }: HeaderProps) => {
       )}
     >
       <div className="flex items-center ">
-        <Icon onClick={onClick} iconName={IconType.menu} />
+        {menuState ? (
+          <Icon onClick={onClick} iconName={IconType.menu} />
+        ) : (
+          <Icon onClick={onClick} iconName={IconType.cancel} />
+        )}
       </div>
     </header>
   );
