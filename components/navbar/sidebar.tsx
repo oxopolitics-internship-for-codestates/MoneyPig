@@ -1,5 +1,5 @@
 import React from 'react';
-import SidebarItem from './sidebarItem';
+import { LinkButton } from '../button/button';
 
 type SidebarProps = {
   menuState: boolean;
@@ -12,10 +12,10 @@ const Sidebar = ({ menuState }: SidebarProps) => {
         menuState ? '-translate-x-52' : 'translate-x-0'
       } ${menuState ? 'invisible' : 'visible'}`}
     >
-      <SidebarItem>{'Home'}</SidebarItem>
-      <SidebarItem>{'Make a Quiz'}</SidebarItem>
-      <SidebarItem>{'Solve a Quiz'}</SidebarItem>
-      <SidebarItem>{'Search'}</SidebarItem>
+      <LinkButton href={'#'}>{'Home'}</LinkButton>
+      <LinkButton href={'#'}>{'Make a Quiz'}</LinkButton>
+      <LinkButton href={'#'}>{'Solve a Quiz'}</LinkButton>
+      <LinkButton href={'#'}>{'Search'}</LinkButton>
     </aside>
   );
 };
