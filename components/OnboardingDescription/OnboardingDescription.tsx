@@ -13,11 +13,11 @@ const OnboardingDescription = ({
   imgLocation,
 }: OnboardingDescriptionProps) => {
   return (
-    <div className="flex-auto">
+    <div className="flex">
       {imgLocation === 'left' ? (
         <>
           <div>
-            <Image src={image} alt="Picture of me" width={500} height={500} />;
+            <Image src={image} alt="Picture of me" width={200} height={200} />
           </div>
           <div>{description}</div>
         </>
@@ -25,7 +25,7 @@ const OnboardingDescription = ({
         <>
           <div>{description}</div>
           <div>
-            <Image src={image} alt="Picture of me" width={500} height={500} />;
+            <Image src={image} alt="Picture of me" width={200} height={200} />
           </div>
         </>
       )}
