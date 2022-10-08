@@ -4,7 +4,7 @@ type NavbarItemProps = {
   children: string;
 };
 
-const NavbarItem = ({ children }: NavbarItemProps) => {
+const SidebarItem = ({ children }: NavbarItemProps) => {
   return (
     <button className="hover:bg-primary hover:text-white rounded w-48 py-2 px-4 ">
       {children}
@@ -12,4 +12,4 @@ const NavbarItem = ({ children }: NavbarItemProps) => {
   );
 };
 
-export default NavbarItem;
+export default SidebarItem;
