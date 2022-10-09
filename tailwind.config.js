@@ -16,6 +16,7 @@ module.exports = {
         'dark-green': '#24331A',
         brown: '#5D5656',
         pink: '#EB7C7C',
+        modalBg: '#A4A2A2',
       },
       height: {
         112: '28rem',
@@ -24,6 +25,10 @@ module.exports = {
       lineHeight: {
         7: '7rem',
         12: '12rem',
+      },
+      maxHeight: {
+        128: '32rem',
+        144: '36rem',
       },
     },
   },

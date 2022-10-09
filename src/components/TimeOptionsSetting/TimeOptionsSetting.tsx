@@ -20,7 +20,7 @@ const TimeOptionsSetting = () => {
         data-dropdown-toggle="dropdown"
         className={classNameJoiner(
           `${dropDownState ? 'rounded-t-lg' : 'rounded-lg'}`,
-          ' text-gray-500 shadow bg-white w-40 font-medium text-sm px-4 py-2.5 text-center inline-flex items-center ',
+          ' text-gray-500 shadow bg-white w-40 font-medium text-sm px-4 py-2.5 text-center inline-flex items-center hover:bg-gray-100',
         )}
         type="button"
       >
@@ -40,7 +40,7 @@ const TimeOptionsSetting = () => {
         >
           <li
             onClick={e => setTimePicker(e)}
-            className="block py-2 px-4 cursor-pointer  hover:bg-gray-100 "
+            className="block py-2 px-4 cursor-pointer hover:bg-gray-100 "
           >
             5초
           </li>
