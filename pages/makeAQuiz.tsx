@@ -6,7 +6,7 @@ import Button from '../src/components/Button/Button';
 import Modal from '../src/components/Modal/Modal';
 import React, { useState } from 'react';
 
-const makeAQuiz: NextPage = () => {
+const MakeAQuiz: NextPage = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
   const openQuizModal = () => {
     setQuizPickModal(prev => !prev);
@@ -33,4 +33,4 @@ const makeAQuiz: NextPage = () => {
   );
 };
 
-export default makeAQuiz;
+export default MakeAQuiz;
