@@ -84,26 +84,32 @@ const makeTsxbook = dir => {
 };
 
 const makeStorybookTemplate = dir => {
-  makeStoybook(dir);
-  const pathToFile = path.join(`./src/components/${dir}`, `${dir}.stories.tsx`);
+  const componentName = upperCase(dir);
+  makeStoybook(componentName);
+  const pathToFile = path.join(
+    `./src/components/${componentName}`,
+    `${componentName}.stories.tsx`,
+  );
 
   if (exist(pathToFile)) {
     console.error(chalk.bold.red('이미 해당 파일이 존재합니다'));
   } else {
-    const componentName = upperCase(dir);
-
     fs.writeFileSync(pathToFile, storybookTemplate(componentName));
     console.log(chalk.green(pathToFile, '생성 완료'));
   }
 };
 
 const makeTsxTemplate = dir => {
-  makeTsxbook(dir);
-  const pathToFile = path.join(`./src/components/${dir}`, `${dir}.tsx`);
+  const componentName = upperCase(dir);
+
+  makeTsxbook(componentName);
+  const pathToFile = path.join(
+    `./src/components/${componentName}`,
+    `${componentName}.tsx`,
+  );
   if (exist(pathToFile)) {
     console.error(chalk.bold.red('이미 해당 파일이 존재합니다'));
   } else {
-    const componentName = upperCase(dir);
     fs.writeFileSync(pathToFile, tsxTemplate(componentName));
     console.log(chalk.green(pathToFile, '생성 완료'));
   }
