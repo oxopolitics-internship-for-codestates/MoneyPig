@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Header from '../header/header';
-import Sidebar from '../navbar/sidebar';
+import Header from '../Header/Header';
+import Sidebar from '../Navbar/Sidebar';
 
 const Layout = () => {
   const [menuState, setMenuState] = useState(true);

@@ -2,10 +2,8 @@
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-    './elements/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx}',
     './stories/**/*.{js,ts,jsx,tsx}',
-    './common/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: false,
   theme: {
@@ -23,7 +21,7 @@ module.exports = {
         112: '28rem',
       },
       lineHeight: {
-        '1/2': '100px',
+        7: '7rem',
       },
     },
   },
