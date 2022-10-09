@@ -7,7 +7,16 @@ export enum MethodType {
   delete = 'delete',
 }
 
-class CustomAxios {
+interface ICustomAxios<D = any> {
+  request: (
+    url: string | undefined,
+    method: MethodType,
+    data?: D,
+    params?: any,
+  ) => Promise<AxiosRequestConfig>;
+}
+
+class CustomAxios implements ICustomAxios {
   private static instance: CustomAxios;
   private baseURL: string;
   constructor(baseURL: string) {
