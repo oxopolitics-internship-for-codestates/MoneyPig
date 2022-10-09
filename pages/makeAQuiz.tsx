@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Footer from '../src/components/footer/footer';
+import Footer from '../src/components/Footer/Footer';
 
 const makeAQuiz: NextPage = () => {
   return (
