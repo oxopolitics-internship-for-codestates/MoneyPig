@@ -1,5 +1,5 @@
 import React from 'react';
-import { LinkButton } from '../button/button';
+import { LinkButton } from '../Button/Button';
 
 type SidebarProps = {
   menuState: boolean;

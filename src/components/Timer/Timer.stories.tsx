@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Timer from './timer';
+import Timer from './Timer';
 
 export default {
   title: 'Components/Timer',

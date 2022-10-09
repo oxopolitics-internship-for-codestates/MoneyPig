@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { classNameJoiner } from '../../../utils/className';
-import Icon, { IconType } from '../Icon/icon';
+import Icon, { IconType } from '../Icon/Icon';
 
 type HeaderProps = {
   setMenuState: React.Dispatch<React.SetStateAction<boolean>>;

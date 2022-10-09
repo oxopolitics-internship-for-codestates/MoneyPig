@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '../button/button';
-import Card from './card';
+import Button from '../../Button/Button';
+import Card from '../Card';
 
 const FourChoiceQuizCard = () => {
   return (

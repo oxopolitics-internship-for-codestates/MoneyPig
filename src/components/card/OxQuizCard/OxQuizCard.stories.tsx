@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import OxQuizCard from './oxQuizCard';
+import OxQuizCard from './OxQuizCard';
 
 export default {
   title: 'Components/OxQuizCard',

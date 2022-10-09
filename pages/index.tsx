@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import OnboardingDescription from '../components/OnboardingDescription/OnboardingDescription';
-import Footer from '../components/footer/footer';
+import OnboardingDescription from '../src/components/OnboardingDescription/OnboardingDescription';
+import Footer from '../src/components/Footer/Footer';
 
 const Home: NextPage = () => {
   return (
