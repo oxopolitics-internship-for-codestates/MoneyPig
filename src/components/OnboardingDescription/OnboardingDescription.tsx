@@ -13,7 +13,7 @@ const OnboardingDescription = ({
   imgLocation,
 }: OnboardingDescriptionProps) => {
   return (
-    <div className="w-3/4 m-auto flex justify-center">
+    <div className="w-3/4 m-auto flex justify-center md:w-screen">
       {imgLocation === 'left' ? (
         <>
           <div>
