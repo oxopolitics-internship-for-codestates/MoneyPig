@@ -16,9 +16,8 @@ const Input = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const [keyword, setKeyword] = useState<string>('');
 
-  const onInputOnlyKorean = (e: React.FormEvent<HTMLInputElement>) => {
-    const regexp = /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g;
-    setKeyword(e.currentTarget.value.replace(regexp, ''));
+  const onKeywordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setKeyword(e.currentTarget.value);
   };
 
   const onReset = () => {
@@ -36,7 +35,7 @@ const Input = ({
           type={type}
           placeholder={placeholder}
           value={keyword}
-          onInput={onInputOnlyKorean}
+          onChange={onKeywordChange}
         />
         <Icon
           style="w-11 h-12 p-3"
