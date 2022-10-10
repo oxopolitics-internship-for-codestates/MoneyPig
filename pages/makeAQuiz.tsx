@@ -25,7 +25,6 @@ const MakeAQuiz: NextPage = () => {
       <div className="text-5xl">키워드</div>
       <div className="text-5xl">시간</div>
       <TimeOptionsSetting />
-      <Timer />
       <div className="text-5xl">문제</div>
       <Button onClick={openQuizModal} />
       <div className="text-5xl">정답</div>
