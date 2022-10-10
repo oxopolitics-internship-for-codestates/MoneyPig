@@ -21,7 +21,7 @@ FourChoiceCardWithData.args = {
     userId: 'tmdqls2257',
     createdAt: 1665309414,
     answer: 'O',
-    time: '15s',
+    time: 15,
     keyword: '엔화',
     type: 'FourOptionQuiz',
     description: '엔화는 일본의 화폐입니다.',

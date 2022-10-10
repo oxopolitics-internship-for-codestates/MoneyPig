@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import * as d3 from 'd3';
 
-const Timer = () => {
-  const [seconds, setSeconds] = useState(30);
+type TimerProps = {
+  quizTime: number | undefined;
+};
+
+const Timer = ({ quizTime }: TimerProps) => {
+  const [seconds, setSeconds] = useState(quizTime || 30);
 
   useEffect(() => {
     const countdown = setInterval(() => {
@@ -25,11 +29,11 @@ const Timer = () => {
 
   return (
     <div className="relative">
-      <svg className="svg" height="40px" width="100%">
+      <svg className="svg" height="32px" width="100%">
         <rect rx="15" width="100%" height="30" y="0" fill="#E9E7E7"></rect>
         <rect rx="15" className="data"></rect>
       </svg>
-      <h2>{seconds}</h2>
+      {/* <h2>{seconds}</h2> */}
     </div>
   );
 };

@@ -8,4 +8,9 @@ export default {
   component: Timer,
 } as ComponentMeta<typeof Timer>;
 
-export const CardDafault: ComponentStory<typeof Timer> = () => <Timer></Timer>;
+export const TimerDefault: ComponentStory<typeof Timer> = args => (
+  <Timer {...args}></Timer>
+);
+TimerDefault.args = {
+  quizTime: 15,
+};
