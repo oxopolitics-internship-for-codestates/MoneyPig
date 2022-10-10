@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import * as d3 from 'd3';
 
 const Timer = () => {
   const [seconds, setSeconds] = useState(30);
@@ -11,13 +12,23 @@ const Timer = () => {
     }, 1000);
     return () => clearInterval(countdown);
   }, [seconds]);
+  useEffect(() => {
+    d3.select('.data')
+      .attr('width', '100%')
+      .attr('height', 30)
+      .attr('fill', 'green')
+      .transition()
+      .duration(seconds === 0 ? 9999999 : seconds * 1000)
+      .ease(d3.easeLinear)
+      .attr('width', '1%');
+  }, []);
 
   return (
     <div className="relative">
-      <div className="bg-grey w-full h-8 rounded-full"></div>
-      <div
-        className={`animation_linear bg-pink w-full h-8 rounded-full absolute top-0 `}
-      ></div>
+      <svg className="svg" height="40px" width="100%">
+        <rect rx="15" width="100%" height="30" y="0" fill="#E9E7E7"></rect>
+        <rect rx="15" className="data"></rect>
+      </svg>
       <h2>{seconds}</h2>
     </div>
   );
