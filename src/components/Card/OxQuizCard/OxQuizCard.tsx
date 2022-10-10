@@ -1,11 +1,16 @@
 import React from 'react';
+import { OxQuizModel } from '../../../data/QuizList';
 import Button from '../../Button/Button';
 
 import QuizCard from '../QuizCard/QuizCard';
 
-const OxQuizCard = () => {
+type OxQuizCardProps = {
+  quiz?: OxQuizModel;
+};
+
+const OxQuizCard = ({ quiz }: OxQuizCardProps) => {
   return (
-    <QuizCard isOxCard={true}>
+    <QuizCard isOxCard={true} quizTitle={quiz?.title}>
       <div className="flex space-x-4">
         <Button bgColor="bg-brown" style="w-1/2 text-9xl">
           {'O'}

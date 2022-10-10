@@ -4,7 +4,7 @@ export type QuizModel = {
 
 export type unionQuiz = OxQuizModel | FourOptionQuizModel;
 
-type OxQuizModel = {
+export type OxQuizModel = {
   id: string;
   title: string;
   userId: string;
@@ -16,7 +16,7 @@ type OxQuizModel = {
   description: string;
 };
 
-type FourOptionQuizModel = {
+export type FourOptionQuizModel = {
   id: string;
   title: string;
   userId: string;
@@ -36,6 +36,7 @@ export const quizList: QuizModel = {
       title: '엔화에 대한 설명으로 옳은 것은?',
       userId: 'tmdqls2257',
       createdAt: 1665309414,
+      options: ['일본의 화폐이다.', '미국의 화폐이다'],
       answer: '',
       time: '15s',
       keyword: '엔화',

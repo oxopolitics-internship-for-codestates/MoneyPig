@@ -17,20 +17,15 @@ const QuizListCard = ({ quiz }: QuizListCardProps) => {
     return summary + '...';
   };
   return (
-    <Card style={'h-48 flex flex-col justify-between'}>
-      <div>
-        <div className="flex justify-between">
-          <span>{createdAt(quiz.createdAt)}</span>
-          <span>{quiz.keyword}</span>
-        </div>
-        {quiz.title.length > 20 ? (
-          <h5 className="font-bold">{replaceContent(quiz.title)}</h5>
-        ) : (
-          <h5 className="font-bold">{quiz.title}</h5>
-        )}
+    <Card style={'h-48 space-y-8'}>
+      <div className="flex justify-between">
+        <span>{createdAt(quiz.createdAt)}</span>
+        <span>{quiz.userId}</span>
       </div>
-
-      <span className="w-full flex flex-row-reverse">{quiz.userId}</span>
+      {/* block h-28 leading-7  */}
+      <h5 className="font-bold m-auto">
+        {quiz.title.length > 20 ? replaceContent(quiz.title) : quiz.title}
+      </h5>
     </Card>
   );
 };
