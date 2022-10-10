@@ -8,6 +8,23 @@ export default {
   component: FourChoiceQuizCard,
 } as ComponentMeta<typeof FourChoiceQuizCard>;
 
-export const CardDafault: ComponentStory<typeof FourChoiceQuizCard> = () => (
-  <FourChoiceQuizCard></FourChoiceQuizCard>
-);
+export const FourChoiceCardDefault: ComponentStory<typeof FourChoiceQuizCard> =
+  () => <FourChoiceQuizCard></FourChoiceQuizCard>;
+
+export const FourChoiceCardWithData: ComponentStory<typeof FourChoiceQuizCard> =
+  args => <FourChoiceQuizCard {...args}></FourChoiceQuizCard>;
+
+FourChoiceCardWithData.args = {
+  quiz: {
+    id: '1',
+    title: '엔화에 대한 설명으로 옳은 것은?',
+    userId: 'tmdqls2257',
+    createdAt: 1665309414,
+    options: ['일본의 화폐이다.', '미국의 화폐이다', '', ''],
+    answer: '',
+    time: '15s',
+    keyword: '엔화',
+    type: 'FourOptionQuiz',
+    description: '엔화는 일본의 화폐입니다.',
+  },
+};
