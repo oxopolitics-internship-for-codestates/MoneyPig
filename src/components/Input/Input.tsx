@@ -14,14 +14,14 @@ const Input = ({
   isReceived = undefined,
 }: InputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [keyword, setKeyword] = useState<string>('');
+  const [economyData, setEconomyData] = useState<string>('');
 
-  const onKeywordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyword(e.currentTarget.value);
+  const onEconomyDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEconomyData(e.currentTarget.value);
   };
 
   const onReset = () => {
-    setKeyword('');
+    setEconomyData('');
     inputRef.current?.focus();
   };
 
@@ -34,8 +34,8 @@ const Input = ({
           className="w-full outline-none py-3 mr-3 bg-[#E9E7E7]"
           type={type}
           placeholder={placeholder}
-          value={keyword}
-          onChange={onKeywordChange}
+          value={economyData}
+          onChange={onEconomyDataChange}
         />
         <Icon
           style="w-11 h-12 p-3"
