@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { classNameJoiner } from '../../../../utils/className';
 import Timer from '../../Timer/Timer';
 import Card from '../Card';
@@ -8,19 +9,18 @@ type QuizCardProps = {
   isOxCard?: boolean;
   style?: string;
   quizTitle?: string;
+  quizTime?: number;
 };
 
-const QuizCard = ({ children, isOxCard = false, quizTitle }: QuizCardProps) => {
+const QuizCard = ({
+  children,
+  isOxCard = false,
+  quizTime,
+  quizTitle,
+}: QuizCardProps) => {
   return (
     <Card style="space-y-4 h-128">
-      {quizTitle && (
-        <div className="relative">
-          <div className="bg-grey w-full h-8 rounded-full"></div>
-          <div
-            className={`animation_linear bg-pink w-full h-8 rounded-full absolute top-0 `}
-          ></div>
-        </div>
-      )}
+      {quizTitle && <Timer quizTime={quizTime} />}
       <form action="" className="h-64 space-y-6">
         <Card
           bgColor="bg-white"
@@ -39,11 +39,13 @@ const QuizCard = ({ children, isOxCard = false, quizTitle }: QuizCardProps) => {
               placeholder="문제를 입력해주세요"
             ></textarea>
           ) : (
-            <h3
-              className={`${isOxCard ? 'h-48 leading-12' : 'h-28 leading-7'}`}
+            <h5
+              className={`text-center ${
+                isOxCard ? 'h-48 leading-12' : 'h-28 leading-7'
+              }`}
             >
               {quizTitle}
-            </h3>
+            </h5>
           )}
         </Card>
         {children}

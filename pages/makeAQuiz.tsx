@@ -5,6 +5,7 @@ import TimeOptionsSetting from '../src/components/TimeOptionsSetting/TimeOptions
 import Button from '../src/components/Button/Button';
 import Modal from '../src/components/Modal/Modal';
 import React, { useState } from 'react';
+import Timer from '../src/components/Timer/Timer';
 
 const MakeAQuiz: NextPage = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);

@@ -22,7 +22,7 @@ FourChoiceCardWithData.args = {
     createdAt: 1665309414,
     options: ['일본의 화폐이다.', '미국의 화폐이다', '', ''],
     answer: '',
-    time: '15s',
+    time: 60,
     keyword: '엔화',
     type: 'FourOptionQuiz',
     description: '엔화는 일본의 화폐입니다.',

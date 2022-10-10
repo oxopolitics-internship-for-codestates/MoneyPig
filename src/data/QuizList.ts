@@ -10,7 +10,7 @@ export type OxQuizModel = {
   userId: string;
   createdAt: number;
   answer: string;
-  time: string;
+  time: number;
   keyword: string;
   type: string;
   description: string;
@@ -23,7 +23,7 @@ export type FourOptionQuizModel = {
   options: string[];
   answer: string;
   createdAt: number;
-  time: string;
+  time: number;
   keyword: string;
   type: string;
   description: string;
@@ -38,7 +38,7 @@ export const quizList: QuizModel = {
       createdAt: 1665309414,
       options: ['일본의 화폐이다.', '미국의 화폐이다'],
       answer: '',
-      time: '15s',
+      time: 60,
       keyword: '엔화',
       type: 'FourOptionQuiz',
       description: '엔화는 일본의 화폐입니다.',
@@ -49,7 +49,7 @@ export const quizList: QuizModel = {
       userId: 'tmdqls2257',
       createdAt: 1665309414,
       answer: 'O',
-      time: '15s',
+      time: 0,
       keyword: '엔화',
       type: 'OxQuiz',
       description: '엔화는 일본의 화폐입니다.',

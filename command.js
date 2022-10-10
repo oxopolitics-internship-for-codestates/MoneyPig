@@ -31,7 +31,7 @@ const storybookTemplate = tsx => {
       component: ${tsx},
     } as ComponentMeta<typeof ${tsx}>;
     
-    export const CardDafault: ComponentStory<typeof ${tsx}> = () => (
+    export const ${tsx}Default: ComponentStory<typeof ${tsx}> = () => (
       <${tsx}/>
     );
     

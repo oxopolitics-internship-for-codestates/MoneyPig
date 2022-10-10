@@ -10,7 +10,7 @@ type OxQuizCardProps = {
 
 const OxQuizCard = ({ quiz }: OxQuizCardProps) => {
   return (
-    <QuizCard isOxCard={true} quizTitle={quiz?.title}>
+    <QuizCard isOxCard={true} quizTitle={quiz?.title} quizTime={quiz?.time}>
       <div className="flex space-x-4">
         <Button bgColor="bg-brown" style="w-1/2 text-9xl">
           {'O'}
