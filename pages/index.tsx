@@ -8,7 +8,7 @@ import Layout from '../src/components/Layout/Layout';
 
 const Home: NextPageWithLayout = () => {
   return (
-    <div className=" bg-grey">
+    <div className=" bg-grey left-0 top-0">
       <Head>
         <title>Home Page</title>
         <meta name="description" content="Economy Inside" />
@@ -20,7 +20,7 @@ const Home: NextPageWithLayout = () => {
       <OnboardingDescription
         description={'안녕하세요'}
         image={
-          'http://res.heraldm.com/content/image/2015/01/19/20150119001097_0.jpg'
+          'https://img.hani.co.kr/imgdb/original/2007/1227/68227042_20071227.jpg'
         }
         imgLocation={'right'}
       />
