@@ -2,8 +2,11 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import OnboardingDescription from '../src/components/OnboardingDescription/OnboardingDescription';
 import Footer from '../src/components/Footer/Footer';
+import { NextPageWithLayout } from './_app';
+import { ReactElement } from 'react';
+import Layout from '../src/components/Layout/Layout';
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
   return (
     <div className=" bg-grey">
       <Head>
@@ -47,6 +50,10 @@ const Home: NextPage = () => {
       <Footer />
     </div>
   );
+};
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Home;

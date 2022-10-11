@@ -4,11 +4,13 @@ import Footer from '../src/components/Footer/Footer';
 import TimeOptionsSetting from '../src/components/TimeOptionsSetting/TimeOptionsSetting';
 import Button from '../src/components/Button/Button';
 import Modal from '../src/components/Modal/Modal';
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { classNameJoiner } from '../utils/className';
-import Timer from '../src/components/Timer/Timer';
 
-const MakeAQuiz: NextPage = () => {
+import { NextPageWithLayout } from './_app';
+import Layout from '../src/components/Layout/Layout';
+
+const MakeAQuiz: NextPageWithLayout = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
   const [quizSelect, setQuizSelect] = useState<boolean>(false);
   const openQuizModal = () => {
@@ -79,6 +81,10 @@ const MakeAQuiz: NextPage = () => {
       <Footer />
     </div>
   );
+};
+
+MakeAQuiz.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default MakeAQuiz;
