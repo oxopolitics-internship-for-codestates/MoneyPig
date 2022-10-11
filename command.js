@@ -5,8 +5,7 @@ const inquirer = require('inquirer');
 const chalk = require('chalk');
 
 const tsxTemplate = tsx => {
-  return `
-import React from 'react'
+  return `import React from 'react'
 
 const ${tsx} = () => {
   return (
@@ -16,26 +15,24 @@ const ${tsx} = () => {
 
 export default ${tsx} 
     
-    `;
+`;
 };
 
 const storybookTemplate = tsx => {
-  return `
-    import React from 'react';
+  return `import React from 'react';
 
-    import { ComponentStory, ComponentMeta } from '@storybook/react';
-    import ${tsx} from './${tsx}';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import ${tsx} from './${tsx}';
     
-    export default {
-      title: 'Components/${tsx}',
-      component: ${tsx},
-    } as ComponentMeta<typeof ${tsx}>;
-    
-    export const ${tsx}Default: ComponentStory<typeof ${tsx}> = () => (
-      <${tsx}/>
-    );
-    
-      `;
+export default {
+  title: 'Components/${tsx}',
+  component: ${tsx},
+} as ComponentMeta<typeof ${tsx}>;
+
+export const ${tsx}Default: ComponentStory<typeof ${tsx}> = () => (
+  <${tsx}/>
+);
+`;
 };
 
 const exist = dir => {
@@ -50,7 +47,7 @@ const exist = dir => {
   }
 };
 
-const makeStoybook = dir => {
+const makeFileToComponents = dir => {
   const filePath = `./src/components/${dir}`;
   const dirname = path
     .relative('.', path.normalize(filePath))
@@ -66,54 +63,26 @@ const makeStoybook = dir => {
   });
 };
 
-const makeTsxbook = dir => {
-  const filePath = `./src/components/${dir}`;
-
-  const dirname = path
-    .relative('.', path.normalize(filePath))
-    .split(path.sep)
-    .filter(p => !!p);
-
-  dirname.forEach((d, idx) => {
-    const pathBuilder = dirname.slice(0, idx + 1).join(path.sep);
-    if (!exist(pathBuilder)) {
-      console.log('pathBuilder', pathBuilder);
-      fs.mkdirSync(pathBuilder);
-    }
-  });
-};
-
-const makeStorybookTemplate = dir => {
+const makeTemplate = dir => {
   const componentName = upperCase(dir);
-  makeStoybook(componentName);
-  const pathToFile = path.join(
+  makeFileToComponents(componentName);
+  const pathToFileStorybook = path.join(
     `./src/components/${componentName}`,
     `${componentName}.stories.tsx`,
   );
-
-  if (exist(pathToFile)) {
-    console.error(chalk.bold.red('이미 해당 파일이 존재합니다'));
-  } else {
-    fs.writeFileSync(pathToFile, storybookTemplate(componentName));
-    console.log(chalk.green(pathToFile, '생성 완료'));
-  }
-};
-
-const makeTsxTemplate = dir => {
-  const componentName = upperCase(dir);
-
-  makeTsxbook(componentName);
-  const pathToFile = path.join(
+  const pathToFileTsx = path.join(
     `./src/components/${componentName}`,
     `${componentName}.tsx`,
   );
-  if (exist(pathToFile)) {
+  if (exist(pathToFileStorybook)) {
     console.error(chalk.bold.red('이미 해당 파일이 존재합니다'));
   } else {
-    fs.writeFileSync(pathToFile, tsxTemplate(componentName));
-    console.log(chalk.green(pathToFile, '생성 완료'));
+    fs.writeFileSync(pathToFileStorybook, storybookTemplate(componentName));
+    fs.writeFileSync(pathToFileTsx, tsxTemplate(componentName));
+    console.log(chalk.green(pathToFileStorybook, '생성 완료'));
   }
 };
+
 const upperCase = str => {
   const firstChar = str[0];
 
@@ -133,9 +102,9 @@ program
   .option('-f, --filename [filename]', '파일명을 입력하세요.', 'index')
   .action(options => {
     // makeTemplate(type, options.filename, options.directory);
-    makeStorybookTemplate(options.filename);
+    makeTemplate(options.filename);
     console.log('options', options.filename);
-    makeTsxTemplate(options.filename);
+    // makeTsxTemplate(options.filename);
   });
 
 program.version('0.0.1', '-v, --version').name('cli');
