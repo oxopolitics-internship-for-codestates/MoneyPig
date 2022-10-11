@@ -10,6 +10,7 @@ type QuizCardProps = {
   style?: string;
   quizTitle?: string;
   quizTime?: number;
+  result?: string;
 };
 
 const QuizCard = ({
@@ -17,6 +18,7 @@ const QuizCard = ({
   isOxCard = false,
   quizTime,
   quizTitle,
+  result,
 }: QuizCardProps) => {
   return (
     <Card style="space-y-4 h-128">
@@ -27,7 +29,7 @@ const QuizCard = ({
           height="h-fit"
           style={`${!quizTitle && 'mt-8'}`}
         >
-          {!quizTitle ? (
+          {!quizTitle && !result ? (
             <textarea
               className={classNameJoiner(
                 `w-full placeholder:text-center text-2xl placeholder:text-2xl resize-none ${
@@ -39,13 +41,13 @@ const QuizCard = ({
               placeholder="문제를 입력해주세요"
             ></textarea>
           ) : (
-            <h5
+            <h4
               className={`text-center ${
                 isOxCard ? 'h-48 leading-12' : 'h-28 leading-7'
               }`}
             >
-              {quizTitle}
-            </h5>
+              {result ? result : quizTitle}
+            </h4>
           )}
         </Card>
         {children}
