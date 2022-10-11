@@ -10,7 +10,9 @@ type ResultCardProps = {
 const ResultCard = ({ result, description }: ResultCardProps) => {
   return (
     <QuizCard result={result}>
-      <Card style="bg-white h-56">{description}</Card>
+      <Card bgColor={'bg-white'} style="h-56">
+        {description}
+      </Card>
     </QuizCard>
   );
 };

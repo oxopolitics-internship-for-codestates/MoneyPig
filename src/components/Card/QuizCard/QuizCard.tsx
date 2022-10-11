@@ -26,28 +26,22 @@ const QuizCard = ({
       <form action="" className="h-64 space-y-6">
         <Card
           bgColor="bg-white"
-          height="h-fit"
-          style={`${!quizTitle && 'mt-8'}`}
+          height={`${isOxCard ? 'h-60' : 'h-40'}`}
+          style={`${!quizTitle && 'mt-8'} flex items-center`}
         >
           {!quizTitle && !result ? (
             <textarea
               className={classNameJoiner(
-                `w-full placeholder:text-center text-2xl placeholder:text-2xl resize-none ${
+                `w-full h-full placeholder:text-center text-2xl placeholder:text-2xl ${
                   isOxCard
-                    ? 'h-48 placeholder:leading-12'
-                    : 'h-28 placeholder:leading-7'
-                }`,
+                    ? ' placeholder:leading-12'
+                    : ' placeholder:leading-7'
+                } resize-none`,
               )}
               placeholder="문제를 입력해주세요"
             ></textarea>
           ) : (
-            <h4
-              className={`text-center ${
-                isOxCard ? 'h-48 leading-12' : 'h-28 leading-7'
-              }`}
-            >
-              {result ? result : quizTitle}
-            </h4>
+            <h5 className={`text-center`}>{result ? result : quizTitle}</h5>
           )}
         </Card>
         {children}
