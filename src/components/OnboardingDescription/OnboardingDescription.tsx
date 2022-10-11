@@ -16,17 +16,13 @@ const OnboardingDescription = ({
     <div className="w-3/4 m-auto flex justify-center md:w-screen">
       {imgLocation === 'left' ? (
         <>
-          <div>
-            <Image src={image} alt="description" width={300} height={300} />
-          </div>
-          <div>{description}</div>
+          <Image src={image} alt="description" width={300} height={300} />
+          <span>{description}</span>
         </>
       ) : (
         <>
-          <div>{description}</div>
-          <div>
-            <Image src={image} alt="description" width={300} height={300} />
-          </div>
+          <span>{description}</span>
+          <Image src={image} alt="description" width={300} height={300} />
         </>
       )}
     </div>

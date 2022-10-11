@@ -14,9 +14,9 @@ const Home: NextPageWithLayout = () => {
         <meta name="description" content="Economy Inside" />
       </Head>
 
-      <div className="text-6xl text-center h-64 relative">
+      {/* <div className="text-6xl text-center h-64 relative">
         <div className="absolute_center">경제 인사이드</div>
-      </div>
+      </div> */}
       <OnboardingDescription
         description={'안녕하세요'}
         image={
