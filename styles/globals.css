@@ -26,7 +26,7 @@
   }
 
   h5 {
-    @apply text-lg;
+    @apply text-lg whitespace-pre-wrap;
   }
 
   p {
@@ -35,5 +35,14 @@
 
   .absolute_center {
     @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .scrollbarHide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbarHide {
+    -ms-overflow-style: none; /* IE and 엣지 */
+    scrollbar-width: none; /* 파이어폭스 */
   }
 }

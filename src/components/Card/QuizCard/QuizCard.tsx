@@ -27,7 +27,9 @@ const QuizCard = ({
         <Card
           bgColor="bg-white"
           height={`${isOxCard ? 'h-60' : 'h-40'}`}
-          style={`${!quizTitle && 'mt-8'} flex items-center`}
+          style={`${
+            !quizTitle && 'mt-8'
+          } overflow-scroll scrollbarHide flex items-center`}
         >
           {!quizTitle && !result ? (
             <textarea
@@ -41,7 +43,9 @@ const QuizCard = ({
               placeholder="문제를 입력해주세요"
             ></textarea>
           ) : (
-            <h5 className={`text-center`}>{result ? result : quizTitle}</h5>
+            <h5 className={`max-w-full  break-words text-center`}>
+              {result ? result : quizTitle}
+            </h5>
           )}
         </Card>
         {children}
