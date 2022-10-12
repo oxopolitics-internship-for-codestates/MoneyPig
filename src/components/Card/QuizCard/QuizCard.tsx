@@ -21,7 +21,7 @@ const QuizCard = ({
   result,
 }: QuizCardProps) => {
   return (
-    <Card style="space-y-4 h-128">
+    <Card style="space-y-4 h-128 w-96">
       {quizTitle && <Timer quizTime={quizTime} />}
       <form action="" className="h-64 space-y-6">
         <Card

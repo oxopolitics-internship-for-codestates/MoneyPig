@@ -9,10 +9,12 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   const [menuState, setMenuState] = useState(true);
   return (
-    <div className="sticky">
+    <div className="">
       <Header setMenuState={setMenuState} menuState={menuState} />
       <Sidebar menuState={menuState} />
-      {children}
+      <div className="flex flex-col w-full items-center">
+        <div className="">{children}</div>
+      </div>
     </div>
   );
 };

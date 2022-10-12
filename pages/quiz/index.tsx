@@ -6,7 +6,7 @@ import { NextPageWithLayout } from '../_app';
 
 const Quiz: NextPageWithLayout = () => {
   return (
-    <ul>
+    <ul className="space-y-4 w-full ">
       {quizList.quizes.map((quiz, idx) => (
         <li key={idx}>
           <QuizListCard quiz={quiz}></QuizListCard>
