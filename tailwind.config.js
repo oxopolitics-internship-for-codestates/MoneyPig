@@ -21,6 +21,7 @@ module.exports = {
       height: {
         112: '28rem',
         128: '32rem',
+        sideBarFit: 'calc(100% - 64px);',
       },
       lineHeight: {
         7: '7rem',
