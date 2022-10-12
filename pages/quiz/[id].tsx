@@ -2,10 +2,10 @@ import { type } from 'os';
 import React from 'react';
 import FourChoiceQuizCard from '../../src/components/Card/FourChoiceQuizCard/FourChoiceQuizCard';
 import OxQuizCard from '../../src/components/Card/OxQuizCard/OxQuizCard';
-import { FourOptionQuizModel, unionQuiz } from '../../src/data/QuizList';
+import { FourOptionQuizModel, UnionQuiz } from '../../src/data/QuizList';
 
 type QuizDetailProps = {
-  quiz: unionQuiz;
+  quiz: UnionQuiz;
 };
 
 const QuizDetail = ({ quiz }: QuizDetailProps) => {

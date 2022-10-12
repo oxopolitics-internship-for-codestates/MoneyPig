@@ -2,14 +2,20 @@ import React, { useState, useRef } from 'react';
 
 import Icon, { IconType } from '../Icon/Icon';
 
+export enum InputTypeProps {
+  text = 'text',
+  password = 'password',
+  number = 'number',
+}
+
 type InputProps = {
-  type: 'text' | 'password' | 'number';
+  type: InputTypeProps;
   placeholder: string;
   isReceived?: boolean;
 };
 
 const Input = ({
-  type = 'text',
+  type = InputTypeProps.text,
   placeholder,
   isReceived = undefined,
 }: InputProps) => {
