@@ -2,7 +2,11 @@ import { type } from 'os';
 import React from 'react';
 import FourChoiceQuizCard from '../../src/components/Card/FourChoiceQuizCard/FourChoiceQuizCard';
 import OxQuizCard from '../../src/components/Card/OxQuizCard/OxQuizCard';
-import { FourOptionQuizModel, UnionQuiz } from '../../src/data/QuizList';
+import {
+  FourOptionQuizModel,
+  QuizType,
+  UnionQuiz,
+} from '../../src/data/QuizList';
 
 type QuizDetailProps = {
   quiz: UnionQuiz;
@@ -10,7 +14,7 @@ type QuizDetailProps = {
 
 const QuizDetail = ({ quiz }: QuizDetailProps) => {
   const rending = () => {
-    return quiz.type === 'OxQuiz' ? (
+    return quiz.type === QuizType.oxQuiz ? (
       <OxQuizCard quiz={quiz}></OxQuizCard>
     ) : (
       <FourChoiceQuizCard

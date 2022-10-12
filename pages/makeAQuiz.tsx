@@ -8,7 +8,7 @@ import React, { ReactElement, useState } from 'react';
 import { classNameJoiner } from '../utils/className';
 import { NextPageWithLayout } from './_app';
 import Layout from '../src/components/Layout/Layout';
-import Input from '../src/components/Input/Input';
+import Input, { InputTypeProps } from '../src/components/Input/Input';
 
 const MakeAQuiz: NextPageWithLayout = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
@@ -73,7 +73,7 @@ const MakeAQuiz: NextPageWithLayout = () => {
       </Head>
       <div className=" w-4/5 m-auto">
         <div className="text-5xl h-20 p-4 ">키워드</div>
-        <Input type="text" placeholder="키워드를 입력해주세요" />
+        <Input type={InputTypeProps.text} placeholder="키워드를 입력해주세요" />
         <div className="flex space-x-4 mt-6 w-full ">
           <div>
             <div className="text-5xl text-center ">시간</div>

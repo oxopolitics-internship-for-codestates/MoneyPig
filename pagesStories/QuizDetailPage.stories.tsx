@@ -3,6 +3,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import QuizDetail from '../pages/quiz/[id]';
 import Layout from '../src/components/Layout/Layout';
+import { QuizType } from '../src/data/QuizList';
 
 export default {
   title: 'Pages/QuizDetail',
@@ -32,7 +33,7 @@ OxCardWithData.args = {
     answer: 'O',
     time: 15,
     keyword: '엔화',
-    type: 'OxQuiz',
+    type: QuizType.oxQuiz,
     description: '엔화는 일본의 화폐입니다.',
   },
 };
@@ -61,7 +62,7 @@ FourChoiceCardWithData.args = {
     answer: '',
     time: 60,
     keyword: '엔화',
-    type: 'FourOptionQuiz',
+    type: QuizType.FourOptionQuiz,
     description: '엔화는 일본의 화폐입니다.',
   },
 };
