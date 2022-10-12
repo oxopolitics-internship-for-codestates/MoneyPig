@@ -6,7 +6,7 @@ type OnboardingDescriptionProps = {
   image: string;
   imgLocation?: Image_Location_Position;
 };
-enum Image_Location_Position {
+export enum Image_Location_Position {
   LEFT = 'left',
   RIGHT = 'right',
 }

@@ -5,6 +5,7 @@ import Footer from '../src/components/Footer/Footer';
 import { NextPageWithLayout } from './_app';
 import { ReactElement } from 'react';
 import Layout from '../src/components/Layout/Layout';
+import { Image_Location_Position } from '../src/components/OnboardingDescription/OnboardingDescription';
 
 const Home: NextPageWithLayout = () => {
   return (
@@ -14,29 +15,19 @@ const Home: NextPageWithLayout = () => {
         <meta name="description" content="Economy Inside" />
       </Head>
 
-      {/* <div className="text-6xl text-center h-64 relative">
-        <div className="absolute_center">경제 인사이드</div>
-      </div> */}
       <OnboardingDescription
         description={'안녕하세요'}
         image={
           'https://img.hani.co.kr/imgdb/original/2007/1227/68227042_20071227.jpg'
         }
-        imgLocation={'right'}
+        imgLocation={Image_Location_Position.RIGHT}
       />
       <OnboardingDescription
         description={'2번째인데?'}
         image={
           'http://res.heraldm.com/content/image/2015/01/19/20150119001097_0.jpg'
         }
-        imgLocation={'left'}
-      />
-      <OnboardingDescription
-        description={'3번째인데?'}
-        image={
-          'http://res.heraldm.com/content/image/2015/01/19/20150119001097_0.jpg'
-        }
-        imgLocation={'right'}
+        imgLocation={Image_Location_Position.LEFT}
       />
       <OnboardingDescription
         description={
@@ -45,7 +36,7 @@ const Home: NextPageWithLayout = () => {
         image={
           'http://res.heraldm.com/content/image/2015/01/19/20150119001097_0.jpg'
         }
-        imgLocation={'left'}
+        imgLocation={Image_Location_Position.RIGHT}
       />
       <Footer />
     </div>
