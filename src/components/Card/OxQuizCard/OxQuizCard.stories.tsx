@@ -2,6 +2,7 @@ import React from 'react';
 
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import OxQuizCard from './OxQuizCard';
+import { QuizType } from '../../../data/QuizList';
 
 export default {
   title: 'Components/OxQuizCard',
@@ -23,7 +24,7 @@ FourChoiceCardWithData.args = {
     answer: 'O',
     time: 15,
     keyword: '엔화',
-    type: 'FourOptionQuiz',
+    type: QuizType.oxQuiz,
     description: '엔화는 일본의 화폐입니다.',
   },
 };
