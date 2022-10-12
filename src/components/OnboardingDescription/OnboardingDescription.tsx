@@ -4,32 +4,35 @@ import Image from 'next/image';
 type OnboardingDescriptionProps = {
   description?: string;
   image: string;
-  imgLocation?: string;
+  imgLocation?: Image_Location_Position;
 };
+enum Image_Location_Position {
+  LEFT = 'left',
+  RIGHT = 'right',
+}
 
 const OnboardingDescription = ({
   description,
   image,
-  imgLocation,
+  imgLocation = Image_Location_Position.LEFT,
 }: OnboardingDescriptionProps) => {
   return (
-    <div className="w-3/4 m-auto flex justify-center md:w-screen">
-      {imgLocation === 'left' ? (
-        <>
-          <div>
+    <>
+      <div className="w-3/4 m-auto flex justify-center">
+        {imgLocation === Image_Location_Position.LEFT && (
+          <>
             <Image src={image} alt="description" width={300} height={300} />
-          </div>
-          <div>{description}</div>
-        </>
-      ) : (
-        <>
-          <div>{description}</div>
-          <div>
+            <span>{description}</span>
+          </>
+        )}
+        {imgLocation === Image_Location_Position.RIGHT && (
+          <>
+            <span>{description}</span>
             <Image src={image} alt="description" width={300} height={300} />
-          </div>
-        </>
-      )}
-    </div>
+          </>
+        )}
+      </div>
+    </>
   );
 };
 

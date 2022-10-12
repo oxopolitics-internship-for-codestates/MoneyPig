@@ -1,8 +1,8 @@
 export type QuizModel = {
-  quizes: unionQuiz[];
+  quizes: UnionQuiz[];
 };
 
-export type unionQuiz = OxQuizModel | FourOptionQuizModel;
+export type UnionQuiz = OxQuizModel | FourOptionQuizModel;
 
 export type OxQuizModel = {
   id: string;
@@ -12,10 +12,14 @@ export type OxQuizModel = {
   answer: string;
   time: number;
   keyword: string;
-  type: string;
+  type: QuizType;
   description: string;
 };
 
+export enum QuizType {
+  oxQuiz = 'OxQuiz',
+  FourOptionQuiz = 'FourOptionQuiz',
+}
 export type FourOptionQuizModel = {
   id: string;
   title: string;
@@ -25,7 +29,7 @@ export type FourOptionQuizModel = {
   createdAt: number;
   time: number;
   keyword: string;
-  type: string;
+  type: QuizType;
   description: string;
 };
 
@@ -40,7 +44,7 @@ export const quizList: QuizModel = {
       answer: '',
       time: 60,
       keyword: '엔화',
-      type: 'FourOptionQuiz',
+      type: QuizType.FourOptionQuiz,
       description: '엔화는 일본의 화폐입니다.',
     },
     {
@@ -51,7 +55,7 @@ export const quizList: QuizModel = {
       answer: 'O',
       time: 0,
       keyword: '엔화',
-      type: 'OxQuiz',
+      type: QuizType.oxQuiz,
       description: '엔화는 일본의 화폐입니다.',
     },
   ],

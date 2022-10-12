@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Input from './Input';
+import Input, { InputTypeProps } from './Input';
 
 export default {
   title: 'Components/Input',
@@ -14,13 +14,13 @@ const InputTemplate: ComponentStory<typeof Input> = args => {
 
 export const Default = InputTemplate.bind({});
 Default.args = {
-  type: 'text',
+  type: InputTypeProps.text,
   placeholder: 'Search...',
 };
 
 export const Success = InputTemplate.bind({});
 Success.args = {
-  type: 'text',
+  type: InputTypeProps.text,
   placeholder: 'Search...',
   quiz: [
     {
@@ -105,7 +105,7 @@ Success.args = {
 
 export const Error = InputTemplate.bind({});
 Error.args = {
-  type: 'text',
+  type: InputTypeProps.text,
   placeholder: 'Search...',
   quiz: [],
 };

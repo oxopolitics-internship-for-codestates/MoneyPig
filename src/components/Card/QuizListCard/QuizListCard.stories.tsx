@@ -2,6 +2,7 @@ import React from 'react';
 
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import QuizListCard from './QuizListCard';
+import { QuizType } from '../../../data/QuizList';
 
 export default {
   title: 'Components/QuizListCard',
@@ -19,9 +20,9 @@ CardDafault.args = {
     userId: 'tmdqls2257',
     createdAt: 1665309414,
     answer: '',
-    time: '15s',
+    time: 15,
     keyword: '엔화',
-    type: 'FourOptionQuiz',
+    type: QuizType.FourOptionQuiz,
     description: '엔화는 일본의 화폐입니다.',
   },
 };

@@ -14,14 +14,19 @@ type QuizProps = {
   type: string;
   description: string;
 };
+export enum InputTypeProps {
+  text = 'text',
+  password = 'password',
+  number = 'number',
+}
 
 type InputProps = {
-  type: 'text' | 'password' | 'number';
+  type: InputTypeProps;
   placeholder: string;
   quiz?: QuizProps[] | [];
 };
 
-const Input = ({ type = 'text', placeholder, quiz }: InputProps) => {
+const Input = ({ type, placeholder, quiz }: InputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [searchKeyWord, setSearchKeyWord] = useState<string>('');

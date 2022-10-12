@@ -2,22 +2,25 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import OnboardingDescription from '../src/components/OnboardingDescription/OnboardingDescription';
 import Footer from '../src/components/Footer/Footer';
+import { NextPageWithLayout } from './_app';
+import { ReactElement } from 'react';
+import Layout from '../src/components/Layout/Layout';
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
   return (
-    <div className=" bg-grey">
+    <div className=" bg-grey left-0 top-0">
       <Head>
         <title>Home Page</title>
         <meta name="description" content="Economy Inside" />
       </Head>
 
-      <div className="text-6xl text-center h-64 relative">
+      {/* <div className="text-6xl text-center h-64 relative">
         <div className="absolute_center">경제 인사이드</div>
-      </div>
+      </div> */}
       <OnboardingDescription
         description={'안녕하세요'}
         image={
-          'http://res.heraldm.com/content/image/2015/01/19/20150119001097_0.jpg'
+          'https://img.hani.co.kr/imgdb/original/2007/1227/68227042_20071227.jpg'
         }
         imgLocation={'right'}
       />
@@ -47,6 +50,10 @@ const Home: NextPage = () => {
       <Footer />
     </div>
   );
+};
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Home;

@@ -1,9 +1,9 @@
 import React from 'react';
-import { unionQuiz } from '../../../data/QuizList';
+import { UnionQuiz } from '../../../data/QuizList';
 import Card from '../Card';
 
 type QuizListCardProps = {
-  quiz: unionQuiz;
+  quiz: UnionQuiz;
 };
 
 const QuizListCard = ({ quiz }: QuizListCardProps) => {
