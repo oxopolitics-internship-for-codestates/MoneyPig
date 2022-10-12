@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 30px;
+    height: 35px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    background: #ffffff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #e9e7e7;
+    border-radius: 100vh;
+    border: 8px solid #ffffff;
+  }
+}
+
 @layer components {
   .btn-primary {
     @apply border-0 p-2 px-6 bg-slate-100 rounded-md;
