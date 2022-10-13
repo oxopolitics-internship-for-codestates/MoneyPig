@@ -14,7 +14,7 @@ const Header = ({ setMenuState, menuState }: HeaderProps) => {
   return (
     <header
       className={classNameJoiner(
-        'w-full bg-primary flex items-center justify-between',
+        'w-full bg-primary z-30 sticky top-0 flex items-center justify-between',
       )}
     >
       <div className="flex items-center ">

@@ -7,10 +7,13 @@ import { ReactElement, useEffect } from 'react';
 import Layout from '../src/components/Layout/Layout';
 import { Image_Location_Position } from '../src/components/OnboardingDescription/OnboardingDescription';
 import fireStore from '../src/Firebase';
+import { getAuth } from 'firebase/auth';
 
 const Home: NextPageWithLayout = () => {
   useEffect(() => {
     console.log(fireStore);
+    const auth = getAuth();
+    console.log('auth', auth);
   });
 
   return (

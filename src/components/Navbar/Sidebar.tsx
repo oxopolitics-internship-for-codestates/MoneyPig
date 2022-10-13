@@ -8,7 +8,7 @@ type SidebarProps = {
 const Sidebar = ({ menuState }: SidebarProps) => {
   return (
     <div
-      className={`absolute w-full h-sideBarFit bg-white/30 z-50 ${
+      className={` fixed w-full h-sideBarFit bg-white/30 z-50 ${
         menuState ? 'invisible' : 'visible'
       } backdrop-blur-sm`}
     >
