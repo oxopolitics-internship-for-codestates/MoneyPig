@@ -27,10 +27,9 @@ const TimeOptionsSetting = () => {
         {timeText}
       </button>
       <div
-        id="dropdown"
         className={classNameJoiner(
           `${dropDownState ? '' : 'hidden'}`,
-          ' fixed z-10 w-40 bg-white rounded-b-lg divide-y divide-gray-100 shadow dark:bg-gray-700',
+          ' z-10 w-40 bg-white rounded-b-lg divide-y divide-gray-100 shadow dark:bg-gray-700',
         )}
       >
         <hr className="w-4/5 m-auto "></hr>

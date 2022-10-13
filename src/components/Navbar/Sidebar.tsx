@@ -17,8 +17,8 @@ const Sidebar = ({ menuState }: SidebarProps) => {
           menuState ? '-translate-x-52' : 'translate-x-0'
         } ${menuState ? 'invisible' : 'visible'}`}
       >
-        <LinkButton href={'#'}>{'Home'}</LinkButton>
-        <LinkButton href={'#'}>{'Make a Quiz'}</LinkButton>
+        <LinkButton href={'/'}>{'Home'}</LinkButton>
+        <LinkButton href={'makeAQuiz'}>{'Make a Quiz'}</LinkButton>
         <LinkButton href={'#'}>{'Solve a Quiz'}</LinkButton>
         <LinkButton href={'#'}>{'Search'}</LinkButton>
       </aside>

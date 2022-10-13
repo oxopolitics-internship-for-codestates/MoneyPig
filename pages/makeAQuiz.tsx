@@ -32,7 +32,7 @@ const MakeAQuiz: NextPageWithLayout = () => {
         modalState={quizPickModal}
         modalStateControl={setQuizPickModal}
       >
-        <div className="flex p-10 md:flex md:items-center md:justify-between space-x-2 md:p-14">
+        <div className="flex md:mt-0 mt-16 md:flex md:items-center md:justify-between space-x-2 md:p-14">
           <div
             onClick={selectOneQuiz}
             className={classNameJoiner(
@@ -63,7 +63,7 @@ const MakeAQuiz: NextPageWithLayout = () => {
           <Button
             onClick={openQuizModal}
             children="확인"
-            style="w-20 h-12 drop-shadow-lg"
+            style="w-20 h-12 md:mt-0 mt-6 drop-shadow-lg"
           />
         </div>
       </Modal>
