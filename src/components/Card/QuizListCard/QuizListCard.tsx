@@ -17,7 +17,7 @@ const QuizListCard = ({ quiz }: QuizListCardProps) => {
     return summary + '...';
   };
   return (
-    <Card style={'h-48 w-full space-y-8'}>
+    <Card style={'h-48 sm:w-full space-y-8'}>
       <div className="flex justify-between">
         <span>{createdAt(quiz.createdAt)}</span>
         <span>{quiz.userId}</span>
