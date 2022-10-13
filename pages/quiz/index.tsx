@@ -5,44 +5,14 @@ import { quizList, UnionQuiz } from '../../src/data/QuizList';
 import { NextPageWithLayout } from '../_app';
 
 const Quiz: NextPageWithLayout = () => {
-  const firstColumnData: UnionQuiz[] = quizList.quizes.filter((quiz, idx) => {
-    return !(idx % 2);
-  });
-  const secondColumnData: UnionQuiz[] = quizList.quizes.filter((quiz, idx) => {
-    return idx % 2;
-  });
-
   return (
-    <div className="flex space-x-4">
-      <ul className="space-y-4 w-full ">
-        {firstColumnData.map((quiz, idx) => (
-          <li key={idx}>
-            <QuizListCard quiz={quiz}></QuizListCard>
-          </li>
-        ))}
-      </ul>
-      <ul className="space-y-4 w-full ">
-        {secondColumnData.map((quiz, idx) => (
-          <li key={idx}>
-            <QuizListCard quiz={quiz}></QuizListCard>
-          </li>
-        ))}
-      </ul>
-      {/* <ul className="space-y-4 w-full ">
-        {quizList.quizes.map((quiz, idx) => (
-          <li key={idx}>
-            <QuizListCard quiz={quiz}></QuizListCard>
-          </li>
-        ))}
-      </ul>
-      <ul className="space-y-4 w-full ">
-        {quizList.quizes.map((quiz, idx) => (
-          <li key={idx}>
-            <QuizListCard quiz={quiz}></QuizListCard>
-          </li>
-        ))}
-      </ul> */}
-    </div>
+    <ul className="gap-4 w-full flex flex-col sm:flex-row sm:flex-wrap sm:justify-center ">
+      {quizList.quizes.map((quiz, idx) => (
+        <li key={idx} className={'sm:w-64'}>
+          <QuizListCard quiz={quiz}></QuizListCard>
+        </li>
+      ))}
+    </ul>
   );
 };
 Quiz.getLayout = function getLayout(page: ReactElement) {
