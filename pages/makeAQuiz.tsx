@@ -76,12 +76,12 @@ const MakeAQuiz: NextPageWithLayout = () => {
         <Input type={InputTypeProps.text} placeholder="키워드를 입력해주세요" />
         <div className="flex space-x-4 mt-6 w-full ">
           <div>
-            <div className="text-5xl text-center ">시간</div>
+            <div className="text-5xl text-center m-2 ">시간</div>
             <TimeOptionsSetting />
           </div>
           <div>
-            <div className="text-5xl text-center ">문제</div>
-            <Button children="문제유형 선택" onClick={openQuizModal} />
+            <div className="text-5xl text-center m-2 ">문제</div>
+            <Button children="문제유형선택" onClick={openQuizModal} />
           </div>
         </div>
         <div className=" h-80 translate-y-12">문제 보여주는 칸</div>

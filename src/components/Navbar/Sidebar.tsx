@@ -3,11 +3,16 @@ import { LinkButton } from '../Button/Button';
 
 type SidebarProps = {
   menuState: boolean;
+  setMenuState: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Sidebar = ({ menuState }: SidebarProps) => {
+const Sidebar = ({ menuState, setMenuState }: SidebarProps) => {
+  const onClick = () => {
+    setMenuState(!menuState);
+  };
   return (
     <div
+      onClick={onClick}
       className={` fixed w-full h-sideBarFit bg-white/30 z-50 ${
         menuState ? 'invisible' : 'visible'
       } backdrop-blur-sm`}
