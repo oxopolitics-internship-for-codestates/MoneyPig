@@ -4,14 +4,9 @@ import { classNameJoiner } from '../../../utils/className';
 import Icon, { IconType } from '../Icon/Icon';
 
 type QuizProps = {
-  id: string;
-  title: string;
-  userId: string;
-  createdAt: number;
-  answer: string;
-  time: string;
+  Id: number;
   keyword: string;
-  type: string;
+  term: string;
   description: string;
 };
 export enum InputTypeProps {
@@ -39,7 +34,7 @@ const Input = ({ type, placeholder, quiz }: InputProps) => {
       setFilterQuiz([]);
     } else {
       const updateQuiz = quiz?.filter(quizList => {
-        return quizList.keyword.includes(searchKeyWord);
+        return quizList.term.includes(searchKeyWord);
       });
       setFilterQuiz(updateQuiz);
     }
@@ -102,11 +97,11 @@ const Input = ({ type, placeholder, quiz }: InputProps) => {
               >
                 {filterQuiz?.map(item => (
                   <li
-                    key={item.id}
+                    key={String(item.Id)}
                     className="px-11 py-3 rounded-[10px] hover:bg-[#5D5656] hover:text-[#ffffff]"
-                    onClick={() => clickDropDownItem(item.keyword)}
+                    onClick={() => clickDropDownItem(item.term)}
                   >
-                    {item.keyword}
+                    {item.term}
                   </li>
                 ))}
               </ul>
