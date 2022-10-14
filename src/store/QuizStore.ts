@@ -1,5 +1,6 @@
 import { QueryDocumentSnapshot, SnapshotOptions } from 'firebase/firestore';
 import { action, computed, makeObservable, observable, toJS } from 'mobx';
+import quizService from '../../service/QuizService';
 import {
   FourOptionQuizModel,
   OxQuizModel,
@@ -44,42 +45,6 @@ export class Quiz implements FourOptionQuizModel, OxQuizModel {
   }
 }
 
-const quizConverter = {
-  toFireStore: (quiz: Quiz) => {
-    return {
-      id: quiz.id,
-      title: quiz.title,
-      userId: quiz.userId,
-      createdAt: quiz.createdAt,
-      answer: quiz.answer,
-      time: quiz.time,
-      keyword: quiz.keyword,
-      type: quiz.type,
-      description: quiz.description,
-      options: quiz.options,
-    };
-  },
-
-  fromFirestore: (
-    snapshot: QueryDocumentSnapshot,
-    options: SnapshotOptions,
-  ) => {
-    const data = snapshot.data(options);
-    return new Quiz(
-      data.id,
-      data.title,
-      data.userId,
-      data.createdAt,
-      data.answer,
-      data.time,
-      data.keyword,
-      data.type,
-      data.description,
-      data.options,
-    );
-  },
-};
-
 export class QuizStore {
   quiz: Quiz = {
     id: '',
@@ -104,6 +69,7 @@ export class QuizStore {
       setType: action,
       setDescription: action,
       makeAQuiz: computed,
+      getQuiz: computed,
     });
   }
 
@@ -138,6 +104,11 @@ export class QuizStore {
   get makeAQuiz() {
     console.log(toJS(this.quiz));
     return toJS(this.quiz);
+  }
+
+  get getQuiz() {
+    // return quizService.getQuizes();
+    return quizService;
   }
 }
 
