@@ -14,12 +14,16 @@ type QuizDetailProps = {
 
 const QuizDetail = ({ quiz }: QuizDetailProps) => {
   const rending = () => {
-    return quiz.type === QuizType.oxQuiz ? (
-      <OxQuizCard quiz={quiz}></OxQuizCard>
-    ) : (
-      <FourChoiceQuizCard
-        quiz={quiz as FourOptionQuizModel}
-      ></FourChoiceQuizCard>
+    return (
+      <section className="h-screen flex flex-col justify-center space-y-12">
+        {quiz.type === QuizType.oxQuiz ? (
+          <OxQuizCard quiz={quiz}></OxQuizCard>
+        ) : (
+          <FourChoiceQuizCard
+            quiz={quiz as FourOptionQuizModel}
+          ></FourChoiceQuizCard>
+        )}
+      </section>
     );
   };
   return rending();
