@@ -9,6 +9,8 @@ import { classNameJoiner } from '../utils/className';
 import { NextPageWithLayout } from './_app';
 import Layout from '../src/components/Layout/Layout';
 import Input, { InputTypeProps } from '../src/components/Input/Input';
+import FourChoiceQuizCard from '../src/components/Card/FourChoiceQuizCard/FourChoiceQuizCard';
+import OxQuizCard from '../src/components/Card/OxQuizCard/OxQuizCard';
 
 const MakeAQuiz: NextPageWithLayout = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
@@ -84,7 +86,9 @@ const MakeAQuiz: NextPageWithLayout = () => {
             <Button children="문제유형선택" onClick={openQuizModal} />
           </div>
         </div>
-        <div className=" h-80 translate-y-12">문제 보여주는 칸</div>
+        <div className=" text-center m-10">
+          {quizSelect ? <OxQuizCard /> : <FourChoiceQuizCard />}
+        </div>
         <div className=" h-auto flex flex-col">
           <div className="text-5xl p-4">정답</div>
           <div className="flex border-2 rounded-[10px] bg-[#E9E7E7] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
