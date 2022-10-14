@@ -11,12 +11,6 @@ import { getAuth } from 'firebase/auth';
 import Slider from '../src/components/Slider/Slider';
 
 const Home: NextPageWithLayout = () => {
-  useEffect(() => {
-    console.log(fireStore);
-    const auth = getAuth();
-    console.log('auth', auth);
-  });
-
   return (
     <div className=" bg-grey left-0 top-0">
       <Head>
