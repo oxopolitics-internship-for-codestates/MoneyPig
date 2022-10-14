@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { classNameJoiner } from '../../../../utils/className';
+import newQuiz from '../../../store/QuizStore';
 import Timer from '../../Timer/Timer';
 import Card from '../Card';
 
@@ -20,6 +21,14 @@ const QuizCard = ({
   quizTitle,
   result,
 }: QuizCardProps) => {
+  const onBlurQuizTitle = (
+    e: React.FocusEvent<HTMLTextAreaElement, Element>,
+  ) => {
+    const title = e.currentTarget.value;
+    console.log(e.currentTarget.value);
+    newQuiz.setTitle(title);
+  };
+
   return (
     <Card style="space-y-4 h-128 max-w-sm m-auto">
       {quizTitle && <Timer quizTime={quizTime} />}
@@ -41,6 +50,9 @@ const QuizCard = ({
                 } resize-none`,
               )}
               placeholder="문제를 입력해주세요"
+              onBlur={e => {
+                onBlurQuizTitle(e);
+              }}
             ></textarea>
           ) : (
             <h5 className={`max-w-full  break-words text-center`}>

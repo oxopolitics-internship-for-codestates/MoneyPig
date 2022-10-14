@@ -11,52 +11,13 @@ import Layout from '../src/components/Layout/Layout';
 import Input, { InputTypeProps } from '../src/components/Input/Input';
 import FourChoiceQuizCard from '../src/components/Card/FourChoiceQuizCard/FourChoiceQuizCard';
 import OxQuizCard from '../src/components/Card/OxQuizCard/OxQuizCard';
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import fireStore from '../src/Firebase';
-
-export type FourChoiceValue = {
-  first: string;
-  second: string;
-  third: string;
-  fourth: string;
-};
+import { QuizTime, QuizType } from '../src/data/QuizList';
+import newQuiz, { Quiz } from '../src/store/QuizStore';
+import { toJS } from 'mobx';
 
 const MakeAQuiz: NextPageWithLayout = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
   const [quizSelect, setQuizSelect] = useState<boolean>(false);
-  const [fourInput, setFourInputs] = useState<FourChoiceValue>({
-    first: '',
-    second: '',
-    third: '',
-    fourth: '',
-  });
-
-  const addQuizAtFirebase = async () => {
-    if (quizSelect) {
-    } else {
-      await addDoc(collection(fireStore, 'quiz'), {
-        title: '임시이름',
-        options: [
-          fourInput.first,
-          fourInput.second,
-          fourInput.third,
-          fourInput.fourth,
-        ],
-        answer: 1,
-        createdAt: serverTimestamp(),
-        time: 20,
-        keyword: 'temp',
-        type: 'four',
-        description: '설명이다',
-      }); /**데이터베이스에 추가해주기 */
-      setFourInputs({
-        first: '',
-        second: '',
-        third: '',
-        fourth: '',
-      }); /**인풋 값 없애주기 */
-    }
-  };
 
   const openQuizModal = () => {
     setQuizPickModal(prev => !prev);
@@ -64,10 +25,30 @@ const MakeAQuiz: NextPageWithLayout = () => {
 
   const selectOneQuiz = () => {
     setQuizSelect(false);
+
+    newQuiz.setType(QuizType.FourOptionQuiz);
   };
 
   const selectOXQuiz = () => {
     setQuizSelect(true);
+
+    newQuiz.setType(QuizType.oxQuiz);
+  };
+
+  const onBlurAns = (e: React.FocusEvent<HTMLInputElement, Element>) => {
+    const ans = e.currentTarget.value;
+    newQuiz.setAnswer(ans);
+  };
+
+  const onBlurDescription = (
+    e: React.FocusEvent<HTMLTextAreaElement, Element>,
+  ) => {
+    const desc = e.currentTarget.value;
+    newQuiz.setDescription(desc);
+  };
+
+  const onSubmit = () => {
+    newQuiz.makeAQuiz;
   };
 
   return (
@@ -130,70 +111,34 @@ const MakeAQuiz: NextPageWithLayout = () => {
           </div>
         </div>
         <div className=" text-center m-10">
-          {quizSelect ? (
-            <OxQuizCard />
-          ) : (
-            <FourChoiceQuizCard
-              fourInput={fourInput}
-              setFourInputs={setFourInputs}
-            />
-          )}
+          {quizSelect ? <OxQuizCard /> : <FourChoiceQuizCard />}
         </div>
         <div className=" h-auto flex flex-col">
-          {quizSelect ? (
-            <>
-              <label
-                htmlFor="fourChoice"
-                className="block text-5xl mb-2 font-medium text-gray-900 dark:text-gray-400"
-              >
-                정답
-              </label>
-              <select
-                id="fourChoice"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5  "
-              >
-                <option defaultValue="정답을 골라주세요">
-                  정답을 골라주세요
-                </option>
-                <option value="O">O</option>
-                <option value="X">X</option>
-              </select>
-            </>
-          ) : (
-            <>
-              <label
-                htmlFor="fourChoice"
-                className="block text-5xl mb-2 font-medium text-gray-900 dark:text-gray-400"
-              >
-                정답
-              </label>
-              <select
-                id="fourChoice"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5  "
-              >
-                <option defaultValue="정답 번호를 선택해주세요">
-                  정답 번호를 선택해주세요
-                </option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-            </>
-          )}
-
+          <div className="text-5xl p-4">정답</div>
+          <div className="flex border-2 rounded-[10px] bg-[#E9E7E7] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+            <input
+              placeholder="정답을 입력해주세요"
+              className="w-full outline-none py-3 mr-3 bg-[#E9E7E7]"
+              onBlur={e => {
+                onBlurAns(e);
+              }}
+            />
+          </div>
           <div className="translate-y-2 h-36 flex border-2 rounded-[10px] bg-[#E9E7E7] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
             <textarea
               placeholder="설명을 입력해주세요"
               className="w-full outline-none py-3 mr-3 bg-[#E9E7E7]"
+              onBlur={e => {
+                onBlurDescription(e);
+              }}
             />
           </div>
         </div>
         <div className=" text-center h-32">
           <Button
-            onClick={addQuizAtFirebase}
             style=" translate-y-16"
             children="문제 완성"
+            onClick={onSubmit}
           />
         </div>
       </div>

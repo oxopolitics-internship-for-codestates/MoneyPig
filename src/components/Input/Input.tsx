@@ -19,7 +19,7 @@ type InputProps = {
   type: InputTypeProps;
   placeholder: string;
   term?: QuizProps[] | [];
-  setTerm: React.Dispatch<React.SetStateAction<QuizProps[] | undefined>>;
+  setTerm?: React.Dispatch<React.SetStateAction<QuizProps[] | undefined>>;
 };
 
 const Input = ({ type, placeholder, term, setTerm }: InputProps) => {

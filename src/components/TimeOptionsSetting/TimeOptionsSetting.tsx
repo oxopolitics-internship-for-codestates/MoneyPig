@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { classNameJoiner } from '../../../utils/className';
+import { QuizTime } from '../../data/QuizList';
+import newQuiz, { Quiz } from '../../store/QuizStore';
 
 const TimeOptionsSetting = () => {
   const [dropDownState, setDropDownState] = useState<boolean>(false);
@@ -11,6 +13,7 @@ const TimeOptionsSetting = () => {
 
   const setTimePicker = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     setTimeText(e.currentTarget.innerText);
+    newQuiz.setTime(e.currentTarget.value);
   };
 
   return (
@@ -40,36 +43,42 @@ const TimeOptionsSetting = () => {
           <li
             onClick={e => setTimePicker(e)}
             className="block py-2 px-4 cursor-pointer hover:bg-gray-100 "
+            value={QuizTime.fiveSec}
           >
             5초
           </li>
           <li
             onClick={e => setTimePicker(e)}
             className="block py-2 px-4 cursor-pointer hover:bg-gray-100 "
+            value={QuizTime.tenSec}
           >
             10초
           </li>
           <li
             onClick={e => setTimePicker(e)}
             className="block py-2 px-4 cursor-pointer hover:bg-gray-100 "
+            value={QuizTime.fifteenSec}
           >
             15초
           </li>
           <li
             onClick={e => setTimePicker(e)}
             className="block py-2 px-4 cursor-pointer hover:bg-gray-100 "
+            value={QuizTime.thirtySec}
           >
             30초
           </li>
           <li
             onClick={e => setTimePicker(e)}
             className="block py-2 px-4 cursor-pointer hover:bg-gray-100 "
+            value={QuizTime.oneMin}
           >
             60초
           </li>
           <li
             onClick={e => setTimePicker(e)}
             className="block py-2 px-4 cursor-pointer hover:bg-gray-100 "
+            value={QuizTime.infinite}
           >
             무제한
           </li>
