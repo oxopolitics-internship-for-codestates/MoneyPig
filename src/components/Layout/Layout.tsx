@@ -9,13 +9,15 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   const [menuState, setMenuState] = useState(true);
   return (
-    <div className="">
+    <>
       <Header setMenuState={setMenuState} menuState={menuState} />
-      <Sidebar menuState={menuState} />
+      <Sidebar setMenuState={setMenuState} menuState={menuState} />
       <div className="flex flex-col w-full items-center">
-        <div className="">{children}</div>
+        <div className="max-w-xl flex flex-col w-full items-center h-screen justify-center ">
+          {children}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

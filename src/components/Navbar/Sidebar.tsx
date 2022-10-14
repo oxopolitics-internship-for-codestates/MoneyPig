@@ -3,12 +3,17 @@ import { LinkButton } from '../Button/Button';
 
 type SidebarProps = {
   menuState: boolean;
+  setMenuState: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Sidebar = ({ menuState }: SidebarProps) => {
+const Sidebar = ({ menuState, setMenuState }: SidebarProps) => {
+  const onClick = () => {
+    setMenuState(!menuState);
+  };
   return (
     <div
-      className={`absolute w-full h-sideBarFit bg-white/30 z-50 ${
+      onClick={onClick}
+      className={` fixed w-full h-sideBarFit bg-white/30 z-50 ${
         menuState ? 'invisible' : 'visible'
       } backdrop-blur-sm`}
     >
@@ -17,8 +22,8 @@ const Sidebar = ({ menuState }: SidebarProps) => {
           menuState ? '-translate-x-52' : 'translate-x-0'
         } ${menuState ? 'invisible' : 'visible'}`}
       >
-        <LinkButton href={'#'}>{'Home'}</LinkButton>
-        <LinkButton href={'#'}>{'Make a Quiz'}</LinkButton>
+        <LinkButton href={'/'}>{'Home'}</LinkButton>
+        <LinkButton href={'makeAQuiz'}>{'Make a Quiz'}</LinkButton>
         <LinkButton href={'#'}>{'Solve a Quiz'}</LinkButton>
         <LinkButton href={'#'}>{'Search'}</LinkButton>
       </aside>

@@ -18,6 +18,10 @@ module.exports = {
         pink: '#EB7C7C',
         modalBg: '#A4A2A2',
       },
+      width: {
+        homePageWidth: '576px',
+        mediaWidth: '540px',
+      },
       height: {
         112: '28rem',
         128: '32rem',

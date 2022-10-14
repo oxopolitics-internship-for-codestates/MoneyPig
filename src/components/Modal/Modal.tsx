@@ -29,7 +29,7 @@ const Modal = ({
     <div
       className={classNameJoiner(
         modalState ? '' : ' hidden',
-        'overflow-y-auto overflow-x-hidden bg-modalBg opacity-95 fixed top-0 right-0 left-0 z-50 w-full h-full',
+        'overflow-y-auto overflow-x-hidden bg-modalBg md:opacity-95 opacity-100 fixed top-0 right-0 left-0 z-50 w-full h-full',
       )}
     >
       <div

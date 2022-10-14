@@ -9,6 +9,8 @@ import { classNameJoiner } from '../utils/className';
 import { NextPageWithLayout } from './_app';
 import Layout from '../src/components/Layout/Layout';
 import Input, { InputTypeProps } from '../src/components/Input/Input';
+import FourChoiceQuizCard from '../src/components/Card/FourChoiceQuizCard/FourChoiceQuizCard';
+import OxQuizCard from '../src/components/Card/OxQuizCard/OxQuizCard';
 
 const MakeAQuiz: NextPageWithLayout = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
@@ -32,7 +34,7 @@ const MakeAQuiz: NextPageWithLayout = () => {
         modalState={quizPickModal}
         modalStateControl={setQuizPickModal}
       >
-        <div className="flex p-10 md:flex md:items-center md:justify-between space-x-2 md:p-14">
+        <div className="flex md:mt-0 mt-16 md:flex md:items-center md:justify-between space-x-2 md:p-14">
           <div
             onClick={selectOneQuiz}
             className={classNameJoiner(
@@ -63,7 +65,7 @@ const MakeAQuiz: NextPageWithLayout = () => {
           <Button
             onClick={openQuizModal}
             children="확인"
-            style="w-20 h-12 drop-shadow-lg"
+            style="w-20 h-12 md:mt-0 mt-6 drop-shadow-lg"
           />
         </div>
       </Modal>
@@ -76,15 +78,17 @@ const MakeAQuiz: NextPageWithLayout = () => {
         <Input type={InputTypeProps.text} placeholder="키워드를 입력해주세요" />
         <div className="flex space-x-4 mt-6 w-full ">
           <div>
-            <div className="text-5xl text-center ">시간</div>
+            <div className="text-5xl text-center m-2 ">시간</div>
             <TimeOptionsSetting />
           </div>
           <div>
-            <div className="text-5xl text-center ">문제</div>
-            <Button children="문제유형 선택" onClick={openQuizModal} />
+            <div className="text-5xl text-center m-2 ">문제</div>
+            <Button children="문제유형선택" onClick={openQuizModal} />
           </div>
         </div>
-        <div className=" h-80 translate-y-12">문제 보여주는 칸</div>
+        <div className=" text-center m-10">
+          {quizSelect ? <OxQuizCard /> : <FourChoiceQuizCard />}
+        </div>
         <div className=" h-auto flex flex-col">
           <div className="text-5xl p-4">정답</div>
           <div className="flex border-2 rounded-[10px] bg-[#E9E7E7] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
