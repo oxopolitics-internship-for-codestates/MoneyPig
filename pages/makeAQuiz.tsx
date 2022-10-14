@@ -11,10 +11,53 @@ import Layout from '../src/components/Layout/Layout';
 import Input, { InputTypeProps } from '../src/components/Input/Input';
 import FourChoiceQuizCard from '../src/components/Card/FourChoiceQuizCard/FourChoiceQuizCard';
 import OxQuizCard from '../src/components/Card/OxQuizCard/OxQuizCard';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import fireStore from '../src/Firebase';
+
+export type FourChoiceValue = {
+  first: string;
+  second: string;
+  third: string;
+  fourth: string;
+};
 
 const MakeAQuiz: NextPageWithLayout = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
   const [quizSelect, setQuizSelect] = useState<boolean>(false);
+  const [fourInput, setFourInputs] = useState<FourChoiceValue>({
+    first: '',
+    second: '',
+    third: '',
+    fourth: '',
+  });
+
+  const addQuizAtFirebase = async () => {
+    if (quizSelect) {
+    } else {
+      await addDoc(collection(fireStore, 'quiz'), {
+        title: '임시이름',
+        options: [
+          fourInput.first,
+          fourInput.second,
+          fourInput.third,
+          fourInput.fourth,
+        ],
+        answer: 1,
+        createdAt: serverTimestamp(),
+        time: 20,
+        keyword: 'temp',
+        type: 'four',
+        description: '설명이다',
+      }); /**데이터베이스에 추가해주기 */
+      setFourInputs({
+        first: '',
+        second: '',
+        third: '',
+        fourth: '',
+      }); /**인풋 값 없애주기 */
+    }
+  };
+
   const openQuizModal = () => {
     setQuizPickModal(prev => !prev);
   };
@@ -87,7 +130,14 @@ const MakeAQuiz: NextPageWithLayout = () => {
           </div>
         </div>
         <div className=" text-center m-10">
-          {quizSelect ? <OxQuizCard /> : <FourChoiceQuizCard />}
+          {quizSelect ? (
+            <OxQuizCard />
+          ) : (
+            <FourChoiceQuizCard
+              fourInput={fourInput}
+              setFourInputs={setFourInputs}
+            />
+          )}
         </div>
         <div className=" h-auto flex flex-col">
           {quizSelect ? (
@@ -102,7 +152,9 @@ const MakeAQuiz: NextPageWithLayout = () => {
                 id="fourChoice"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5  "
               >
-                <option selected>정답을 골라주세요</option>
+                <option defaultValue="정답을 골라주세요">
+                  정답을 골라주세요
+                </option>
                 <option value="O">O</option>
                 <option value="X">X</option>
               </select>
@@ -119,7 +171,9 @@ const MakeAQuiz: NextPageWithLayout = () => {
                 id="fourChoice"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5  "
               >
-                <option selected>정답 번호를 선택해주세요</option>
+                <option defaultValue="정답 번호를 선택해주세요">
+                  정답 번호를 선택해주세요
+                </option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -136,7 +190,11 @@ const MakeAQuiz: NextPageWithLayout = () => {
           </div>
         </div>
         <div className=" text-center h-32">
-          <Button style=" translate-y-16" children="문제 완성" />
+          <Button
+            onClick={addQuizAtFirebase}
+            style=" translate-y-16"
+            children="문제 완성"
+          />
         </div>
       </div>
 
