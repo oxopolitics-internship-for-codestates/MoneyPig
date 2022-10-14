@@ -8,4 +8,4 @@ export default {
   component: Layout,
 } as ComponentMeta<typeof Layout>;
 
-export const Header: ComponentStory<typeof Layout> = () => <Layout />;
+export const Header: ComponentStory<typeof Layout> = () => <Layout>{}</Layout>;
