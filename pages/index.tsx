@@ -6,7 +6,7 @@ import { NextPageWithLayout } from './_app';
 import { ReactElement, useEffect } from 'react';
 import Layout from '../src/components/Layout/Layout';
 import { Image_Location_Position } from '../src/components/OnboardingDescription/OnboardingDescription';
-import fireStore from '../src/Firebase';
+import fireStore from '../src/firebase/Firebase';
 import { getAuth } from 'firebase/auth';
 import Slider from '../src/components/Slider/Slider';
 

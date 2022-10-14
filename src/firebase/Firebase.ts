@@ -1,7 +1,8 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
+import { getFirestore, collection } from 'firebase/firestore/lite';
+// import { getFirestore } from 'firebase/firestore';
 
+// import { getFirestore } from '@firebase/firestore/lite';
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_APIKEY,
   authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
@@ -11,7 +12,7 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_APPID,
 };
 
-const firebase = initializeApp(firebaseConfig);
+export const firebase = initializeApp(firebaseConfig);
 
 const fireStore = getFirestore(firebase);
 
