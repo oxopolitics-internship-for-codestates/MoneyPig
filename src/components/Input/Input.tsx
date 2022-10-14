@@ -3,7 +3,7 @@ import { classNameJoiner } from '../../../utils/className';
 
 import Icon, { IconType } from '../Icon/Icon';
 
-type QuizProps = {
+export type QuizProps = {
   Id: number;
   keyword: string;
   term: string;
@@ -18,23 +18,23 @@ export enum InputTypeProps {
 type InputProps = {
   type: InputTypeProps;
   placeholder: string;
-  quiz?: QuizProps[] | [];
+  term?: QuizProps[] | [];
+  setTerm: React.Dispatch<React.SetStateAction<QuizProps[] | undefined>>;
 };
 
-const Input = ({ type, placeholder, quiz }: InputProps) => {
+const Input = ({ type, placeholder, term, setTerm }: InputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
-
   const [searchKeyWord, setSearchKeyWord] = useState<string>('');
   const [isDropDownList, setIsDropDownList] = useState<boolean>(false);
-  const [filterQuiz, setFilterQuiz] = useState<QuizProps[] | undefined>(quiz);
+  const [filterQuiz, setFilterQuiz] = useState<QuizProps[] | undefined>(term);
 
   const showDropDownList = () => {
     if (searchKeyWord === '') {
       setIsDropDownList(false);
       setFilterQuiz([]);
     } else {
-      const updateQuiz = quiz?.filter(quizList => {
-        return quizList.term.includes(searchKeyWord);
+      const updateQuiz = term?.filter(termList => {
+        return termList.term.includes(searchKeyWord);
       });
       setFilterQuiz(updateQuiz);
     }
@@ -55,7 +55,7 @@ const Input = ({ type, placeholder, quiz }: InputProps) => {
     inputRef.current?.focus();
   };
 
-  useEffect(showDropDownList, [searchKeyWord, quiz]);
+  useEffect(showDropDownList, [searchKeyWord, term]);
 
   return (
     <>
