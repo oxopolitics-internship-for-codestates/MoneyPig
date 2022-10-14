@@ -8,6 +8,7 @@ import Layout from '../src/components/Layout/Layout';
 import { Image_Location_Position } from '../src/components/OnboardingDescription/OnboardingDescription';
 import fireStore from '../src/Firebase';
 import { getAuth } from 'firebase/auth';
+import Slider from '../src/components/Slider/Slider';
 
 const Home: NextPageWithLayout = () => {
   useEffect(() => {
@@ -46,6 +47,9 @@ const Home: NextPageWithLayout = () => {
         }
         imgLocation={Image_Location_Position.RIGHT}
       />
+      <div className=" w-mediaWidth md:w-homePageWidth m-auto ">
+        <Slider />
+      </div>
       <Footer />
     </div>
   );
