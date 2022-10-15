@@ -17,7 +17,7 @@ const TimeOptionsSetting = () => {
   };
 
   return (
-    <React.Fragment>
+    <div className=" absolute">
       <button
         onClick={dropDownOpenFunction}
         data-dropdown-toggle="dropdown"
@@ -32,7 +32,7 @@ const TimeOptionsSetting = () => {
       <div
         className={classNameJoiner(
           `${dropDownState ? '' : 'hidden'}`,
-          ' z-10 w-40 fixed bg-white rounded-b-lg divide-y divide-gray-100 shadow dark:bg-gray-700',
+          ' z-10 w-40 relative top-0 left-0 bg-white rounded-b-lg divide-y divide-gray-100 shadow dark:bg-gray-700',
         )}
       >
         <hr className="w-4/5 m-auto "></hr>
@@ -84,7 +84,7 @@ const TimeOptionsSetting = () => {
           </li>
         </ul>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

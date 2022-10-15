@@ -102,7 +102,7 @@ const MakeAQuiz: NextPageWithLayout = () => {
         {/* <Input type={InputTypeProps.text} placeholder="키워드를 입력해주세요" /> */}
         <div className="flex space-x-4 mt-6 w-full ">
           <div>
-            <div className="text-5xl text-center m-2 ">시간</div>
+            <div className="text-5xl text-center my-2 w-40 ">시간</div>
             <TimeOptionsSetting />
           </div>
           <div>
