@@ -18,17 +18,17 @@ const OnboardingDescription = ({
 }: OnboardingDescriptionProps) => {
   return (
     <>
-      <div className="w-3/4 m-auto flex justify-center">
+      <div className="w-full m-auto flex justify-center">
         {imgLocation === Image_Location_Position.LEFT && (
           <>
-            <Image src={image} alt="description" width={300} height={300} />
+            <Image src={image} alt="description" width={400} height={300} />
             <span>{description}</span>
           </>
         )}
         {imgLocation === Image_Location_Position.RIGHT && (
           <>
             <span>{description}</span>
-            <Image src={image} alt="description" width={300} height={300} />
+            <Image src={image} alt="description" width={400} height={300} />
           </>
         )}
       </div>
