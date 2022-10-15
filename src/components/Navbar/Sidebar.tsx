@@ -24,8 +24,8 @@ const Sidebar = ({ menuState, setMenuState }: SidebarProps) => {
       >
         <LinkButton href={'/'}>{'Home'}</LinkButton>
         <LinkButton href={'makeAQuiz'}>{'Make a Quiz'}</LinkButton>
-        <LinkButton href={'#'}>{'Solve a Quiz'}</LinkButton>
-        <LinkButton href={'#'}>{'Search'}</LinkButton>
+        <LinkButton href={'/quiz'}>{'Solve a Quiz'}</LinkButton>
+        <LinkButton href={'/search'}>{'Search'}</LinkButton>
       </aside>
     </div>
   );

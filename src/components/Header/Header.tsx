@@ -17,7 +17,7 @@ const Header = ({ setMenuState, menuState }: HeaderProps) => {
         'w-full bg-primary z-30 sticky top-0 flex items-center justify-between',
       )}
     >
-      <div className="flex items-center ">
+      <div className="flex items-center hover:bg-slate-400 rounded-2xl m-1">
         {menuState ? (
           <Icon onClick={onClick} iconName={IconType.menu} />
         ) : (
