@@ -11,7 +11,7 @@ import { IconType } from '../src/components/Icon/Icon';
 import axios from 'axios';
 import { classNameJoiner } from '../utils/className';
 
-const SearchUpdate: NextPageWithLayout = () => {
+const Search: NextPageWithLayout = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [term, setTerm] = useState<TermProps[]>([]);
   const [isDropDownList, setIsDropDownList] = useState<boolean>(false);
@@ -89,8 +89,8 @@ const SearchUpdate: NextPageWithLayout = () => {
   );
 };
 
-SearchUpdate.getLayout = function getLayout(page: ReactElement) {
+Search.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
-export default SearchUpdate;
+export default Search;
