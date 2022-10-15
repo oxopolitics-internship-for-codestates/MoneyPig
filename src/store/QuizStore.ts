@@ -69,7 +69,6 @@ export class QuizStore {
       setType: action,
       setDescription: action,
       makeAQuiz: computed,
-      getQuiz: computed,
     });
   }
 
@@ -104,11 +103,6 @@ export class QuizStore {
   get makeAQuiz() {
     console.log(toJS(this.quiz));
     return toJS(this.quiz);
-  }
-
-  get getQuiz() {
-    // return quizService.getQuizes();
-    return quizService;
   }
 }
 

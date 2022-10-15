@@ -1,20 +1,18 @@
-// import { collection } from 'firebase/firestore/lite';
-
-// import {
-//   addDoc,
-//   getDocs,
-//   query,
-//   QueryDocumentSnapshot,
-//   SnapshotOptions,
-// } from 'firebase/firestore';
-import { getFirestore } from 'firebase/firestore'
-
-import { collection, onSnapshot, query, orderBy, QueryDocumentSnapshot,SnapshotOptions, addDoc,getDocs } from "firebase/firestore";
+import {
+  collection,
+  onSnapshot,
+  query,
+  orderBy,
+  QueryDocumentSnapshot,
+  SnapshotOptions,
+  addDoc,
+  getDocs,
+} from 'firebase/firestore';
 
 import fireStore from '../src/firebase/Firebase';
 import { Quiz } from '../src/store/QuizStore';
 
-const quizConverter = {
+export const quizConverter = {
   toFireStore: (quiz: Quiz) => {
     return {
       id: quiz.id,
@@ -35,6 +33,7 @@ const quizConverter = {
     options: SnapshotOptions,
   ) => {
     const data = snapshot.data(options);
+
     return new Quiz(
       data.id,
       data.title,
@@ -53,32 +52,24 @@ const quizConverter = {
 class QuizService {
   constructor() {}
 
-  async quizUpload(data: Quiz) {
+  async quizUpload(data: Quiz): Promise<void> {
     await addDoc(collection(fireStore, 'quizes'), data);
   }
 
-  async getQuizes() {
-    console.log(1);
-    const db = getFirestore();
+  getQuizes(setState: React.Dispatch<React.SetStateAction<Quiz[]>>) {
+    let quizes: Quiz[] = [];
 
     const queryData = query(
-      collection(db, "quizes"),
-      orderBy("createdAt", "desc")
+      collection(fireStore, 'quizes'),
+      orderBy('createdAt', 'desc'),
     );
-    onSnapshot(queryData, (snapshot) => {
-      const quizData = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      console.log("nweetArr", quizData);
-    })
-    // const querySnapshot = await getDocs(query(collection(fireStore, 'quizes')));
-    // console.log('querySnapshot', querySnapshot);
 
-    // querySnapshot.forEach(doc => {
-    //   // doc.data() is never undefined for query doc snapshots
-    //   console.log(doc.id, ' => ', doc.data());
-    // });
+    onSnapshot(queryData, snapshot => {
+      quizes = snapshot.docs.map(doc => {
+        return quizConverter.fromFirestore(doc, {});
+      });
+      setState(quizes);
+    });
   }
 }
 
