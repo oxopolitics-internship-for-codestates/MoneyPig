@@ -1,12 +1,15 @@
-import { collection } from 'firebase/firestore/lite';
+// import { collection } from 'firebase/firestore/lite';
 
-import {
-  addDoc,
-  getDocs,
-  query,
-  QueryDocumentSnapshot,
-  SnapshotOptions,
-} from 'firebase/firestore';
+// import {
+//   addDoc,
+//   getDocs,
+//   query,
+//   QueryDocumentSnapshot,
+//   SnapshotOptions,
+// } from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore'
+
+import { collection, onSnapshot, query, orderBy, QueryDocumentSnapshot,SnapshotOptions, addDoc,getDocs } from "firebase/firestore";
 
 import fireStore from '../src/firebase/Firebase';
 import { Quiz } from '../src/store/QuizStore';
@@ -56,14 +59,26 @@ class QuizService {
 
   async getQuizes() {
     console.log(1);
+    const db = getFirestore();
 
-    const querySnapshot = await getDocs(query(collection(fireStore, 'quizes')));
-    console.log('querySnapshot', querySnapshot);
+    const queryData = query(
+      collection(db, "quizes"),
+      orderBy("createdAt", "desc")
+    );
+    onSnapshot(queryData, (snapshot) => {
+      const quizData = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      console.log("nweetArr", quizData);
+    })
+    // const querySnapshot = await getDocs(query(collection(fireStore, 'quizes')));
+    // console.log('querySnapshot', querySnapshot);
 
-    querySnapshot.forEach(doc => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, ' => ', doc.data());
-    });
+    // querySnapshot.forEach(doc => {
+    //   // doc.data() is never undefined for query doc snapshots
+    //   console.log(doc.id, ' => ', doc.data());
+    // });
   }
 }
 
