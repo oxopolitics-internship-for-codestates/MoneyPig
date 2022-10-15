@@ -51,7 +51,7 @@ export class QuizStore {
     title: '',
     userId: '',
     createdAt: 0,
-    options: [],
+    options: ["","","",""],
     answer: '',
     time: QuizTime.fifteenSec,
     keyword: '',
@@ -77,8 +77,8 @@ export class QuizStore {
     this.quiz.title = title;
   };
 
-  setOptions = (option: string) => {
-    this.quiz.options.push(option);
+  setOptions = (option: string, idx: number) => {
+    this.quiz.options[idx] = option;
   };
 
   setAnswer = (answer: string) => {

@@ -8,8 +8,11 @@ type FourChoiceQuizCardProps = {
 };
 
 const FourChoiceQuizCard = ({ quiz }: FourChoiceQuizCardProps) => {
-  const onBlurOptions = (e: React.FocusEvent<HTMLInputElement, Element>) => {
-    newQuiz.setOptions(e.currentTarget.value);
+  const onBlurOptions = (
+    e: React.FocusEvent<HTMLInputElement, Element>,
+    index: number,
+  ) => {
+    newQuiz.setOptions(e.currentTarget.value, index);
   };
 
   return (
@@ -21,7 +24,7 @@ const FourChoiceQuizCard = ({ quiz }: FourChoiceQuizCardProps) => {
             className="w-full py-2 bg-brown text-grey placeholder:text-grey rounded-full text-center"
             placeholder="선택지를 입력해주세요."
             onBlur={e => {
-              onBlurOptions(e);
+              onBlurOptions(e, 0);
             }}
           />
           <input
@@ -29,7 +32,7 @@ const FourChoiceQuizCard = ({ quiz }: FourChoiceQuizCardProps) => {
             className="w-full py-2 bg-brown text-grey placeholder:text-grey rounded-full text-center"
             placeholder="선택지를 입력해주세요."
             onBlur={e => {
-              onBlurOptions(e);
+              onBlurOptions(e, 1);
             }}
           />
           <input
@@ -37,7 +40,7 @@ const FourChoiceQuizCard = ({ quiz }: FourChoiceQuizCardProps) => {
             className="w-full py-2 bg-brown text-grey placeholder:text-grey rounded-full text-center"
             placeholder="선택지를 입력해주세요."
             onBlur={e => {
-              onBlurOptions(e);
+              onBlurOptions(e, 2);
             }}
           />
           <input
@@ -45,7 +48,7 @@ const FourChoiceQuizCard = ({ quiz }: FourChoiceQuizCardProps) => {
             className="w-full py-2 bg-brown text-grey placeholder:text-grey rounded-full text-center"
             placeholder="선택지를 입력해주세요."
             onBlur={e => {
-              onBlurOptions(e);
+              onBlurOptions(e, 3);
             }}
           />
         </QuizCard>

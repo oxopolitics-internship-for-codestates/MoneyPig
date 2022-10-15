@@ -48,6 +48,7 @@ const MakeAQuiz: NextPageWithLayout = () => {
   };
 
   const onSubmit = () => {
+    console.log(newQuiz);
     newQuiz.makeAQuiz;
   };
 
