@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { classNameJoiner } from '../../../utils/className';
+import { QuizTime } from '../../data/QuizList';
+import newQuiz, { Quiz } from '../../store/QuizStore';
 
 const TimeOptionsSetting = () => {
   const [dropDownState, setDropDownState] = useState<boolean>(false);
@@ -11,10 +13,11 @@ const TimeOptionsSetting = () => {
 
   const setTimePicker = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     setTimeText(e.currentTarget.innerText);
+    newQuiz.setTime(e.currentTarget.value);
   };
 
   return (
-    <React.Fragment>
+    <div className=" absolute">
       <button
         onClick={dropDownOpenFunction}
         data-dropdown-toggle="dropdown"
@@ -29,7 +32,7 @@ const TimeOptionsSetting = () => {
       <div
         className={classNameJoiner(
           `${dropDownState ? '' : 'hidden'}`,
-          ' z-10 w-40 fixed bg-white rounded-b-lg divide-y divide-gray-100 shadow dark:bg-gray-700',
+          ' z-10 w-40 relative top-0 left-0 bg-white rounded-b-lg divide-y divide-gray-100 shadow dark:bg-gray-700',
         )}
       >
         <hr className="w-4/5 m-auto "></hr>
@@ -40,42 +43,48 @@ const TimeOptionsSetting = () => {
           <li
             onClick={e => setTimePicker(e)}
             className="block py-2 px-4 cursor-pointer hover:bg-gray-100 "
+            value={QuizTime.fiveSec}
           >
             5초
           </li>
           <li
             onClick={e => setTimePicker(e)}
             className="block py-2 px-4 cursor-pointer hover:bg-gray-100 "
+            value={QuizTime.tenSec}
           >
             10초
           </li>
           <li
             onClick={e => setTimePicker(e)}
             className="block py-2 px-4 cursor-pointer hover:bg-gray-100 "
+            value={QuizTime.fifteenSec}
           >
             15초
           </li>
           <li
             onClick={e => setTimePicker(e)}
             className="block py-2 px-4 cursor-pointer hover:bg-gray-100 "
+            value={QuizTime.thirtySec}
           >
             30초
           </li>
           <li
             onClick={e => setTimePicker(e)}
             className="block py-2 px-4 cursor-pointer hover:bg-gray-100 "
+            value={QuizTime.oneMin}
           >
             60초
           </li>
           <li
             onClick={e => setTimePicker(e)}
             className="block py-2 px-4 cursor-pointer hover:bg-gray-100 "
+            value={QuizTime.infinite}
           >
             무제한
           </li>
         </ul>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

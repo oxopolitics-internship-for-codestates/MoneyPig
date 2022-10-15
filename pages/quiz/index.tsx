@@ -1,11 +1,18 @@
-import React, { ReactElement } from 'react';
+import { observer } from 'mobx-react';
+import React, { ReactElement, useEffect } from 'react';
+import quizService from '../../service/QuizService';
+
 import QuizListCard from '../../src/components/Card/QuizListCard/QuizListCard';
 import Input, { InputTypeProps } from '../../src/components/Input/Input';
 import Layout from '../../src/components/Layout/Layout';
 import { quizList, UnionQuiz } from '../../src/data/QuizList';
+
 import { NextPageWithLayout } from '../_app';
 
-const Quiz: NextPageWithLayout = () => {
+const Quiz: NextPageWithLayout = observer(() => {
+  useEffect(() => {
+    quizService.getQuizes();
+  });
   return (
     <section className="h-screen flex flex-col justify-center space-y-12">
       <Input type={InputTypeProps.text} placeholder="키워드를 입력해주세요" />
@@ -19,7 +26,7 @@ const Quiz: NextPageWithLayout = () => {
       </ul>
     </section>
   );
-};
+});
 Quiz.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;
 };

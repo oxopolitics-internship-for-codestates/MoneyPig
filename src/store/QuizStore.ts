@@ -1,5 +1,12 @@
-import { makeObservable, observable } from 'mobx';
-import { FourOptionQuizModel, OxQuizModel, QuizType } from './../data/QuizList';
+import { QueryDocumentSnapshot, SnapshotOptions } from 'firebase/firestore';
+import { action, computed, makeObservable, observable, toJS } from 'mobx';
+import quizService from '../../service/QuizService';
+import {
+  FourOptionQuizModel,
+  OxQuizModel,
+  QuizTime,
+  QuizType,
+} from './../data/QuizList';
 
 export class Quiz implements FourOptionQuizModel, OxQuizModel {
   id: string;
@@ -38,15 +45,15 @@ export class Quiz implements FourOptionQuizModel, OxQuizModel {
   }
 }
 
-export default class QuizStore {
+export class QuizStore {
   quiz: Quiz = {
     id: '',
     title: '',
     userId: '',
     createdAt: 0,
-    options: [''],
+    options: [],
     answer: '',
-    time: 0,
+    time: QuizTime.fifteenSec,
     keyword: '',
     type: QuizType.FourOptionQuiz,
     description: '',
@@ -54,6 +61,56 @@ export default class QuizStore {
   constructor() {
     makeObservable(this, {
       quiz: observable,
+      setTitle: action,
+      setOptions: action,
+      setAnswer: action,
+      setTime: action,
+      setKeyWord: action,
+      setType: action,
+      setDescription: action,
+      makeAQuiz: computed,
+      getQuiz: computed,
     });
   }
+
+  setTitle = (title: string) => {
+    this.quiz.title = title;
+  };
+
+  setOptions = (option: string) => {
+    this.quiz.options.push(option);
+  };
+
+  setAnswer = (answer: string) => {
+    this.quiz.answer = answer;
+  };
+
+  setTime = (time: QuizTime) => {
+    this.quiz.time = time;
+  };
+
+  setKeyWord = (keyword: string) => {
+    this.quiz.keyword = keyword;
+  };
+
+  setType = (type: QuizType) => {
+    this.quiz.type = type;
+  };
+
+  setDescription = (description: string) => {
+    this.quiz.description = description;
+  };
+
+  get makeAQuiz() {
+    console.log(toJS(this.quiz));
+    return toJS(this.quiz);
+  }
+
+  get getQuiz() {
+    // return quizService.getQuizes();
+    return quizService;
+  }
 }
+
+const newQuiz = new QuizStore();
+export default newQuiz;

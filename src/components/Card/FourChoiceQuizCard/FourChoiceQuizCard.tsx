@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { FourOptionQuizModel } from '../../../data/QuizList';
+import newQuiz from '../../../store/QuizStore';
 import QuizCard from '../QuizCard/QuizCard';
 
 type FourChoiceQuizCardProps = {
@@ -7,6 +8,10 @@ type FourChoiceQuizCardProps = {
 };
 
 const FourChoiceQuizCard = ({ quiz }: FourChoiceQuizCardProps) => {
+  const onBlurOptions = (e: React.FocusEvent<HTMLInputElement, Element>) => {
+    newQuiz.setOptions(e.currentTarget.value);
+  };
+
   return (
     <>
       {!quiz ? (
@@ -15,28 +20,40 @@ const FourChoiceQuizCard = ({ quiz }: FourChoiceQuizCardProps) => {
             type="text"
             className="w-full py-2 bg-brown text-grey placeholder:text-grey rounded-full text-center"
             placeholder="선택지를 입력해주세요."
+            onBlur={e => {
+              onBlurOptions(e);
+            }}
           />
           <input
             type="text"
             className="w-full py-2 bg-brown text-grey placeholder:text-grey rounded-full text-center"
             placeholder="선택지를 입력해주세요."
+            onBlur={e => {
+              onBlurOptions(e);
+            }}
           />
           <input
             type="text"
             className="w-full py-2 bg-brown text-grey placeholder:text-grey rounded-full text-center"
             placeholder="선택지를 입력해주세요."
+            onBlur={e => {
+              onBlurOptions(e);
+            }}
           />
           <input
             type="text"
             className="w-full py-2 bg-brown text-grey placeholder:text-grey rounded-full text-center"
             placeholder="선택지를 입력해주세요."
+            onBlur={e => {
+              onBlurOptions(e);
+            }}
           />
         </QuizCard>
       ) : (
         <QuizCard quizTitle={quiz.title}>
-          {quiz.options.map((option, idx) => (
+          {quiz.options.map((option, namex) => (
             <button
-              key={idx}
+              key={namex}
               className="w-full h-10 py-2 bg-brown text-grey placeholder:text-grey rounded-full text-center"
             >
               {option}

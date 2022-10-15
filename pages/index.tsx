@@ -6,17 +6,11 @@ import { NextPageWithLayout } from './_app';
 import { ReactElement, useEffect } from 'react';
 import Layout from '../src/components/Layout/Layout';
 import { Image_Location_Position } from '../src/components/OnboardingDescription/OnboardingDescription';
-import fireStore from '../src/Firebase';
+import fireStore from '../src/firebase/Firebase';
 import { getAuth } from 'firebase/auth';
 import Slider from '../src/components/Slider/Slider';
 
 const Home: NextPageWithLayout = () => {
-  useEffect(() => {
-    console.log(fireStore);
-    const auth = getAuth();
-    console.log('auth', auth);
-  });
-
   return (
     <div className=" bg-grey left-0 top-0">
       <Head>

@@ -11,20 +11,44 @@ import Layout from '../src/components/Layout/Layout';
 import Input, { InputTypeProps } from '../src/components/Input/Input';
 import FourChoiceQuizCard from '../src/components/Card/FourChoiceQuizCard/FourChoiceQuizCard';
 import OxQuizCard from '../src/components/Card/OxQuizCard/OxQuizCard';
+import { QuizTime, QuizType } from '../src/data/QuizList';
+import newQuiz, { Quiz } from '../src/store/QuizStore';
+import { toJS } from 'mobx';
 
 const MakeAQuiz: NextPageWithLayout = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
   const [quizSelect, setQuizSelect] = useState<boolean>(false);
+
   const openQuizModal = () => {
     setQuizPickModal(prev => !prev);
   };
 
   const selectOneQuiz = () => {
     setQuizSelect(false);
+
+    newQuiz.setType(QuizType.FourOptionQuiz);
   };
 
   const selectOXQuiz = () => {
     setQuizSelect(true);
+
+    newQuiz.setType(QuizType.oxQuiz);
+  };
+
+  const onBlurAns = (e: React.FocusEvent<HTMLInputElement, Element>) => {
+    const ans = e.currentTarget.value;
+    newQuiz.setAnswer(ans);
+  };
+
+  const onBlurDescription = (
+    e: React.FocusEvent<HTMLTextAreaElement, Element>,
+  ) => {
+    const desc = e.currentTarget.value;
+    newQuiz.setDescription(desc);
+  };
+
+  const onSubmit = () => {
+    newQuiz.makeAQuiz;
   };
 
   return (
@@ -75,10 +99,10 @@ const MakeAQuiz: NextPageWithLayout = () => {
       </Head>
       <div className=" w-4/5 m-auto">
         <div className="text-5xl h-20 p-4 ">키워드</div>
-        <Input type={InputTypeProps.text} placeholder="키워드를 입력해주세요" />
+        {/* <Input type={InputTypeProps.text} placeholder="키워드를 입력해주세요" /> */}
         <div className="flex space-x-4 mt-6 w-full ">
           <div>
-            <div className="text-5xl text-center m-2 ">시간</div>
+            <div className="text-5xl text-center my-2 w-40 ">시간</div>
             <TimeOptionsSetting />
           </div>
           <div>
@@ -95,17 +119,27 @@ const MakeAQuiz: NextPageWithLayout = () => {
             <input
               placeholder="정답을 입력해주세요"
               className="w-full outline-none py-3 mr-3 bg-[#E9E7E7]"
+              onBlur={e => {
+                onBlurAns(e);
+              }}
             />
           </div>
           <div className="translate-y-2 h-36 flex border-2 rounded-[10px] bg-[#E9E7E7] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
             <textarea
               placeholder="설명을 입력해주세요"
               className="w-full outline-none py-3 mr-3 bg-[#E9E7E7]"
+              onBlur={e => {
+                onBlurDescription(e);
+              }}
             />
           </div>
         </div>
         <div className=" text-center h-32">
-          <Button style=" translate-y-16" children="문제 완성" />
+          <Button
+            style=" translate-y-16"
+            children="문제 완성"
+            onClick={onSubmit}
+          />
         </div>
       </div>
 

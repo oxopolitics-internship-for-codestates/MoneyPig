@@ -25,11 +25,16 @@ type InputProps = {
   type: InputTypeProps;
   inputBoxType: InputBoxTypeProps;
   placeholder: string;
+<<<<<<< HEAD
   style: string;
   iconList?: IconListProps;
   searchTerm: string;
   setSearchTerm: Dispatch<SetStateAction<string>>;
   setIsDropDownList: Dispatch<SetStateAction<boolean>>;
+=======
+  term?: QuizProps[] | [];
+  setTerm?: React.Dispatch<React.SetStateAction<QuizProps[] | undefined>>;
+>>>>>>> e714d44659f792fe28a83984e866d712589efea6
 };
 
 type IconListProps = {

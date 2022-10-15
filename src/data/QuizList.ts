@@ -10,11 +10,20 @@ export type OxQuizModel = {
   userId: string;
   createdAt: number;
   answer: string;
-  time: number;
+  time: QuizTime;
   keyword: string;
   type: QuizType;
   description: string;
 };
+
+export enum QuizTime {
+  fiveSec = 5,
+  tenSec = 10,
+  fifteenSec = 15,
+  thirtySec = 30,
+  oneMin = 60,
+  infinite = 0,
+}
 
 export enum QuizType {
   oxQuiz = 'OxQuiz',
@@ -27,7 +36,7 @@ export type FourOptionQuizModel = {
   options: string[];
   answer: string;
   createdAt: number;
-  time: number;
+  time: QuizTime;
   keyword: string;
   type: QuizType;
   description: string;
@@ -42,7 +51,7 @@ export const quizList: QuizModel = {
       createdAt: 1665309414,
       options: ['일본의 화폐이다.', '미국의 화폐이다'],
       answer: '',
-      time: 60,
+      time: QuizTime.oneMin,
       keyword: '엔화',
       type: QuizType.FourOptionQuiz,
       description: '엔화는 일본의 화폐입니다.',
@@ -53,7 +62,7 @@ export const quizList: QuizModel = {
       userId: 'tmdqls2257',
       createdAt: 1665309414,
       answer: 'O',
-      time: 0,
+      time: QuizTime.infinite,
       keyword: '엔화',
       type: QuizType.oxQuiz,
       description: '엔화는 일본의 화폐입니다.',
@@ -65,7 +74,7 @@ export const quizList: QuizModel = {
       createdAt: 1665309414,
       options: ['일본의 화폐이다.', '미국의 화폐이다'],
       answer: '',
-      time: 60,
+      time: QuizTime.oneMin,
       keyword: '엔화',
       type: QuizType.FourOptionQuiz,
       description: '엔화는 일본의 화폐입니다.',
@@ -76,7 +85,7 @@ export const quizList: QuizModel = {
       userId: 'tmdqls2257',
       createdAt: 1665309414,
       answer: 'O',
-      time: 0,
+      time: QuizTime.infinite,
       keyword: '엔화',
       type: QuizType.oxQuiz,
       description: '엔화는 일본의 화폐입니다.',
@@ -88,7 +97,7 @@ export const quizList: QuizModel = {
       createdAt: 1665309414,
       options: ['일본의 화폐이다.', '미국의 화폐이다'],
       answer: '',
-      time: 60,
+      time: QuizTime.oneMin,
       keyword: '엔화',
       type: QuizType.FourOptionQuiz,
       description: '엔화는 일본의 화폐입니다.',
@@ -99,7 +108,7 @@ export const quizList: QuizModel = {
       userId: 'tmdqls2257',
       createdAt: 1665309414,
       answer: 'O',
-      time: 0,
+      time: QuizTime.infinite,
       keyword: '엔화',
       type: QuizType.oxQuiz,
       description: '엔화는 일본의 화폐입니다.',
@@ -111,7 +120,7 @@ export const quizList: QuizModel = {
       createdAt: 1665309414,
       options: ['일본의 화폐이다.', '미국의 화폐이다'],
       answer: '',
-      time: 60,
+      time: QuizTime.oneMin,
       keyword: '엔화',
       type: QuizType.FourOptionQuiz,
       description: '엔화는 일본의 화폐입니다.',
@@ -122,7 +131,7 @@ export const quizList: QuizModel = {
       userId: 'tmdqls2257',
       createdAt: 1665309414,
       answer: 'O',
-      time: 0,
+      time: QuizTime.oneMin,
       keyword: '엔화',
       type: QuizType.oxQuiz,
       description: '엔화는 일본의 화폐입니다.',
@@ -134,7 +143,7 @@ export const quizList: QuizModel = {
       createdAt: 1665309414,
       options: ['일본의 화폐이다.', '미국의 화폐이다'],
       answer: '',
-      time: 60,
+      time: QuizTime.oneMin,
       keyword: '엔화',
       type: QuizType.FourOptionQuiz,
       description: '엔화는 일본의 화폐입니다.',
@@ -145,7 +154,7 @@ export const quizList: QuizModel = {
       userId: 'tmdqls2257',
       createdAt: 1665309414,
       answer: 'O',
-      time: 0,
+      time: QuizTime.oneMin,
       keyword: '엔화',
       type: QuizType.oxQuiz,
       description: '엔화는 일본의 화폐입니다.',
