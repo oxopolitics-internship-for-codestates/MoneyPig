@@ -4,6 +4,7 @@ import {
   collection,
   orderBy,
   onSnapshot,
+  serverTimestamp,
 } from 'firebase/firestore';
 import { observer } from 'mobx-react';
 import React, { ReactElement, useEffect, useState } from 'react';
@@ -13,15 +14,18 @@ import QuizListCard from '../../src/components/Card/QuizListCard/QuizListCard';
 import Input, { InputTypeProps } from '../../src/components/Input/Input';
 import Layout from '../../src/components/Layout/Layout';
 import { quizList, UnionQuiz } from '../../src/data/QuizList';
+import fireStore from '../../src/firebase/Firebase';
 import { Quiz } from '../../src/store/QuizStore';
 
 import { NextPageWithLayout } from '../_app';
 
 const QuizPage: NextPageWithLayout = observer(() => {
   const [quizes, setQuizes] = useState<Quiz[]>([]);
+
   useEffect(() => {
     quizService.getQuizes(setQuizes);
   }, []);
+
   return (
     <section className="h-screen flex flex-col justify-center space-y-12">
       {/* <Input type={InputTypeProps.text} placeholder="키워드를 입력해주세요" /> */}

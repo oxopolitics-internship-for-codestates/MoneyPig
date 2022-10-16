@@ -8,6 +8,7 @@ import {
   addDoc,
   updateDoc,
   doc,
+  getDoc,
 } from 'firebase/firestore';
 
 import fireStore from '../src/firebase/Firebase';
@@ -77,6 +78,12 @@ class QuizService {
       });
       setState(quizes);
     });
+  }
+
+  async getQuiz(id: string) {
+    const docRef = doc(fireStore, 'quizes', id);
+    const docSnap = await getDoc(docRef);
+    return docSnap.data() as Quiz;
   }
 }
 

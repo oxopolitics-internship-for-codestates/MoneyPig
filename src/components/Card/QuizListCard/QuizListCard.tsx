@@ -21,12 +21,12 @@ const QuizListCard = ({ quiz }: QuizListCardProps) => {
   };
   const onClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     e.stopPropagation();
-    // router.push(
-    //   {
-    //     pathname: `blogs/${quiz.id}`,
-    //   },
-    //   `blogs/${quiz.id}`,
-    // );
+    router.push(
+      {
+        pathname: `quiz/${quiz.id}`,
+      },
+      `quiz/${quiz.id}`,
+    );
     console.log(e);
   };
   return (
