@@ -1,7 +1,5 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { NextPageWithLayout } from './_app';
-import Layout from '../src/components/Layout/Layout';
 import InputUpdate, {
   InputBoxTypeProps,
   InputTypeProps,
@@ -10,8 +8,9 @@ import InputUpdate, {
 import { IconType } from '../src/components/Icon/Icon';
 import axios from 'axios';
 import { classNameJoiner } from '../utils/className';
+import { NextPage } from 'next';
 
-const Search: NextPageWithLayout = () => {
+const Search: NextPage = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [term, setTerm] = useState<TermProps[]>([]);
   const [isDropDownList, setIsDropDownList] = useState<boolean>(false);
@@ -87,10 +86,6 @@ const Search: NextPageWithLayout = () => {
       </>
     </div>
   );
-};
-
-Search.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
 };
 
 export default Search;

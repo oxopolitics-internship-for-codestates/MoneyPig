@@ -1,3 +1,4 @@
+import { NextPage } from 'next';
 import React from 'react';
 import ResultCard from '../../src/components/Card/ResultCard/ResultCard';
 
@@ -6,7 +7,7 @@ type RsultProps = {
   description: string;
 };
 
-const Result = ({ result, description }: RsultProps) => {
+const Result: NextPage<RsultProps> = ({ result, description }: RsultProps) => {
   return <ResultCard result={result} description={description} />;
 };
 

@@ -2,13 +2,10 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import OnboardingDescription from '../src/components/OnboardingDescription/OnboardingDescription';
 import Footer from '../src/components/Footer/Footer';
-import { NextPageWithLayout } from './_app';
-import { ReactElement, useEffect } from 'react';
-import Layout from '../src/components/Layout/Layout';
 import { Image_Location_Position } from '../src/components/OnboardingDescription/OnboardingDescription';
 import Slider from '../src/components/Slider/Slider';
 
-const Home: NextPageWithLayout = () => {
+const Home: NextPage = () => {
   return (
     <div className=" bg-grey left-0 top-0 w-full">
       <Head>
@@ -50,10 +47,6 @@ const Home: NextPageWithLayout = () => {
       <Footer />
     </div>
   );
-};
-
-Home.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
 };
 
 export default Home;

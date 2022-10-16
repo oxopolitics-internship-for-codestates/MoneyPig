@@ -4,19 +4,15 @@ import Footer from '../src/components/Footer/Footer';
 import TimeOptionsSetting from '../src/components/TimeOptionsSetting/TimeOptionsSetting';
 import Button from '../src/components/Button/Button';
 import Modal from '../src/components/Modal/Modal';
-import React, { ReactElement, useState } from 'react';
+import React, { useState } from 'react';
 import { classNameJoiner } from '../utils/className';
-import { NextPageWithLayout } from './_app';
-import Layout from '../src/components/Layout/Layout';
-import Input, { InputTypeProps } from '../src/components/Input/Input';
 import FourChoiceQuizCard from '../src/components/Card/FourChoiceQuizCard/FourChoiceQuizCard';
 import OxQuizCard from '../src/components/Card/OxQuizCard/OxQuizCard';
-import { QuizTime, QuizType } from '../src/data/QuizList';
-import newQuiz, { Quiz } from '../src/store/QuizStore';
-import { toJS } from 'mobx';
+import { QuizType } from '../src/data/QuizList';
+import newQuiz from '../src/store/QuizStore';
 import quizService from '../service/QuizService';
 
-const MakeAQuiz: NextPageWithLayout = () => {
+const MakeAQuiz: NextPage = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
   const [quizSelect, setQuizSelect] = useState<boolean>(false);
 
@@ -150,8 +146,8 @@ const MakeAQuiz: NextPageWithLayout = () => {
   );
 };
 
-MakeAQuiz.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
-};
+// MakeAQuiz.getLayout = function getLayout(page: ReactElement) {
+//   return <Layout>{page}</Layout>;
+// };
 
 export default MakeAQuiz;
