@@ -1,14 +1,13 @@
 import {
   collection,
-  onSnapshot,
   query,
-  orderBy,
   QueryDocumentSnapshot,
   SnapshotOptions,
   addDoc,
   updateDoc,
   doc,
   getDoc,
+  getDocs,
 } from 'firebase/firestore';
 
 import fireStore from '../src/firebase/Firebase';
@@ -64,26 +63,26 @@ class QuizService {
     });
   }
 
-  getQuizes(setState: React.Dispatch<React.SetStateAction<Quiz[]>>) {
-    let quizes: Quiz[] = [];
-
-    const queryData = query(
-      collection(fireStore, 'quizes'),
-      orderBy('createdAt', 'desc'),
-    );
-
-    onSnapshot(queryData, snapshot => {
-      quizes = snapshot.docs.map(doc => {
-        return quizConverter.fromFirestore(doc, {});
+  async getQuizes() {
+    const quizes: Quiz[] = [];
+    const q = query(collection(fireStore, 'quizes'));
+    await getDocs(q).then(res => {
+      res.forEach(doc => {
+        quizes.push(JSON.parse(JSON.stringify(doc.data())));
       });
-      setState(quizes);
     });
+    return quizes;
   }
 
   async getQuiz(id: string) {
-    const docRef = doc(fireStore, 'quizes', id);
-    const docSnap = await getDoc(docRef);
-    return docSnap.data() as Quiz;
+    try {
+      const docRef = doc(fireStore, 'quizes', id);
+      const docSnap = await getDoc(docRef);
+      const quiz: Quiz = JSON.parse(JSON.stringify(docSnap.data()));
+      return quiz;
+    } catch (err) {
+      console.log(err);
+    }
   }
 }
 
