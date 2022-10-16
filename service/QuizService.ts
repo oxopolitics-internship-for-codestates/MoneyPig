@@ -6,7 +6,8 @@ import {
   QueryDocumentSnapshot,
   SnapshotOptions,
   addDoc,
-  getDocs,
+  updateDoc,
+  doc,
 } from 'firebase/firestore';
 
 import fireStore from '../src/firebase/Firebase';
@@ -33,6 +34,7 @@ export const quizConverter = {
     options: SnapshotOptions,
   ) => {
     const data = snapshot.data(options);
+    console.log(data);
 
     return new Quiz(
       data.id,
@@ -53,7 +55,12 @@ class QuizService {
   constructor() {}
 
   async quizUpload(data: Quiz): Promise<void> {
-    await addDoc(collection(fireStore, 'quizes'), data);
+    await addDoc(collection(fireStore, 'quizes'), data).then(async res => {
+      const frankDocRef = doc(fireStore, 'quizes', res.id);
+      await updateDoc(frankDocRef, {
+        id: res.id,
+      });
+    });
   }
 
   getQuizes(setState: React.Dispatch<React.SetStateAction<Quiz[]>>) {

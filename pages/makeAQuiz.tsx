@@ -14,6 +14,7 @@ import OxQuizCard from '../src/components/Card/OxQuizCard/OxQuizCard';
 import { QuizTime, QuizType } from '../src/data/QuizList';
 import newQuiz, { Quiz } from '../src/store/QuizStore';
 import { toJS } from 'mobx';
+import quizService from '../service/QuizService';
 
 const MakeAQuiz: NextPageWithLayout = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
@@ -48,8 +49,8 @@ const MakeAQuiz: NextPageWithLayout = () => {
   };
 
   const onSubmit = () => {
-    console.log(newQuiz);
     newQuiz.makeAQuiz;
+    quizService.quizUpload(newQuiz.makeAQuiz);
   };
 
   return (
