@@ -1,4 +1,9 @@
-import { QueryDocumentSnapshot, SnapshotOptions } from 'firebase/firestore';
+import {
+  QueryDocumentSnapshot,
+  serverTimestamp,
+  SnapshotOptions,
+  Timestamp,
+} from 'firebase/firestore';
 import { action, computed, makeObservable, observable, toJS } from 'mobx';
 import quizService from '../../service/QuizService';
 import {
@@ -12,7 +17,7 @@ export class Quiz implements FourOptionQuizModel, OxQuizModel {
   id: string;
   title: string;
   userId: string;
-  createdAt: number;
+  createdAt: Timestamp;
   answer: string;
   time: number;
   keyword: string;
@@ -24,7 +29,7 @@ export class Quiz implements FourOptionQuizModel, OxQuizModel {
     id: string,
     title: string,
     userId: string,
-    createdAt: number,
+    createdAt: Timestamp,
     answer: string,
     time: number,
     keyword: string,
@@ -50,8 +55,8 @@ export class QuizStore {
     id: '',
     title: '',
     userId: '',
-    createdAt: 0,
-    options: ["","","",""],
+    createdAt: Timestamp.now(),
+    options: ['', '', '', ''],
     answer: '',
     time: QuizTime.fifteenSec,
     keyword: '',
@@ -101,6 +106,7 @@ export class QuizStore {
   };
 
   get makeAQuiz() {
+    this.quiz.createdAt = Timestamp.now();
     console.log(toJS(this.quiz));
     return toJS(this.quiz);
   }
