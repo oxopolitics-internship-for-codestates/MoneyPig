@@ -4,6 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import Layout from '../src/components/Layout/Layout';
 import Result from '../pages/quiz/result';
+import { resultType } from '../src/components/Card/QuizCard/QuizCard';
 
 export default {
   title: 'Pages/Result',
@@ -16,7 +17,7 @@ export const ResultDefault: ComponentStory<typeof Result> = args => (
   </Layout>
 );
 ResultDefault.args = {
-  result: '정답입니다.',
+  result: resultType.correct,
   description: '엔화는 일본의 화폐입니다.',
 };
 export const WrongQuizDefault: ComponentStory<typeof Result> = args => (
@@ -25,6 +26,6 @@ export const WrongQuizDefault: ComponentStory<typeof Result> = args => (
   </Layout>
 );
 WrongQuizDefault.args = {
-  result: '틀렸습니다..',
+  result: resultType.incorrect,
   description: '엔화는 일본의 화폐입니다.',
 };

@@ -5,13 +5,18 @@ import newQuiz from '../../../store/QuizStore';
 import Timer from '../../Timer/Timer';
 import Card from '../Card';
 
+export enum resultType {
+  correct = '정답입니다.',
+  incorrect = '오답입니다.',
+}
+
 type QuizCardProps = {
   children?: React.ReactNode;
   isOxCard?: boolean;
   style?: string;
   quizTitle?: string;
   quizTime?: number;
-  result?: string;
+  result?: resultType;
 };
 
 const QuizCard = ({
