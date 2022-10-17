@@ -30,6 +30,7 @@ type InputProps = {
   searchTerm: string;
   setSearchTerm: Dispatch<SetStateAction<string>>;
   setIsDropDownList: Dispatch<SetStateAction<boolean>>;
+  setClickTerm?: (term: TermProps[]) => void;
 };
 
 type IconListProps = {
@@ -46,6 +47,7 @@ const Input = ({
   searchTerm,
   setSearchTerm,
   setIsDropDownList,
+  setClickTerm,
 }: InputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -56,6 +58,7 @@ const Input = ({
 
   const onReset = () => {
     setSearchTerm('');
+    setClickTerm && setClickTerm([]);
     inputRef.current?.focus();
   };
 
