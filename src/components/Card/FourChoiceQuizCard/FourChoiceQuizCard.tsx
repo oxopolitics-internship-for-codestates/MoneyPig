@@ -1,20 +1,33 @@
+import { useRouter } from 'next/router';
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import { FourOptionQuizModel } from '../../../data/QuizList';
 import newQuiz from '../../../store/QuizStore';
-import QuizCard from '../QuizCard/QuizCard';
+import QuizCard, { resultType } from '../QuizCard/QuizCard';
 
 type FourChoiceQuizCardProps = {
   quiz?: FourOptionQuizModel;
 };
 
 const FourChoiceQuizCard = ({ quiz }: FourChoiceQuizCardProps) => {
+  const router = useRouter();
   const onBlurOptions = (
     e: React.FocusEvent<HTMLInputElement, Element>,
     index: number,
   ) => {
     newQuiz.setOptions(e.currentTarget.value, index);
   };
-
+  const onClickAns = (e: React.MouseEvent<HTMLButtonElement>) => {
+    router.push({
+      pathname: 'result',
+      query: {
+        result:
+          quiz?.answer === e.currentTarget.value
+            ? resultType.correct
+            : resultType.incorrect,
+        description: quiz?.description,
+      },
+    });
+  };
   return (
     <>
       {!quiz ? (
@@ -58,6 +71,7 @@ const FourChoiceQuizCard = ({ quiz }: FourChoiceQuizCardProps) => {
             <button
               key={namex}
               className="w-full h-10 py-2 bg-brown text-grey placeholder:text-grey rounded-full text-center"
+              onClick={onClickAns}
             >
               {option}
             </button>

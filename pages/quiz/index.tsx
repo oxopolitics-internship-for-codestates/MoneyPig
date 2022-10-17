@@ -15,7 +15,7 @@ type QuizPageProps = {
 const QuizPage: NextPage<QuizPageProps> = observer(
   ({ quizes }: QuizPageProps) => {
     return (
-      <section className="h-screen flex flex-col justify-center space-y-12">
+      <section className="h-screen w-full flex flex-col justify-center space-y-12">
         {/* <Input type={InputTypeProps.text} placeholder="키워드를 입력해주세요" /> */}
 
         <ul className="gap-4 w-full flex flex-col h-112 overflow-y-scroll scrollbarHide sm:flex-row sm:flex-wrap sm:justify-center ">

@@ -6,9 +6,10 @@ import { classNameJoiner } from '../../../utils/className';
 type buttonProps = {
   children?: string;
   type?: 'button' | 'submit' | 'reset';
-  onClick?: (e: React.MouseEvent) => void;
-  bgColor?:string
-  style?:string
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  bgColor?: string;
+  style?: string;
+  value?: string;
 };
 
 type linkButtonProps = {
@@ -19,16 +20,22 @@ type linkButtonProps = {
 function Button({
   type = 'button',
   children = 'button',
-  bgColor='bg-primary',
+  bgColor = 'bg-primary',
   style,
   onClick,
+  value,
 }: buttonProps) {
   return (
     <button
       type={type}
       // className="text-violet hover:text-white border border-violet focus:border-magenta hover:bg-violet focus:hover:bg-magenta focus:ring-4 focus:outline-none focus:ring-magenta font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900"
-      className={classNameJoiner("hover:bg-blue-dark text-white font-bold py-2 px-4 rounded",bgColor, style)}
+      className={classNameJoiner(
+        'hover:bg-blue-dark text-white font-bold py-2 px-4 rounded',
+        bgColor,
+        style,
+      )}
       onClick={onClick}
+      value={value}
     >
       {children}
     </button>
