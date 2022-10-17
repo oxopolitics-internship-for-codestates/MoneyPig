@@ -1,20 +1,19 @@
-// import { collection } from 'firebase/firestore/lite';
-
-// import {
-//   addDoc,
-//   getDocs,
-//   query,
-//   QueryDocumentSnapshot,
-//   SnapshotOptions,
-// } from 'firebase/firestore';
-import { getFirestore } from 'firebase/firestore'
-
-import { collection, onSnapshot, query, orderBy, QueryDocumentSnapshot,SnapshotOptions, addDoc,getDocs } from "firebase/firestore";
+import {
+  collection,
+  query,
+  QueryDocumentSnapshot,
+  SnapshotOptions,
+  addDoc,
+  updateDoc,
+  doc,
+  getDoc,
+  getDocs,
+} from 'firebase/firestore';
 
 import fireStore from '../src/firebase/Firebase';
 import { Quiz } from '../src/store/QuizStore';
 
-const quizConverter = {
+export const quizConverter = {
   toFireStore: (quiz: Quiz) => {
     return {
       id: quiz.id,
@@ -35,6 +34,8 @@ const quizConverter = {
     options: SnapshotOptions,
   ) => {
     const data = snapshot.data(options);
+    console.log(data);
+
     return new Quiz(
       data.id,
       data.title,
@@ -53,32 +54,35 @@ const quizConverter = {
 class QuizService {
   constructor() {}
 
-  async quizUpload(data: Quiz) {
-    await addDoc(collection(fireStore, 'quizes'), data);
+  async quizUpload(data: Quiz): Promise<void> {
+    await addDoc(collection(fireStore, 'quizes'), data).then(async res => {
+      const frankDocRef = doc(fireStore, 'quizes', res.id);
+      await updateDoc(frankDocRef, {
+        id: res.id,
+      });
+    });
   }
 
   async getQuizes() {
-    console.log(1);
-    const db = getFirestore();
+    const quizes: Quiz[] = [];
+    const q = query(collection(fireStore, 'quizes'));
+    await getDocs(q).then(res => {
+      res.forEach(doc => {
+        quizes.push(JSON.parse(JSON.stringify(doc.data())));
+      });
+    });
+    return quizes;
+  }
 
-    const queryData = query(
-      collection(db, "quizes"),
-      orderBy("createdAt", "desc")
-    );
-    onSnapshot(queryData, (snapshot) => {
-      const quizData = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      console.log("nweetArr", quizData);
-    })
-    // const querySnapshot = await getDocs(query(collection(fireStore, 'quizes')));
-    // console.log('querySnapshot', querySnapshot);
-
-    // querySnapshot.forEach(doc => {
-    //   // doc.data() is never undefined for query doc snapshots
-    //   console.log(doc.id, ' => ', doc.data());
-    // });
+  async getQuiz(id: string) {
+    try {
+      const docRef = doc(fireStore, 'quizes', id);
+      const docSnap = await getDoc(docRef);
+      const quiz: Quiz = JSON.parse(JSON.stringify(docSnap.data()));
+      return quiz;
+    } catch (err) {
+      console.log(err);
+    }
   }
 }
 

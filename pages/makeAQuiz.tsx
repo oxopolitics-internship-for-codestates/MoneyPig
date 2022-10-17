@@ -1,14 +1,16 @@
+import React, { ReactElement, useEffect, useState } from 'react';
 import type { NextPage } from 'next';
+import { toJS } from 'mobx';
 import Head from 'next/head';
+import axios from 'axios';
+
 import Footer from '../src/components/Footer/Footer';
 import TimeOptionsSetting from '../src/components/TimeOptionsSetting/TimeOptionsSetting';
 import Button from '../src/components/Button/Button';
 import Modal from '../src/components/Modal/Modal';
-import React, { ReactElement, useEffect, useState } from 'react';
 import { classNameJoiner } from '../utils/className';
-import { NextPageWithLayout } from './_app';
 import Layout from '../src/components/Layout/Layout';
-import Input, {
+import {
   InputBoxTypeProps,
   InputTypeProps,
   TermProps,
@@ -17,11 +19,12 @@ import FourChoiceQuizCard from '../src/components/Card/FourChoiceQuizCard/FourCh
 import OxQuizCard from '../src/components/Card/OxQuizCard/OxQuizCard';
 import { QuizTime, QuizType } from '../src/data/QuizList';
 import newQuiz, { Quiz } from '../src/store/QuizStore';
-import { toJS } from 'mobx';
 import { IconType } from '../src/components/Icon/Icon';
-import axios from 'axios';
+import quizService from '../service/QuizService';
 
-const MakeAQuiz: NextPageWithLayout = () => {
+import { NextPageWithLayout } from './_app';
+
+const MakeAQuiz: NextPage = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
   const [quizSelect, setQuizSelect] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -79,6 +82,7 @@ const MakeAQuiz: NextPageWithLayout = () => {
 
   const onSubmit = () => {
     newQuiz.makeAQuiz;
+    quizService.quizUpload(newQuiz.makeAQuiz);
   };
 
   return (
@@ -223,8 +227,8 @@ const MakeAQuiz: NextPageWithLayout = () => {
   );
 };
 
-MakeAQuiz.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
-};
+// MakeAQuiz.getLayout = function getLayout(page: ReactElement) {
+//   return <Layout>{page}</Layout>;
+// };
 
 export default MakeAQuiz;

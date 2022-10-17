@@ -3,6 +3,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import QuizListCard from './QuizListCard';
 import { QuizType } from '../../../data/QuizList';
+import { Timestamp } from 'firebase/firestore';
 
 export default {
   title: 'Components/QuizListCard',
@@ -18,7 +19,7 @@ CardDafault.args = {
     id: '1',
     title: '엔화에 대한 설명으로 옳은 것을 하나 선택하시오',
     userId: 'tmdqls2257',
-    createdAt: 1665309414,
+    createdAt: Timestamp.now(),
     answer: '',
     time: 15,
     keyword: '엔화',

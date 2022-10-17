@@ -6,6 +6,7 @@ type CardProps = {
   bgColor?: string;
   height?: string;
   style?: string;
+  onClick?: (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 };
 
 const Card = ({
@@ -13,6 +14,7 @@ const Card = ({
   bgColor = 'bg-light-green',
   height = 'min-h-112',
   style,
+  onClick,
 }: CardProps) => {
   return (
     <section
@@ -22,6 +24,7 @@ const Card = ({
         height,
         style,
       )}
+      onClick={onClick}
     >
       {children}
     </section>

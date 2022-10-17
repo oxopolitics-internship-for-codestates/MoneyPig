@@ -1,9 +1,9 @@
 import React from 'react';
 import Card from '../Card';
-import QuizCard from '../QuizCard/QuizCard';
+import QuizCard, { resultType } from '../QuizCard/QuizCard';
 
 type ResultCardProps = {
-  result: string;
+  result: resultType;
   description: string;
 };
 

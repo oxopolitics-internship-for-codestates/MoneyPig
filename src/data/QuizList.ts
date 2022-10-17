@@ -1,3 +1,5 @@
+import { FieldValue, serverTimestamp, Timestamp } from 'firebase/firestore';
+
 export type QuizModel = {
   quizes: UnionQuiz[];
 };
@@ -8,7 +10,7 @@ export type OxQuizModel = {
   id: string;
   title: string;
   userId: string;
-  createdAt: number;
+  createdAt: Timestamp;
   answer: string;
   time: QuizTime;
   keyword: string;
@@ -35,7 +37,7 @@ export type FourOptionQuizModel = {
   userId: string;
   options: string[];
   answer: string;
-  createdAt: number;
+  createdAt: Timestamp;
   time: QuizTime;
   keyword: string;
   type: QuizType;
@@ -48,7 +50,7 @@ export const quizList: QuizModel = {
       id: '1',
       title: '엔화에 대한 설명으로 옳은 것은?',
       userId: 'tmdqls2257',
-      createdAt: 1665309414,
+      createdAt: Timestamp.now(),
       options: ['일본의 화폐이다.', '미국의 화폐이다'],
       answer: '',
       time: QuizTime.oneMin,
@@ -60,7 +62,7 @@ export const quizList: QuizModel = {
       id: '2',
       title: '엔화에 일본의 화폐이다.?',
       userId: 'tmdqls2257',
-      createdAt: 1665309414,
+      createdAt: Timestamp.now(),
       answer: 'O',
       time: QuizTime.infinite,
       keyword: '엔화',
@@ -71,7 +73,7 @@ export const quizList: QuizModel = {
       id: '3',
       title: '엔화에 대한 설명으로 옳은 것은?',
       userId: 'tmdqls2257',
-      createdAt: 1665309414,
+      createdAt: Timestamp.now(),
       options: ['일본의 화폐이다.', '미국의 화폐이다'],
       answer: '',
       time: QuizTime.oneMin,
@@ -83,7 +85,7 @@ export const quizList: QuizModel = {
       id: '4',
       title: '엔화에 일본의 화폐이다.?',
       userId: 'tmdqls2257',
-      createdAt: 1665309414,
+      createdAt: Timestamp.now(),
       answer: 'O',
       time: QuizTime.infinite,
       keyword: '엔화',
@@ -94,7 +96,7 @@ export const quizList: QuizModel = {
       id: '5',
       title: '엔화에 대한 설명으로 옳은 것은?',
       userId: 'tmdqls2257',
-      createdAt: 1665309414,
+      createdAt: Timestamp.now(),
       options: ['일본의 화폐이다.', '미국의 화폐이다'],
       answer: '',
       time: QuizTime.oneMin,
@@ -106,7 +108,7 @@ export const quizList: QuizModel = {
       id: '6',
       title: '엔화에 일본의 화폐이다.?',
       userId: 'tmdqls2257',
-      createdAt: 1665309414,
+      createdAt: Timestamp.now(),
       answer: 'O',
       time: QuizTime.infinite,
       keyword: '엔화',
@@ -117,7 +119,7 @@ export const quizList: QuizModel = {
       id: '7',
       title: '엔화에 대한 설명으로 옳은 것은?',
       userId: 'tmdqls2257',
-      createdAt: 1665309414,
+      createdAt: Timestamp.now(),
       options: ['일본의 화폐이다.', '미국의 화폐이다'],
       answer: '',
       time: QuizTime.oneMin,
@@ -129,7 +131,7 @@ export const quizList: QuizModel = {
       id: '8',
       title: '엔화에 일본의 화폐이다.?',
       userId: 'tmdqls2257',
-      createdAt: 1665309414,
+      createdAt: Timestamp.now(),
       answer: 'O',
       time: QuizTime.oneMin,
       keyword: '엔화',
@@ -140,7 +142,7 @@ export const quizList: QuizModel = {
       id: '9',
       title: '엔화에 대한 설명으로 옳은 것은?',
       userId: 'tmdqls2257',
-      createdAt: 1665309414,
+      createdAt: Timestamp.now(),
       options: ['일본의 화폐이다.', '미국의 화폐이다'],
       answer: '',
       time: QuizTime.oneMin,
@@ -152,7 +154,7 @@ export const quizList: QuizModel = {
       id: '10',
       title: '엔화에 일본의 화폐이다.?',
       userId: 'tmdqls2257',
-      createdAt: 1665309414,
+      createdAt: Timestamp.now(),
       answer: 'O',
       time: QuizTime.oneMin,
       keyword: '엔화',
