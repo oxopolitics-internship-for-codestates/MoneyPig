@@ -4,20 +4,50 @@ import Footer from '../src/components/Footer/Footer';
 import TimeOptionsSetting from '../src/components/TimeOptionsSetting/TimeOptionsSetting';
 import Button from '../src/components/Button/Button';
 import Modal from '../src/components/Modal/Modal';
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { classNameJoiner } from '../utils/className';
 import { NextPageWithLayout } from './_app';
 import Layout from '../src/components/Layout/Layout';
-import Input, { InputTypeProps } from '../src/components/Input/Input';
+import Input, {
+  InputBoxTypeProps,
+  InputTypeProps,
+  TermProps,
+} from '../src/components/Input/Input';
 import FourChoiceQuizCard from '../src/components/Card/FourChoiceQuizCard/FourChoiceQuizCard';
 import OxQuizCard from '../src/components/Card/OxQuizCard/OxQuizCard';
 import { QuizTime, QuizType } from '../src/data/QuizList';
 import newQuiz, { Quiz } from '../src/store/QuizStore';
 import { toJS } from 'mobx';
+import { IconType } from '../src/components/Icon/Icon';
+import axios from 'axios';
 
 const MakeAQuiz: NextPageWithLayout = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
   const [quizSelect, setQuizSelect] = useState<boolean>(false);
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [term, setTerm] = useState<TermProps[]>([]);
+  const [isDropDownList, setIsDropDownList] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (searchTerm === '') {
+      setIsDropDownList(false);
+      setTerm([]);
+    } else {
+      axios.get('./economyData.json').then(res => {
+        const termList: TermProps[] = res.data;
+        setTerm(
+          termList.filter(({ term }) => {
+            return term.includes(searchTerm);
+          }),
+        );
+      });
+    }
+  }, [searchTerm]);
+
+  const clickDropDownItem = (clickSearchTerm: string) => {
+    setSearchTerm(clickSearchTerm);
+    setIsDropDownList(false);
+  };
 
   const openQuizModal = () => {
     setQuizPickModal(prev => !prev);
@@ -99,7 +129,52 @@ const MakeAQuiz: NextPageWithLayout = () => {
       </Head>
       <div className=" w-4/5 m-auto">
         <div className="text-5xl h-20 p-4 ">키워드</div>
-        {/* <Input type={InputTypeProps.text} placeholder="키워드를 입력해주세요" /> */}
+        <Input
+          type={InputTypeProps.text}
+          placeholder="키워드를 입력해주세요"
+          inputBoxType={InputBoxTypeProps.search}
+          style="w-full  py-3 mr-3 bg-[#E9E7E7]"
+          iconList={[
+            { style: 'w-12 h-12 p-3', iconName: IconType.search },
+            { style: 'w-11 h-12 p-3', iconName: IconType.cancel },
+          ]}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          setIsDropDownList={setIsDropDownList}
+        />
+        <>
+          {isDropDownList && (
+            <>
+              {term && term.length === 0 && (
+                <div className="mt-4 px-12">
+                  <span className="text-[#D61616]">
+                    경제 사전에 없는 단어입니다
+                  </span>
+                </div>
+              )}
+              {term && term.length > 0 && (
+                <ul
+                  className={classNameJoiner(
+                    term &&
+                      term.length > 5 &&
+                      'h-60 scrollbar overflow-y-scroll overflow-x-hidden',
+                    'mt-4 bg-[#E9E7E7] border-2 border-[#CFCFCF] rounded-[10px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]',
+                  )}
+                >
+                  {term?.map(item => (
+                    <li
+                      key={String(item.Id)}
+                      className="px-11 py-3 rounded-[10px] hover:bg-[#5D5656] hover:text-[#ffffff]"
+                      onClick={() => clickDropDownItem(item.term)}
+                    >
+                      {item.term}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </>
+          )}
+        </>
         <div className="flex space-x-4 mt-6 w-full ">
           <div>
             <div className="text-5xl text-center my-2 w-40 ">시간</div>
