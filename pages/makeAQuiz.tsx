@@ -10,7 +10,7 @@ import Button from '../src/components/Button/Button';
 import Modal from '../src/components/Modal/Modal';
 import { classNameJoiner } from '../utils/className';
 import Layout from '../src/components/Layout/Layout';
-import {
+import Input, {
   InputBoxTypeProps,
   InputTypeProps,
   TermProps,
