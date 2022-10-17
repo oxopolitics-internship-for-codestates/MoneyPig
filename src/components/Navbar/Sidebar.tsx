@@ -1,5 +1,6 @@
 import React from 'react';
 import { LinkButton } from '../Button/Button';
+import { IncomingMessage } from 'http';
 
 type SidebarProps = {
   menuState: boolean;
@@ -10,6 +11,7 @@ const Sidebar = ({ menuState, setMenuState }: SidebarProps) => {
   const onClick = () => {
     setMenuState(!menuState);
   };
+
   return (
     <div
       onClick={onClick}
@@ -22,10 +24,22 @@ const Sidebar = ({ menuState, setMenuState }: SidebarProps) => {
           menuState ? '-translate-x-52' : 'translate-x-0'
         } ${menuState ? 'invisible' : 'visible'}`}
       >
-        <LinkButton href={'/'}>{'Home'}</LinkButton>
-        <LinkButton href={'makeAQuiz'}>{'Make a Quiz'}</LinkButton>
-        <LinkButton href={'/quiz'}>{'Solve a Quiz'}</LinkButton>
-        <LinkButton href={'/search'}>{'Search'}</LinkButton>
+        <LinkButton href={`${process.env.NEXT_PUBLIC_CLIENT}`}>
+          {'Home'}
+        </LinkButton>
+        <LinkButton href={`${process.env.NEXT_PUBLIC_CLIENT}/makeAQuiz`}>
+          {'Make a Quiz'}
+        </LinkButton>
+        <LinkButton href={`${process.env.NEXT_PUBLIC_CLIENT}/quiz`}>
+          {'Solve a Quiz'}
+        </LinkButton>
+        <LinkButton href={`${process.env.NEXT_PUBLIC_CLIENT}/search`}>
+          {'Search'}
+        </LinkButton>
+        {/* <Button onClick={onClickSideBar}>{'Home'}</Button>
+        <Button>{'Make a Quiz'}</Button>
+        <Button>{'Solve a Quiz'}</Button>
+        <Button>{'Search'}</Button> */}
       </aside>
     </div>
   );
