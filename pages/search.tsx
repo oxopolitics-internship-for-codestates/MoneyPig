@@ -45,7 +45,7 @@ const Search: NextPage = () => {
   return (
     <div
       className={classNameJoiner(
-        !!clickTerm && 'h-screen',
+        clickTerm?.length === 0 && 'h-screen',
         'w-full flex flex-col items-center justify-center ju bg-[#E9E7E7] p-10',
       )}
     >
