@@ -9,7 +9,6 @@ import TimeOptionsSetting from '../src/components/TimeOptionsSetting/TimeOptions
 import Button from '../src/components/Button/Button';
 import Modal from '../src/components/Modal/Modal';
 import { classNameJoiner } from '../utils/className';
-import Layout from '../src/components/Layout/Layout';
 import Input, {
   InputBoxTypeProps,
   InputTypeProps,
@@ -18,11 +17,9 @@ import Input, {
 import FourChoiceQuizCard from '../src/components/Card/FourChoiceQuizCard/FourChoiceQuizCard';
 import OxQuizCard from '../src/components/Card/OxQuizCard/OxQuizCard';
 import { QuizTime, QuizType } from '../src/data/QuizList';
-import newQuiz, { Quiz } from '../src/store/QuizStore';
+import newQuiz, { Quiz, QuizStore } from '../src/store/QuizStore';
 import { IconType } from '../src/components/Icon/Icon';
 import quizService from '../service/QuizService';
-
-// import { NextPageWithLayout } from './_app';
 
 const MakeAQuiz: NextPage = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
@@ -50,7 +47,7 @@ const MakeAQuiz: NextPage = () => {
   const clickDropDownItem = (clickSearchTerm: string) => {
     setSearchTerm(clickSearchTerm);
     setIsDropDownList(false);
-    newQuiz.setTitle(clickSearchTerm); //자동완성을 클릭해야지만 mobX에 들어감
+    newQuiz.setKeyWord(clickSearchTerm); //자동완성을 클릭해야지만 mobX에 들어감
   };
 
   const openQuizModal = () => {
@@ -69,9 +66,20 @@ const MakeAQuiz: NextPage = () => {
     newQuiz.setType(QuizType.oxQuiz);
   };
 
-  const onBlurAns = (e: React.FocusEvent<HTMLInputElement, Element>) => {
-    const ans = e.currentTarget.value;
-    newQuiz.setAnswer(ans);
+  const onChangeAns = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    if (quizSelect) {
+      if (e.target.value === '정답을 골라주세요') {
+        newQuiz.setAnswer('');
+      } else {
+        newQuiz.setAnswer(e.target.value);
+      }
+    } else {
+      if (e.target.value === '정답 번호를 선택해주세요') {
+        newQuiz.setAnswer('');
+      } else {
+        newQuiz.setAnswer(e.target.value);
+      }
+    }
   };
 
   const onBlurDescription = (
@@ -80,8 +88,12 @@ const MakeAQuiz: NextPage = () => {
     const desc = e.currentTarget.value;
     newQuiz.setDescription(desc);
   };
+  console.log('QuizStore', toJS);
 
   const onSubmit = () => {
+    if (1) {
+      console.log('작동안해요?', newQuiz.quiz.keyword);
+    }
     newQuiz.makeAQuiz;
     quizService.quizUpload(newQuiz.makeAQuiz);
   };
@@ -194,16 +206,49 @@ const MakeAQuiz: NextPage = () => {
           {quizSelect ? <OxQuizCard /> : <FourChoiceQuizCard />}
         </div>
         <div className=" h-auto flex flex-col">
-          <div className="text-5xl p-4">정답</div>
-          <div className="flex border-2 rounded-[10px] bg-[#E9E7E7] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
-            <input
-              placeholder="정답을 입력해주세요"
-              className="w-full outline-none py-3 mr-3 bg-[#E9E7E7]"
-              onBlur={e => {
-                onBlurAns(e);
-              }}
-            />
-          </div>
+          {quizSelect ? (
+            <>
+              <label
+                htmlFor="oxChoice"
+                className="block text-5xl mb-2 font-medium text-gray-900"
+              >
+                정답
+              </label>
+              <select
+                id="fourChoice"
+                onChange={e => onChangeAns(e)}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5  "
+              >
+                <option defaultValue="정답을 골라주세요">
+                  정답을 골라주세요
+                </option>
+                <option value="O">O</option>
+                <option value="X">X</option>
+              </select>
+            </>
+          ) : (
+            <>
+              <label
+                htmlFor="fourChoice"
+                className="block text-5xl mb-2 font-medium text-gray-900"
+              >
+                정답
+              </label>
+              <select
+                id="fourChoice"
+                onChange={e => onChangeAns(e)}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5  "
+              >
+                <option defaultValue="정답 번호를 선택해주세요">
+                  정답 번호를 선택해주세요
+                </option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </>
+          )}
           <div className="translate-y-2 h-36 flex border-2 rounded-[10px] bg-[#E9E7E7] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
             <textarea
               placeholder="설명을 입력해주세요"
@@ -227,9 +272,5 @@ const MakeAQuiz: NextPage = () => {
     </div>
   );
 };
-
-// MakeAQuiz.getLayout = function getLayout(page: ReactElement) {
-//   return <Layout>{page}</Layout>;
-// };
 
 export default MakeAQuiz;
