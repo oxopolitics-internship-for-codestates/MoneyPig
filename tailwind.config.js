@@ -28,6 +28,7 @@ module.exports = {
         sideBarFit: 'calc(100% - 64px);',
       },
       lineHeight: {
+        modalFit: '4rem',
         7: '7rem',
         12: '12rem',
       },

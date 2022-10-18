@@ -18,11 +18,12 @@ import FourChoiceQuizCard from '../src/components/Card/FourChoiceQuizCard/FourCh
 import OxQuizCard from '../src/components/Card/OxQuizCard/OxQuizCard';
 import { QuizTime, QuizType } from '../src/data/QuizList';
 import newQuiz, { Quiz, QuizStore } from '../src/store/QuizStore';
-import { IconType } from '../src/components/Icon/Icon';
+import Icon, { IconType } from '../src/components/Icon/Icon';
 import quizService from '../service/QuizService';
 
 const MakeAQuiz: NextPage = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
+  const [quizErrorModal, setQuizErrorModal] = useState<boolean>(false);
   const [quizSelect, setQuizSelect] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [term, setTerm] = useState<TermProps[]>([]);
@@ -56,13 +57,15 @@ const MakeAQuiz: NextPage = () => {
 
   const selectOneQuiz = () => {
     setQuizSelect(false);
-
+    newQuiz.setTitle('');
+    newQuiz.setAnswer('');
     newQuiz.setType(QuizType.FourOptionQuiz);
   };
 
   const selectOXQuiz = () => {
     setQuizSelect(true);
-
+    newQuiz.setTitle('');
+    newQuiz.setAnswer('');
     newQuiz.setType(QuizType.oxQuiz);
   };
 
@@ -88,18 +91,147 @@ const MakeAQuiz: NextPage = () => {
     const desc = e.currentTarget.value;
     newQuiz.setDescription(desc);
   };
-  console.log('QuizStore', toJS);
 
   const onSubmit = () => {
-    if (1) {
-      console.log('작동안해요?', newQuiz.quiz.keyword);
+    const { title, keyword, description, options, answer } = newQuiz.quiz;
+    if (keyword.length) {
+      //키워드를 선택했는지 확인하는 로직
+      if (title.includes(keyword) || options.includes(keyword)) {
+        // 설명이나 보기에 키워드가 들어갔는지 확인하는 로직
+        if (answer.length) {
+          //정답을 입력해줬는지 확인하는 로직
+          if (title.length) {
+            //문제 타이틀 입력 확인 로직
+            if (description.length) {
+              //문제 해설 입력 확인
+              newQuiz.makeAQuiz;
+              quizService.quizUpload(newQuiz.makeAQuiz);
+              //여기까지 들어와야지만 문제 설정 가능
+              return;
+            }
+          }
+        }
+      }
     }
-    newQuiz.makeAQuiz;
-    quizService.quizUpload(newQuiz.makeAQuiz);
+    setQuizErrorModal(true);
   };
 
   return (
     <div className=" bg-grey">
+      <Modal
+        title="퀴즈 에러 모음"
+        modalState={quizErrorModal}
+        modalStateControl={setQuizErrorModal}
+      >
+        <div className="m-auto">
+          {newQuiz.quiz.title.length ? (
+            <div className=" flex">
+              <Icon
+                iconName={IconType.check}
+                style="h-16 w-16 p-5 text-green-400"
+              />
+              <div className=" text-green-400 leading-none md:leading-modalFit ">
+                문제가 정상적으로 입력되었습니다.
+              </div>
+            </div>
+          ) : (
+            <div className="flex">
+              <Icon
+                iconName={IconType.error}
+                style="h-16 w-16 p-5 text-red-400"
+              />
+              <div className=" text-red-400 leading-none md:leading-modalFit">
+                문제를 작성했는지 확인해주세요.
+              </div>
+            </div>
+          )}
+          {newQuiz.quiz.keyword.length ? (
+            <div className=" flex">
+              <Icon
+                iconName={IconType.check}
+                style="h-16 w-16 p-5 text-green-400"
+              />
+              <div className=" text-green-400 leading-none md:leading-modalFit ">
+                키워드가 정상적으로 입력되었습니다.
+              </div>
+            </div>
+          ) : (
+            <div className="flex">
+              <Icon
+                iconName={IconType.error}
+                style="h-16 w-16 p-5 text-red-400"
+              />
+              <div className=" text-red-400 leading-none md:leading-modalFit">
+                키워드는 자동완성 기능을 사용해 주세요.
+              </div>
+            </div>
+          )}
+          {newQuiz.quiz.title.includes(newQuiz.quiz.keyword) ||
+          newQuiz.quiz.options.includes(newQuiz.quiz.keyword) ? (
+            <div className=" flex">
+              <Icon
+                iconName={IconType.check}
+                style="h-16 w-16 p-5 text-green-400"
+              />
+              <div className=" text-green-400 leading-none md:leading-modalFit ">
+                문제에 키워드 에러는 없습니다.
+              </div>
+            </div>
+          ) : (
+            <div className="flex">
+              <Icon
+                iconName={IconType.error}
+                style="h-16 w-16 p-5 text-red-400"
+              />
+              <div className=" text-red-400 leading-none md:leading-modalFit">
+                키워드가 문제내용이나 선택지에 들어가야합니다.
+              </div>
+            </div>
+          )}
+          {newQuiz.quiz.answer.length ? (
+            <div className=" flex">
+              <Icon
+                iconName={IconType.check}
+                style="h-16 w-16 p-5 text-green-400"
+              />
+              <div className=" text-green-400 leading-none md:leading-modalFit ">
+                정답이 정상적으로 입력되었습니다.
+              </div>
+            </div>
+          ) : (
+            <div className="flex">
+              <Icon
+                iconName={IconType.error}
+                style="h-16 w-16 p-5 text-red-400"
+              />
+              <div className=" text-red-400 leading-none md:leading-modalFit">
+                정답을 다시 설정해주세요.
+              </div>
+            </div>
+          )}
+          {newQuiz.quiz.description.length ? (
+            <div className=" flex">
+              <Icon
+                iconName={IconType.check}
+                style="h-16 w-16 p-5 text-green-400"
+              />
+              <div className=" text-green-400 leading-none md:leading-modalFit ">
+                해설이 정상적으로 입력되었습니다.
+              </div>
+            </div>
+          ) : (
+            <div className="flex">
+              <Icon
+                iconName={IconType.error}
+                style="h-16 w-16 p-5 text-red-400"
+              />
+              <div className=" text-red-400 leading-none md:leading-modalFit">
+                해설을 다시 설정해주세요.
+              </div>
+            </div>
+          )}
+        </div>
+      </Modal>
       <Modal
         title="문제 유형 선택"
         modalState={quizPickModal}
