@@ -17,7 +17,7 @@ import Input, {
 import FourChoiceQuizCard from '../src/components/Card/FourChoiceQuizCard/FourChoiceQuizCard';
 import OxQuizCard from '../src/components/Card/OxQuizCard/OxQuizCard';
 import { QuizTime, QuizType } from '../src/data/QuizList';
-import newQuiz, { Quiz } from '../src/store/QuizStore';
+import newQuiz, { Quiz, QuizStore } from '../src/store/QuizStore';
 import { IconType } from '../src/components/Icon/Icon';
 import quizService from '../service/QuizService';
 
@@ -47,7 +47,7 @@ const MakeAQuiz: NextPage = () => {
   const clickDropDownItem = (clickSearchTerm: string) => {
     setSearchTerm(clickSearchTerm);
     setIsDropDownList(false);
-    newQuiz.setTitle(clickSearchTerm); //자동완성을 클릭해야지만 mobX에 들어감
+    newQuiz.setKeyWord(clickSearchTerm); //자동완성을 클릭해야지만 mobX에 들어감
   };
 
   const openQuizModal = () => {
@@ -88,8 +88,12 @@ const MakeAQuiz: NextPage = () => {
     const desc = e.currentTarget.value;
     newQuiz.setDescription(desc);
   };
+  console.log('QuizStore', toJS);
 
   const onSubmit = () => {
+    if (1) {
+      console.log('작동안해요?', newQuiz.quiz.keyword);
+    }
     newQuiz.makeAQuiz;
     quizService.quizUpload(newQuiz.makeAQuiz);
   };
