@@ -1,4 +1,3 @@
-import { FieldValue, Timestamp } from 'firebase/firestore';
 import router from 'next/router';
 import React from 'react';
 import { UnionQuiz } from '../../../data/QuizList';

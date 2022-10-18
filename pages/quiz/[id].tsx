@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React from 'react';
 import FourChoiceQuizCard from '../../src/components/Card/FourChoiceQuizCard/FourChoiceQuizCard';
 import OxQuizCard from '../../src/components/Card/OxQuizCard/OxQuizCard';
 import { FourOptionQuizModel, QuizType } from '../../src/data/QuizList';

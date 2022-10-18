@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { classNameJoiner } from '../../../utils/className';
 import { QuizTime } from '../../data/QuizList';
-import newQuiz, { Quiz } from '../../store/QuizStore';
+import newQuiz from '../../store/QuizStore';
 
 const TimeOptionsSetting = () => {
   const [dropDownState, setDropDownState] = useState<boolean>(false);

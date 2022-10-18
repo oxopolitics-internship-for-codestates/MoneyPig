@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { observer } from 'mobx-react';
 import { NextPage } from 'next';
 import React, { useEffect, useState } from 'react';
@@ -9,12 +8,9 @@ import { IconType } from '../../src/components/Icon/Icon';
 import Input, {
   InputBoxTypeProps,
   InputTypeProps,
-  TermProps,
 } from '../../src/components/Input/Input';
 import { Quiz } from '../../src/store/QuizStore';
 import { classNameJoiner } from '../../utils/className';
-
-// import { NextPageWithLayout } from '../_app';
 
 type QuizPageProps = {
   quizes: Quiz[];

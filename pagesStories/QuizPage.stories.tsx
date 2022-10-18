@@ -14,7 +14,7 @@ export default {
 export const MakeAQuizDefault: ComponentStory<typeof QuizPage> = () => (
   <Provider store={QuizStore}>
     <Layout>
-      <QuizPage></QuizPage>
+      <QuizPage quizes={[]}></QuizPage>
     </Layout>
   </Provider>
 );

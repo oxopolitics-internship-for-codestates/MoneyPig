@@ -37,7 +37,7 @@ const QuizCard = ({
   return (
     <Card style="space-y-4 h-128 max-w-sm m-auto">
       {quizTitle && <Timer quizTime={quizTime} />}
-      <form action="" className="h-64 space-y-6">
+      <section className="h-64 space-y-6">
         <Card
           bgColor="bg-white"
           height={`${isOxCard ? 'h-60' : 'h-40'}`}
@@ -60,13 +60,13 @@ const QuizCard = ({
               }}
             ></textarea>
           ) : (
-            <h5 className={`max-w-full  break-words text-center`}>
+            <h5 className={`max-w-full font-black break-words text-center`}>
               {result ? result : quizTitle}
             </h5>
           )}
         </Card>
         {children}
-      </form>
+      </section>
     </Card>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { classNameJoiner } from '../../../utils/className';
 import Icon, { IconType } from '../Icon/Icon';
 

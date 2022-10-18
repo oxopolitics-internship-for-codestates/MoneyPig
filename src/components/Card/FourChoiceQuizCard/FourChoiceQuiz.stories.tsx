@@ -3,6 +3,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import FourChoiceQuizCard from './FourChoiceQuizCard';
 import { QuizType } from '../../../data/QuizList';
+import { Timestamp } from 'firebase/firestore';
 
 export default {
   title: 'Components/FourChoiceQuizCard',
@@ -20,7 +21,7 @@ FourChoiceCardWithData.args = {
     id: '1',
     title: '엔화에 대한 설명으로 옳은 것은?',
     userId: 'tmdqls2257',
-    createdAt: 1665309414,
+    createdAt: Timestamp.now(),
     options: ['일본의 화폐이다.', '미국의 화폐이다', '', ''],
     answer: '',
     time: 60,

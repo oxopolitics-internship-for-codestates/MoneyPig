@@ -18,5 +18,7 @@ export const Onboarding: ComponentStory<typeof OnboardingDescription> = () => (
       'http://res.heraldm.com/content/image/2015/01/19/20150119001097_0.jpg'
     }
     imgLocation={Image_Location_Position.RIGHT}
+    width={300}
+    height={200}
   />
 );
