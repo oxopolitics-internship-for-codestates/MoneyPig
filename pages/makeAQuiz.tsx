@@ -22,7 +22,7 @@ import newQuiz, { Quiz } from '../src/store/QuizStore';
 import { IconType } from '../src/components/Icon/Icon';
 import quizService from '../service/QuizService';
 
-import { NextPageWithLayout } from './_app';
+// import { NextPageWithLayout } from './_app';
 
 const MakeAQuiz: NextPage = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
@@ -50,6 +50,7 @@ const MakeAQuiz: NextPage = () => {
   const clickDropDownItem = (clickSearchTerm: string) => {
     setSearchTerm(clickSearchTerm);
     setIsDropDownList(false);
+    newQuiz.setTitle(clickSearchTerm); //자동완성을 클릭해야지만 mobX에 들어감
   };
 
   const openQuizModal = () => {
