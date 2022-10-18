@@ -21,7 +21,10 @@ const OnboardingDescription = ({
   height,
 }: OnboardingDescriptionProps) => {
   return (
-    <div className="w-full m-auto flex items-center space-x-10 px-10">
+    <div
+      className="w-full m-auto flex items-center space-x-10 px-10 "
+      style={{ wordBreak: 'keep-all' }}
+    >
       {imgLocation === Image_Location_Position.RIGHT && (
         <span>{description}</span>
       )}

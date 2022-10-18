@@ -60,7 +60,7 @@ const QuizCard = ({
               }}
             ></textarea>
           ) : (
-            <h5 className={`max-w-full  break-words text-center`}>
+            <h5 className={`max-w-full font-black break-words text-center`}>
               {result ? result : quizTitle}
             </h5>
           )}
