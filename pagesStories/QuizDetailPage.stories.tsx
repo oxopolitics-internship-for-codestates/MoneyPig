@@ -4,6 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import QuizDetail from '../pages/quiz/[id]';
 import Layout from '../src/components/Layout/Layout';
 import { QuizTime, QuizType } from '../src/data/QuizList';
+import { Timestamp } from 'firebase/firestore';
 
 export default {
   title: 'Pages/QuizDetail',
@@ -29,12 +30,13 @@ OxCardWithData.args = {
     title:
       '엔화에 대한 설명으로 옳은 것은?sdsdsdsdsdsdssadsdadasdasdasdasdsadasdasdasdasdasdasdasd엔화에 대한 설명으로 옳은 것은?sdsdsdsdsdsdssadsdadasdasdasdasdsadasdasdasdasdasdasdasd엔화에 대한 설명으로 옳은 것은?sdsdsdsdsdsdssadsdadasdasdasdasdsadasdasdasdasdasdasdasd엔화에 대한 설명으로 옳은 것은?sdsdsdsdsdsdssadsdadasdasdasdasdsadasdasdasdasdasdasdasd',
     userId: 'tmdqls2257',
-    createdAt: 1665309414,
+    createdAt: Timestamp.now(),
     answer: 'O',
     time: QuizTime.oneMin,
     keyword: '엔화',
     type: QuizType.oxQuiz,
     description: '엔화는 일본의 화폐입니다.',
+    options: ['', '', '', ''],
   },
 };
 
@@ -57,7 +59,7 @@ FourChoiceCardWithData.args = {
     id: '1',
     title: '엔화에 대한 설명으로 옳은 것은?',
     userId: 'tmdqls2257',
-    createdAt: 1665309414,
+    createdAt: Timestamp.now(),
     options: ['일본의 화폐이다.', '미국의 화폐이다', '', ''],
     answer: '',
     time: QuizTime.oneMin,
