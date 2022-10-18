@@ -69,9 +69,21 @@ const MakeAQuiz: NextPage = () => {
     newQuiz.setType(QuizType.oxQuiz);
   };
 
-  const onBlurAns = (e: React.FocusEvent<HTMLInputElement, Element>) => {
-    const ans = e.currentTarget.value;
-    newQuiz.setAnswer(ans);
+  const onChangeAns = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    console.log(e.target.value);
+    console.log(e);
+    console.log(e.target.id);
+    if (quizSelect) {
+      if (e.target.value === '정답을 골라주세요') {
+        newQuiz.setAnswer('');
+      }
+      newQuiz.setAnswer(e.target.value);
+    } else {
+      if (e.target.value === '정답 번호를 선택해주세요') {
+        newQuiz.setAnswer('');
+      }
+      newQuiz.setAnswer(e.target.value);
+    }
   };
 
   const onBlurDescription = (
@@ -194,16 +206,49 @@ const MakeAQuiz: NextPage = () => {
           {quizSelect ? <OxQuizCard /> : <FourChoiceQuizCard />}
         </div>
         <div className=" h-auto flex flex-col">
-          <div className="text-5xl p-4">정답</div>
-          <div className="flex border-2 rounded-[10px] bg-[#E9E7E7] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
-            <input
-              placeholder="정답을 입력해주세요"
-              className="w-full outline-none py-3 mr-3 bg-[#E9E7E7]"
-              onBlur={e => {
-                onBlurAns(e);
-              }}
-            />
-          </div>
+          {quizSelect ? (
+            <>
+              <label
+                htmlFor="oxChoice"
+                className="block text-5xl mb-2 font-medium text-gray-900"
+              >
+                정답
+              </label>
+              <select
+                id="fourChoice"
+                onChange={e => onChangeAns(e)}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5  "
+              >
+                <option defaultValue="정답을 골라주세요">
+                  정답을 골라주세요
+                </option>
+                <option value="O">O</option>
+                <option value="X">X</option>
+              </select>
+            </>
+          ) : (
+            <>
+              <label
+                htmlFor="fourChoice"
+                className="block text-5xl mb-2 font-medium text-gray-900"
+              >
+                정답
+              </label>
+              <select
+                id="fourChoice"
+                onChange={e => onChangeAns(e)}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5  "
+              >
+                <option defaultValue="정답 번호를 선택해주세요">
+                  정답 번호를 선택해주세요
+                </option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </>
+          )}
           <div className="translate-y-2 h-36 flex border-2 rounded-[10px] bg-[#E9E7E7] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
             <textarea
               placeholder="설명을 입력해주세요"
