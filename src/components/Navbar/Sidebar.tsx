@@ -23,16 +23,16 @@ const Sidebar = ({ menuState, setMenuState }: SidebarProps) => {
           menuState ? '-translate-x-52' : 'translate-x-0'
         } ${menuState ? 'invisible' : 'visible'}`}
       >
-        <LinkButton href={`${process.env.NEXT_PUBLIC_CLIENT}/`}>
+        <LinkButton href={`${process.env.NEXT_PUBLIC_CLIENT}`}>
           {'Home'}
         </LinkButton>
-        <LinkButton href={`${process.env.NEXT_PUBLIC_CLIENT}/makeAQuiz`}>
+        <LinkButton href={`${process.env.NEXT_PUBLIC_CLIENT}makeAQuiz`}>
           {'Make a Quiz'}
         </LinkButton>
-        <LinkButton href={`${process.env.NEXT_PUBLIC_CLIENT}/quiz`}>
+        <LinkButton href={`${process.env.NEXT_PUBLIC_CLIENT}quiz`}>
           {'Solve a Quiz'}
         </LinkButton>
-        <LinkButton href={`${process.env.NEXT_PUBLIC_CLIENT}/search`}>
+        <LinkButton href={`${process.env.NEXT_PUBLIC_CLIENT}search`}>
           {'Search'}
         </LinkButton>
         {/* <Button onClick={onClickSideBar}>{'Home'}</Button>
