@@ -1,11 +1,6 @@
-import {
-  QueryDocumentSnapshot,
-  serverTimestamp,
-  SnapshotOptions,
-  Timestamp,
-} from 'firebase/firestore';
+import { Timestamp } from 'firebase/firestore';
 import { action, computed, makeObservable, observable, toJS } from 'mobx';
-import quizService from '../../service/QuizService';
+
 import {
   FourOptionQuizModel,
   OxQuizModel,

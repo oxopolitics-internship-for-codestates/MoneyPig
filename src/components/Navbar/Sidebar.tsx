@@ -1,6 +1,5 @@
 import React from 'react';
 import { LinkButton } from '../Button/Button';
-import { IncomingMessage } from 'http';
 
 type SidebarProps = {
   menuState: boolean;
