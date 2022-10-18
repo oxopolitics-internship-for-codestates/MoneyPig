@@ -37,16 +37,3 @@ Search.args = {
   ],
   inputBoxType: InputBoxTypeProps.search,
 };
-
-// export const Success = InputTemplate.bind({});
-// Success.args = {
-//   type: InputTypeProps.text,
-//   placeholder: 'Search...',
-// };
-
-// export const Error = InputTemplate.bind({});
-// Error.args = {
-//   type: InputTypeProps.text,
-//   placeholder: 'Search...',
-//   term: [],
-// };
