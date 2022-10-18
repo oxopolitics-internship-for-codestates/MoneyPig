@@ -9,7 +9,6 @@ import TimeOptionsSetting from '../src/components/TimeOptionsSetting/TimeOptions
 import Button from '../src/components/Button/Button';
 import Modal from '../src/components/Modal/Modal';
 import { classNameJoiner } from '../utils/className';
-import Layout from '../src/components/Layout/Layout';
 import Input, {
   InputBoxTypeProps,
   InputTypeProps,
@@ -21,8 +20,6 @@ import { QuizTime, QuizType } from '../src/data/QuizList';
 import newQuiz, { Quiz } from '../src/store/QuizStore';
 import { IconType } from '../src/components/Icon/Icon';
 import quizService from '../service/QuizService';
-
-// import { NextPageWithLayout } from './_app';
 
 const MakeAQuiz: NextPage = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
@@ -70,19 +67,18 @@ const MakeAQuiz: NextPage = () => {
   };
 
   const onChangeAns = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(e.target.value);
-    console.log(e);
-    console.log(e.target.id);
     if (quizSelect) {
       if (e.target.value === '정답을 골라주세요') {
         newQuiz.setAnswer('');
+      } else {
+        newQuiz.setAnswer(e.target.value);
       }
-      newQuiz.setAnswer(e.target.value);
     } else {
       if (e.target.value === '정답 번호를 선택해주세요') {
         newQuiz.setAnswer('');
+      } else {
+        newQuiz.setAnswer(e.target.value);
       }
-      newQuiz.setAnswer(e.target.value);
     }
   };
 
@@ -272,9 +268,5 @@ const MakeAQuiz: NextPage = () => {
     </div>
   );
 };
-
-// MakeAQuiz.getLayout = function getLayout(page: ReactElement) {
-//   return <Layout>{page}</Layout>;
-// };
 
 export default MakeAQuiz;
