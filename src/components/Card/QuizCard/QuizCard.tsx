@@ -37,7 +37,7 @@ const QuizCard = ({
   return (
     <Card style="space-y-4 h-128 max-w-sm m-auto">
       {quizTitle && <Timer quizTime={quizTime} />}
-      <form action="" className="h-64 space-y-6">
+      <section className="h-64 space-y-6">
         <Card
           bgColor="bg-white"
           height={`${isOxCard ? 'h-60' : 'h-40'}`}
@@ -66,7 +66,7 @@ const QuizCard = ({
           )}
         </Card>
         {children}
-      </form>
+      </section>
     </Card>
   );
 };
