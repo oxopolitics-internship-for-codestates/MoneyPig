@@ -25,20 +25,40 @@ export default () => {
     >
       <SwiperSlide>
         <OnboardingDescription
-          description={
-            '길면 어떻게 될까어떻게 될까어떻게 될까어떻게 될까어떻게 될까어떻게 될까?'
-          }
-          image={
-            'http://res.heraldm.com/content/image/2015/01/19/20150119001097_0.jpg'
-          }
+          description={'Make A Quiz 탭에서 문제를 만들 수 있습니다.'}
+          image={'/MakeAQuiz.webp'}
           imgLocation={Image_Location_Position.RIGHT}
+          width={300}
+          height={400}
         />
       </SwiperSlide>
-      <SwiperSlide>Slide 2Slide 1Slide 1Slide 1Slide 1Slide 1</SwiperSlide>
       <SwiperSlide>
-        Slide 3Slide 1Slide 1Slide 1Slide 1Slide 1Slide 1Slide 1
+        <OnboardingDescription
+          description={'Make A Quiz 탭에서 문제를 만들 수 있습니다.'}
+          image={'/ChoiceAQuiz.webp'}
+          imgLocation={Image_Location_Position.RIGHT}
+          width={300}
+          height={400}
+        />
       </SwiperSlide>
-      <SwiperSlide>Slide 4Slide 1Slide 1Slide 1Slide 1Slide 1</SwiperSlide>
+      <SwiperSlide>
+        <OnboardingDescription
+          description={'선택한 퀴즈를 풀 수 있습니다.'}
+          image={'/SolveAQuiz.webp'}
+          imgLocation={Image_Location_Position.RIGHT}
+          width={300}
+          height={400}
+        />
+      </SwiperSlide>
+      <SwiperSlide>
+        <OnboardingDescription
+          description={'퀴즈의 결과를 확인할 수 있습니다.'}
+          image={'/Result.webp'}
+          imgLocation={Image_Location_Position.RIGHT}
+          width={300}
+          height={400}
+        />
+      </SwiperSlide>
       ...
     </Swiper>
   );
