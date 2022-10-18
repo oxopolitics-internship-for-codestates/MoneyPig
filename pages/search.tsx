@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
+import { NextPage } from 'next';
+import Head from 'next/head';
 
-import InputUpdate, {
+import Layout from '../src/components/Layout/Layout';
+import Input, {
   InputBoxTypeProps,
   InputTypeProps,
   TermProps,
 } from '../src/components/Input/Input';
 import { IconType } from '../src/components/Icon/Icon';
-import axios from 'axios';
 import { classNameJoiner } from '../utils/className';
-import { NextPage } from 'next';
+import KeywordDescriptionCard from '../src/components/KeywordDescriptionCard/KeywordDescriptionCard';
+import EconomyData from '../public/economyData.json';
 
 const Search: NextPage = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [term, setTerm] = useState<TermProps[]>([]);
+  const [clickTerm, setClickTerm] = useState<TermProps[] | undefined>([]);
   const [isDropDownList, setIsDropDownList] = useState<boolean>(false);
 
   useEffect(() => {
@@ -20,25 +24,32 @@ const Search: NextPage = () => {
       setIsDropDownList(false);
       setTerm([]);
     } else {
-      axios.get('./economyData.json').then(res => {
-        const termList: TermProps[] = res.data;
-        setTerm(
-          termList.filter(({ term }) => {
-            return term.includes(searchTerm);
-          }),
-        );
-      });
+      setTerm(
+        EconomyData.filter(({ term }) => {
+          return term.includes(searchTerm);
+        }),
+      );
     }
   }, [searchTerm]);
 
   const clickDropDownItem = (clickSearchTerm: string) => {
     setSearchTerm(clickSearchTerm);
+    setClickTerm(
+      term.filter(item => {
+        return item.term === clickSearchTerm;
+      }),
+    );
+
     setIsDropDownList(false);
   };
 
   return (
-    <div className="min-w-[390px] bg-[#E9E7E7] px-10">
-      <InputUpdate
+    <div className="w-homePageWidth h-sideBarFit bg-[#E9E7E7] p-10">
+      <Head>
+        <title>Economy Term Dictionary Page</title>
+      </Head>
+      <div className="text-5xl h-20 p-4 text-center">경제 사전</div>
+      <Input
         type={InputTypeProps.text}
         placeholder={'Search...'}
         style="w-full  py-3 mr-3 bg-[#E9E7E7]"
@@ -50,7 +61,9 @@ const Search: NextPage = () => {
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         setIsDropDownList={setIsDropDownList}
+        setClickTerm={setClickTerm}
       />
+
       <>
         {isDropDownList && (
           <>
@@ -67,7 +80,7 @@ const Search: NextPage = () => {
                   term &&
                     term.length > 5 &&
                     'h-60 scrollbar overflow-y-scroll overflow-x-hidden',
-                  'mt-2.5 bg-[#E9E7E7] border-2 border-[#CFCFCF] rounded-[10px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]',
+                  'mt-4 bg-[#E9E7E7] border-2 border-[#CFCFCF] rounded-[10px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]',
                 )}
               >
                 {term?.map(item => (
@@ -84,6 +97,13 @@ const Search: NextPage = () => {
           </>
         )}
       </>
+      <div className="h-10"></div>
+      {clickTerm && (
+        <KeywordDescriptionCard
+          keyword={clickTerm[0]?.term}
+          description={clickTerm[0]?.description}
+        />
+      )}
     </div>
   );
 };
