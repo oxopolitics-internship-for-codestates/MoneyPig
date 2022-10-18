@@ -2,8 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 30px;
+    height: 35px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    background: #ffffff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #e9e7e7;
+    border-radius: 100vh;
+    border: 8px solid #ffffff;
+  }
+}
+
 @layer components {
   .btn-primary {
     @apply border-0 p-2 px-6 bg-slate-100 rounded-md;
+  }
+  .absolute_center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+  h1 {
+    @apply text-6xl;
+  }
+
+  h2 {
+    @apply text-5xl;
+  }
+
+  h3 {
+    @apply text-3xl;
+  }
+
+  h4 {
+    @apply text-2xl;
+  }
+
+  h5 {
+    @apply text-lg whitespace-pre-wrap;
+  }
+
+  p {
+    @apply text-base;
+  }
+
+  .absolute_center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .scrollbarHide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbarHide {
+    -ms-overflow-style: none; /* IE and 엣지 */
+    scrollbar-width: none; /* 파이어폭스 */
   }
 }

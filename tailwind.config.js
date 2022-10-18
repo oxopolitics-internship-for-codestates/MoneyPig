@@ -1,26 +1,40 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-    "./elements/**/*.{js,ts,jsx,tsx}",
-    "./stories/**/*.{js,ts,jsx,tsx}",
-    "./common/**/*.{js,ts,jsx,tsx}",
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx}',
+    './stories/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: false,
   theme: {
     extend: {
       colors: {
-        mint: "#9DE7D7",
-        blue: "#74D1EA",
-        violet: "#BF9BDE",
-        magenta: "#F1B2DC",
-        "light-grey": "#C1C6C8",
-        grey: "#A2AAAD",
-        black: "#101820",
-        red: "#EF3340",
-        white: "#fff",
-        pink: "#f0506e",
+        primary: '#5C7F67',
+        grey: '#E9E7E7',
+        black: '#100F0F',
+        'light-green': '#ECF4E7',
+        'dark-green': '#24331A',
+        brown: '#5D5656',
+        pink: '#EB7C7C',
+        modalBg: '#A4A2A2',
+      },
+      width: {
+        homePageWidth: '576px',
+        mediaWidth: '540px',
+      },
+      height: {
+        112: '28rem',
+        128: '32rem',
+        sideBarFit: 'calc(100% - 64px);',
+      },
+      lineHeight: {
+        modalFit: '4rem',
+        7: '7rem',
+        12: '12rem',
+      },
+      maxHeight: {
+        128: '32rem',
+        144: '36rem',
       },
     },
   },
