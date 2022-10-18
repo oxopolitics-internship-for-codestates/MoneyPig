@@ -20,6 +20,7 @@ import { QuizTime, QuizType } from '../src/data/QuizList';
 import newQuiz, { Quiz, QuizStore } from '../src/store/QuizStore';
 import Icon, { IconType } from '../src/components/Icon/Icon';
 import quizService from '../service/QuizService';
+import { useRouter } from 'next/router';
 
 const MakeAQuiz: NextPage = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
@@ -28,6 +29,7 @@ const MakeAQuiz: NextPage = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [term, setTerm] = useState<TermProps[]>([]);
   const [isDropDownList, setIsDropDownList] = useState<boolean>(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (searchTerm === '') {
@@ -106,6 +108,7 @@ const MakeAQuiz: NextPage = () => {
               //문제 해설 입력 확인
               newQuiz.makeAQuiz;
               quizService.quizUpload(newQuiz.makeAQuiz);
+              router.push('quiz');
               //여기까지 들어와야지만 문제 설정 가능
               return;
             }
