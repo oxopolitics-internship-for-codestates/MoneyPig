@@ -44,7 +44,12 @@ const Search: NextPage = () => {
   };
 
   return (
-    <div className="w-homePageWidth h-sideBarFit bg-[#E9E7E7] p-10">
+    <div
+      className={classNameJoiner(
+        !!clickTerm && 'h-screen',
+        'w-full flex flex-col items-center justify-center ju bg-[#E9E7E7] p-10',
+      )}
+    >
       <Head>
         <title>Economy Term Dictionary Page</title>
       </Head>
@@ -80,13 +85,13 @@ const Search: NextPage = () => {
                   term &&
                     term.length > 5 &&
                     'h-60 scrollbar overflow-y-scroll overflow-x-hidden',
-                  'mt-4 bg-[#E9E7E7] border-2 border-[#CFCFCF] rounded-[10px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]',
+                  'w-full mt-4 bg-[#E9E7E7] border-2 border-[#CFCFCF] rounded-[10px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]',
                 )}
               >
                 {term?.map(item => (
                   <li
                     key={String(item.Id)}
-                    className="px-11 py-3 rounded-[10px] hover:bg-[#5D5656] hover:text-[#ffffff]"
+                    className=" px-11 py-3 rounded-[10px] hover:bg-[#5D5656] hover:text-[#ffffff]"
                     onClick={() => clickDropDownItem(item.term)}
                   >
                     {item.term}

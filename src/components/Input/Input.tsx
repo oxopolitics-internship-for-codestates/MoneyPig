@@ -64,7 +64,7 @@ const Input = ({
 
   return (
     <>
-      <div className="flex border-2 border-[#CFCFCF] rounded-[10px] bg-[#E9E7E7] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+      <div className="w-full flex border-2 border-[#CFCFCF] rounded-[10px] bg-[#E9E7E7] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
         {inputBoxType === 'search' && iconList && (
           <>
             <Icon style={iconList[0].style} iconName={iconList[0].iconName} />
