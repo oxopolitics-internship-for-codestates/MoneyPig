@@ -21,7 +21,7 @@ const FourChoiceQuizCard = ({ quiz }: FourChoiceQuizCardProps) => {
       pathname: 'result',
       query: {
         result:
-          quiz?.answer === e.currentTarget.value
+          quiz?.answer === String(Number(e.currentTarget.id) + 1)
             ? resultType.correct
             : resultType.incorrect,
         description: quiz?.description,
@@ -69,6 +69,7 @@ const FourChoiceQuizCard = ({ quiz }: FourChoiceQuizCardProps) => {
         <QuizCard quizTitle={quiz.title}>
           {quiz.options.map((option, namex) => (
             <button
+              id={`${namex}`}
               key={namex}
               className="w-full h-10 py-2 bg-brown text-grey placeholder:text-grey rounded-full text-center"
               onClick={onClickAns}
