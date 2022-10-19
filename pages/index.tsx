@@ -28,7 +28,7 @@ const Home: NextPage = () => {
         {/* twitter */}
         <meta
           name="twitter:card"
-          content="트위터 카드 타입(요약정보, 사진, 비디오)"
+          content="https://img.freepik.com/free-vector/man-expressing-his-ideas-for-diary_74855-6558.jpg?w=1380&t=st=1665823295~exp=1665823895~hmac=5013c081313cb0387ad43c8990d052a26c88d6a19ca27748de049216a73b5a7b"
         />
         <meta name="twitter:title" content="Economy Inside" />
         <meta

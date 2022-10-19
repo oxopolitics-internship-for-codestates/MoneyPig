@@ -121,6 +121,33 @@ const MakeAQuiz: NextPage = () => {
 
   return (
     <div className=" bg-grey">
+      <Head>
+        <title>Making a quiz page</title>
+
+        {/* default */}
+        <meta name="description" property="og:title" content="Making a Quiz" />
+        <meta property="og:image" content="/MakeAQuiz.webp" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://moneypig.vercel.app/makeAQuiz"
+        />
+        <meta property="og:title" content="경제 퀴즈 만들기" />
+        <meta
+          property="og:description"
+          content="경제 퀴즈를 풀 수 있는 사이트"
+        />
+        <meta property="og:site_name" content="Money Pig Make" />
+        <meta property="og:locale" content="ko_KR" />
+        {/* twitter */}
+        <meta name="twitter:card" content="/MakeAQuiz.webp" />
+        <meta name="twitter:title" content="Economy Inside" />
+        <meta
+          name="twitter:description"
+          content="경제 퀴즈를 풀 수 있는 사이트"
+        />
+        <meta name="twitter:image" content="/MakeAQuiz.webp" />
+      </Head>
       <Modal
         title="퀴즈 에러 모음"
         modalState={quizErrorModal}
@@ -276,10 +303,6 @@ const MakeAQuiz: NextPage = () => {
           </Button>
         </div>
       </Modal>
-      <Head>
-        <title>Making a quiz page</title>
-        <meta name="description" content="Making a Quiz" />
-      </Head>
       <div className=" w-4/5 m-auto">
         <div className="text-5xl h-20 p-4 ">키워드</div>
         <Input
