@@ -3,6 +3,8 @@ import FourChoiceQuizCard from '../../src/components/Card/FourChoiceQuizCard/Fou
 import OxQuizCard from '../../src/components/Card/OxQuizCard/OxQuizCard';
 import { FourOptionQuizModel, QuizType } from '../../src/data/QuizList';
 import quizService from '../../service/QuizService';
+import Button from '../../src/components/Button/Button';
+import { useRouter } from 'next/router';
 
 import { Quiz } from '../../src/store/QuizStore';
 import { NextPage } from 'next';
@@ -13,6 +15,10 @@ type QuizDetailProps = {
 };
 
 const QuizDetail: NextPage<QuizDetailProps> = ({ quiz }: QuizDetailProps) => {
+  const router = useRouter();
+  const onClickList = () => {
+    router.push(`${process.env.NEXT_PUBLIC_CLIENT}quiz`);
+  };
   return (
     <section className="h-screen flex flex-col justify-center space-y-12">
       <Head>
@@ -44,6 +50,9 @@ const QuizDetail: NextPage<QuizDetailProps> = ({ quiz }: QuizDetailProps) => {
           quiz={quiz as FourOptionQuizModel}
         ></FourChoiceQuizCard>
       )}
+      <Button style="-translate-y-36" onClick={onClickList}>
+        {'목록으로 가기'}
+      </Button>
     </section>
   );
 };

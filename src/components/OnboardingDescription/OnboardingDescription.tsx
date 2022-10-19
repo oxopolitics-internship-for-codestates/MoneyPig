@@ -7,6 +7,7 @@ type OnboardingDescriptionProps = {
   imgLocation?: Image_Location_Position;
   width: number;
   height: number;
+  alt: string;
 };
 export enum Image_Location_Position {
   LEFT = 'left',
@@ -19,6 +20,7 @@ const OnboardingDescription = ({
   imgLocation = Image_Location_Position.LEFT,
   width,
   height,
+  alt,
 }: OnboardingDescriptionProps) => {
   return (
     <div
@@ -32,7 +34,7 @@ const OnboardingDescription = ({
 
       <Image
         src={image}
-        alt="description"
+        alt={alt}
         width={width}
         height={height}
         // layout={'responsive'}

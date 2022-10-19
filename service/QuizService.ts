@@ -55,12 +55,26 @@ class QuizService {
   constructor() {}
 
   async quizUpload(data: Quiz): Promise<void> {
-    await addDoc(collection(fireStore, 'quizes'), data).then(async res => {
-      const frankDocRef = doc(fireStore, 'quizes', res.id);
-      await updateDoc(frankDocRef, {
-        id: res.id,
+    const quizes: Quiz[] = [];
+    const q = query(collection(fireStore, 'quizes'));
+    await getDocs(q).then(res => {
+      res.forEach(doc => {
+        quizes.push(JSON.parse(JSON.stringify(doc.data())));
       });
     });
+    const filteredQuizes = quizes.filter((quiz)=>{
+      quiz.title === data.title
+    })
+    if(filteredQuizes.length){
+      return;
+    }else{
+      await addDoc(collection(fireStore, 'quizes'), data).then(async res => {
+        const frankDocRef = doc(fireStore, 'quizes', res.id);
+        await updateDoc(frankDocRef, {
+          id: res.id,
+        });
+      });
+    }
   }
 
   async getQuizes() {

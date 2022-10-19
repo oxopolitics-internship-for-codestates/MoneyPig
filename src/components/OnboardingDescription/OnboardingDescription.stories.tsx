@@ -20,5 +20,6 @@ export const Onboarding: ComponentStory<typeof OnboardingDescription> = () => (
     imgLocation={Image_Location_Position.RIGHT}
     width={300}
     height={200}
+    alt={'squid'}
   />
 );

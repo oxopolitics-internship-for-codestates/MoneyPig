@@ -35,10 +35,6 @@ const Sidebar = ({ menuState, setMenuState }: SidebarProps) => {
         <LinkButton href={`${process.env.NEXT_PUBLIC_CLIENT}search`}>
           {'Search'}
         </LinkButton>
-        {/* <Button onClick={onClickSideBar}>{'Home'}</Button>
-        <Button>{'Make a Quiz'}</Button>
-        <Button>{'Solve a Quiz'}</Button>
-        <Button>{'Search'}</Button> */}
       </aside>
     </div>
   );
