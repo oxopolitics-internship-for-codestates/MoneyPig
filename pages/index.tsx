@@ -48,7 +48,11 @@ const Home: NextPage = () => {
           content="https://img.freepik.com/free-vector/man-expressing-his-ideas-for-diary_74855-6558.jpg?w=1380&t=st=1665823295~exp=1665823895~hmac=5013c081313cb0387ad43c8990d052a26c88d6a19ca27748de049216a73b5a7b"
         />
       </Head>
-
+      <div className="px-10 py-2">
+        <h1 className="text-center" style={{ wordBreak: 'keep-all' }}>
+          경제 인사이드
+        </h1>
+      </div>
       <OnboardingDescription
         description={'경제에 관련된 이야기 읽으면 머리 아프신가요?'}
         image={
