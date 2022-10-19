@@ -73,7 +73,6 @@ const Slider = () => {
           alt={'다른 유저가 만든 퀴즈'}
         />
       </SwiperSlide>
-      ...
     </Swiper>
   );
 };

@@ -28,10 +28,10 @@ const MakeAQuiz: NextPage = () => {
   const [quizErrorModal, setQuizErrorModal] = useState<boolean>(false);
   const [quizSelect, setQuizSelect] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>(() => {
-    if (router.query.term === undefined) {
+    if (router.query.searchTerm === undefined) {
       return '';
     } else {
-      return String(router.query.term);
+      return String(router.query.searchTerm);
     }
   }); //사전에서 값을 받아오는지 아닌지 확인하기
   const [term, setTerm] = useState<TermProps[]>([]);
