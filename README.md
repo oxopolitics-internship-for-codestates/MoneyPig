@@ -18,12 +18,27 @@
 2. 퀴즈를 만들 수 있습니다. 여러분의 경제 지식을 다른 사람들이 풀 수 있게 해보세요.
 3. 다른 사람이 만든 퀴즈를 풀 수 있습니다. 다른 사람의 경제 지식을 여러분의 것으로 만드세요.
 
+# MoneyPig Wiki
+
+MoneyPig 의 자세한 Work Log 를 확인해보고 싶으시다면 아래 링크를 클릭해주세요 :)
+#### 📌  [MoneyPig Wiki](https://github.com/oxopolitics-internship-for-codestates/MoneyPig/wiki)
+
+<br/> &nbsp;
+
+# MoneyPig Project
+
+MoneyPig 의 자세한 Project분배를 확인해보고 싶으시다면 아래 링크를 클릭해주세요 :)
+#### 📌  [MoneyPig Project](https://github.com/orgs/oxopolitics-internship-for-codestates/projects/7/views/1)
+
+<br/> &nbsp;
+
+
 # Used Stack
 
 # Team Introduction
 
-|ROLE|NAME|POSITION|GITHUB ID|
-|:---:|:---:|:---:|:---:|
-|팀원|허인재|Front-End|[![github](https://img.shields.io/badge/shren207-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Applehole)|
-|팀원|오민석|Front-End|[![github](https://img.shields.io/badge/forcoding97-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/oh930428)|
-|팀원|홍승빈|Front-End|[![github](https://img.shields.io/badge/tmdqls2257-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/tmdqls2257)|
+|NAME|POSITION|GITHUB ID|
+|:---:|:---:|:---:|
+|허인재|Front-End|[![github](https://img.shields.io/badge/shren207-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Applehole)|
+|오민석|Front-End|[![github](https://img.shields.io/badge/forcoding97-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/oh930428)|
+|홍승빈|Front-End|[![github](https://img.shields.io/badge/tmdqls2257-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/tmdqls2257)|
