@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React from 'react';
-import Button, { LinkButton } from '../../src/components/Button/Button';
+import Button from '../../src/components/Button/Button';
 import { resultType } from '../../src/components/Card/QuizCard/QuizCard';
 import ResultCard from '../../src/components/Card/ResultCard/ResultCard';
 
@@ -52,7 +52,9 @@ const Result: NextPage<ResultProps> = ({
         <meta name="twitter:image" content="/Result.webp" />
       </Head>
       <ResultCard result={result} description={description} />
-      <Button onClick={onClickList}>{'목록으로 가기'}</Button>
+      <Button style="-translate-y-36" onClick={onClickList}>
+        {'목록으로 가기'}
+      </Button>
     </section>
   );
 };
