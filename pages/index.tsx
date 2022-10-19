@@ -16,6 +16,14 @@ const Home: NextPage = () => {
           property="og:image"
           content="https://img.freepik.com/free-vector/man-expressing-his-ideas-for-diary_74855-6558.jpg?w=1380&t=st=1665823295~exp=1665823895~hmac=5013c081313cb0387ad43c8990d052a26c88d6a19ca27748de049216a73b5a7b"
         />
+        <meta
+          property="og:image"
+          content="https://img.freepik.com/free-vector/people-watching-breaking-news-on-the-phone_23-2148625435.jpg?t=st=1665824716~exp=1665825316~hmac=a79c909665d550c019a1d33690dff753d966981c494e99a2b4bc760a7693f7d7"
+        />
+        <meta
+          property="og:image"
+          content="https://img.freepik.com/free-vector/happy-rich-banker-celebrating-income-growth_74855-5867.jpg?t=st=1665825107~exp=1665825707~hmac=077258a5cb1d45d8c7d2389360266c414d032a1884388c25791fc48b89dc4dc3"
+        />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://moneypig.vercel.app/" />
         <meta property="og:title" content="경제 퀴즈" />
