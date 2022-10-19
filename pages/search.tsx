@@ -51,6 +51,25 @@ const Search: NextPage = () => {
     >
       <Head>
         <title>Economy Term Dictionary Page</title>
+        <meta name="description" property="og:title" content="Making a Quiz" />
+        <meta property="og:image" content="/Economic_term_search.webp" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://moneypig.vercel.app/search" />
+        <meta property="og:title" content="경제 용어를 찾을 수 있는 사이트" />
+        <meta
+          property="og:description"
+          content="경제 용어를 찾을 수 있는 사이트"
+        />
+        <meta property="og:site_name" content="Money Pig Make" />
+        <meta property="og:locale" content="ko_KR" />
+        {/* twitter */}
+        <meta name="twitter:card" content="/Economic_term_search.webp" />
+        <meta name="twitter:title" content="경제 용어를 찾을 수 있는 사이트" />
+        <meta
+          name="twitter:description"
+          content="경제 용어를 찾을 수 있는 사이트"
+        />
+        <meta name="twitter:image" content="/Economic_term_search.webp" />
       </Head>
       <div className="text-5xl h-20 p-4 text-center">경제 사전</div>
       <Input
