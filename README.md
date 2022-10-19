@@ -35,6 +35,7 @@ MoneyPig 의 자세한 Project분배를 확인해보고 싶으시다면 아래 �
 
 # Used Stack
 
+<img src="https://cdn.discordapp.com/attachments/1023837766724894784/1032227551235551262/Screenshot_from_2022-10-19_18-43-03.png" />
 # Team Introduction
 
 |NAME|POSITION|GITHUB ID|
