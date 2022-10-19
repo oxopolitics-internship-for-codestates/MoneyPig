@@ -382,7 +382,7 @@ const MakeAQuiz: NextPage = () => {
             </>
           )}
         </>
-        <div className="flex space-x-4 mt-6 w-full ">
+        <div className="flex justify-evenly mt-6 w-full ">
           <div>
             <div className="text-5xl text-center my-2 w-40 ">시간</div>
             <TimeOptionsSetting />
@@ -398,10 +398,7 @@ const MakeAQuiz: NextPage = () => {
         <div className=" h-auto flex flex-col">
           {quizSelect ? (
             <>
-              <label
-                htmlFor="oxChoice"
-                className="block text-5xl mb-2 font-medium text-gray-900"
-              >
+              <label htmlFor="oxChoice" className="block text-5xl h-20 p-4">
                 정답
               </label>
               <select
@@ -418,10 +415,7 @@ const MakeAQuiz: NextPage = () => {
             </>
           ) : (
             <>
-              <label
-                htmlFor="fourChoice"
-                className="block text-5xl mb-2 font-medium text-gray-900"
-              >
+              <label htmlFor="fourChoice" className="block text-5xl h-20 p-4">
                 정답
               </label>
               <select
