@@ -27,12 +27,15 @@ const MakeAQuiz: NextPage = () => {
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
   const [quizErrorModal, setQuizErrorModal] = useState<boolean>(false);
   const [quizSelect, setQuizSelect] = useState<boolean>(false);
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [searchTerm, setSearchTerm] = useState<string>(() => {
+    if (router.query.term === undefined) {
+      return '';
+    } else {
+      return String(router.query.term);
+    }
+  }); //사전에서 값을 받아오는지 아닌지 확인하기
   const [term, setTerm] = useState<TermProps[]>([]);
   const [isDropDownList, setIsDropDownList] = useState<boolean>(false);
-  console.log('router.query', router.query.term);
-  console.log('searchTerm', searchTerm);
-  console.log('newQuiz.quiz.keyword', newQuiz.quiz.keyword);
 
   useEffect(() => {
     if (quizPickModal || quizErrorModal) {
