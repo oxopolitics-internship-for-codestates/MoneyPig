@@ -25,6 +25,16 @@ const Slider = () => {
     >
       <SwiperSlide>
         <OnboardingDescription
+          description={'경제 용어에 대해 찾아볼 수 있습니다.'}
+          image={'/Economic_term_search.webp'}
+          imgLocation={Image_Location_Position.RIGHT}
+          width={300}
+          height={400}
+          alt={'경제용어를 찾을 수 있는 이미지'}
+        />
+      </SwiperSlide>
+      <SwiperSlide>
+        <OnboardingDescription
           description={'Make A Quiz 탭에서 문제를 만들 수 있습니다.'}
           image={'/MakeAQuiz.webp'}
           imgLocation={Image_Location_Position.RIGHT}
