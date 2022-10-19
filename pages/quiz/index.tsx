@@ -20,14 +20,17 @@ const QuizPage: NextPage<QuizPageProps> = observer(
   ({ quizes }: QuizPageProps) => {
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [isDropDownList, setIsDropDownList] = useState<boolean>(false);
+    const [searchQuiz, setSearchQuiz] = useState<Quiz[]>(quizes);
 
     useEffect(() => {
       if (searchTerm === '') {
         setIsDropDownList(false);
       } else {
-        quizes.filter(quiz => {
-          return quiz.keyword.includes(searchTerm);
-        });
+        setSearchQuiz(
+          quizes.filter(quiz => {
+            return quiz.keyword.includes(searchTerm);
+          }),
+        );
       }
     }, [searchTerm, quizes]);
 
@@ -114,11 +117,17 @@ const QuizPage: NextPage<QuizPageProps> = observer(
         </>
 
         <ul className="gap-4 w-full flex flex-col h-112 overflow-y-scroll scrollbarHide sm:flex-row sm:flex-wrap sm:justify-center ">
-          {quizes.map((quiz, idx) => (
-            <li key={idx} className={'sm:w-64'}>
-              <QuizListCard quiz={quiz}></QuizListCard>
-            </li>
-          ))}
+          {searchQuiz.length === 0 || searchTerm === ''
+            ? quizes.map((quiz, idx) => (
+                <li key={idx} className={'sm:w-64'}>
+                  <QuizListCard quiz={quiz}></QuizListCard>
+                </li>
+              ))
+            : searchQuiz.map((quiz, idx) => (
+                <li key={idx} className={'sm:w-64'}>
+                  <QuizListCard quiz={quiz}></QuizListCard>
+                </li>
+              ))}
         </ul>
       </section>
     );
