@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NextPage } from 'next';
 import Head from 'next/head';
 
@@ -13,6 +13,8 @@ import KeywordDescriptionCard from '../src/components/KeywordDescriptionCard/Key
 import EconomyData from '../public/economyData.json';
 
 const Search: NextPage = () => {
+  const divRef = useRef<HTMLDivElement>(null);
+  console.log(divRef);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [term, setTerm] = useState<TermProps[]>([]);
   const [clickTerm, setClickTerm] = useState<TermProps[] | undefined>([]);
@@ -45,8 +47,8 @@ const Search: NextPage = () => {
   return (
     <div
       className={classNameJoiner(
-        clickTerm?.length === 0 && 'h-screen',
-        'w-full flex flex-col items-center justify-center ju bg-[#E9E7E7] p-10',
+        divRef.current && divRef.current?.clientHeight > 840 ? '' : 'h-screen',
+        'relative w-full flex gap-4 flex-col items-center justify-center bg-[#E9E7E7] p-10',
       )}
     >
       <Head>
@@ -75,7 +77,7 @@ const Search: NextPage = () => {
       <Input
         type={InputTypeProps.text}
         placeholder={'Search...'}
-        style="w-full  py-3 mr-3 bg-[#E9E7E7]"
+        style="w-full py-3 mr-3 bg-[#E9E7E7]"
         iconList={[
           { style: 'w-12 h-12 p-3', iconName: IconType.search },
           { style: 'w-11 h-12 p-3', iconName: IconType.cancel },
@@ -87,11 +89,16 @@ const Search: NextPage = () => {
         setClickTerm={setClickTerm}
       />
 
-      <>
+      <div
+        className={classNameJoiner(
+          clickTerm?.length === 0 && 'h-32',
+          'w-full relative',
+        )}
+      >
         {isDropDownList && (
           <>
             {term && term.length === 0 && (
-              <div className="mt-4 px-12">
+              <div className="mt-4 px-11">
                 <span className="text-[#D61616]">
                   경제 사전에 없는 단어입니다
                 </span>
@@ -103,13 +110,13 @@ const Search: NextPage = () => {
                   term &&
                     term.length > 5 &&
                     'h-60 scrollbar overflow-y-scroll overflow-x-hidden',
-                  'w-full mt-4 bg-[#E9E7E7] border-2 border-[#CFCFCF] rounded-[10px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]',
+                  'w-full absolute z-10 bg-[#E9E7E7] border-2 border-[#CFCFCF] rounded-[10px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]',
                 )}
               >
                 {term?.map(item => (
                   <li
                     key={String(item.Id)}
-                    className=" px-11 py-3 rounded-[10px] hover:bg-[#5D5656] hover:text-[#ffffff]"
+                    className=" px-4 py-3 rounded-[10px] hover:bg-[#5D5656] hover:text-[#ffffff]"
                     onClick={() => clickDropDownItem(item.term)}
                   >
                     {item.term}
@@ -119,14 +126,15 @@ const Search: NextPage = () => {
             )}
           </>
         )}
-      </>
-      <div className="h-10"></div>
-      {clickTerm && (
-        <KeywordDescriptionCard
-          keyword={clickTerm[0]?.term}
-          description={clickTerm[0]?.description}
-        />
-      )}
+      </div>
+      <div ref={divRef} className="w-full">
+        {clickTerm && (
+          <KeywordDescriptionCard
+            keyword={clickTerm[0]?.term}
+            description={clickTerm[0]?.description}
+          />
+        )}
+      </div>
     </div>
   );
 };

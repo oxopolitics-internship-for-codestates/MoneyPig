@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
+
 import Card from '../Card/Card';
 import Icon, { IconType } from '../Icon/Icon';
 
@@ -12,16 +14,28 @@ const KeywordDescriptionCard = ({
   keyword,
   description,
 }: KeywordDescriptionCardProps) => {
+  const router = useRouter();
+
+  const onClick = () => {
+    router.push({
+      pathname: 'makeAQuiz',
+      query: {
+        searchTerm: keyword,
+      },
+    });
+  };
+
   return (
     <Card style="p-6 relative">
       <>
         {keyword && description && (
           <>
-            <Link href={`/makeAQuiz?term=${keyword}`}>
-              <a className="absolute py-2 px-4 top-6 right-12 rounded-full bg-[#5D5656] px- text-[#ffffff] text-center">
-                퀴즈 만들기
-              </a>
-            </Link>
+            <button
+              className="absolute py-2 px-4 top-6 right-12 rounded-full bg-[#5D5656] px- text-[#ffffff] text-center"
+              onClick={onClick}
+            >
+              퀴즈 만들기
+            </button>
             <h3
               className="text-center p-4 mt-10"
               style={{ wordBreak: 'keep-all' }}
