@@ -33,7 +33,6 @@ const Timer = ({ quizTime }: TimerProps) => {
         <rect rx="15" width="100%" height="30" y="0" fill="#E9E7E7"></rect>
         <rect rx="15" className="data"></rect>
       </svg>
-      {/* <h2>{seconds}</h2> */}
     </div>
   );
 };

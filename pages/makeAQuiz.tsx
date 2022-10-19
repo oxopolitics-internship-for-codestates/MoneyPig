@@ -23,13 +23,24 @@ import quizService from '../service/QuizService';
 import { useRouter } from 'next/router';
 
 const MakeAQuiz: NextPage = () => {
+  const router = useRouter();
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
   const [quizErrorModal, setQuizErrorModal] = useState<boolean>(false);
   const [quizSelect, setQuizSelect] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [term, setTerm] = useState<TermProps[]>([]);
   const [isDropDownList, setIsDropDownList] = useState<boolean>(false);
-  const router = useRouter();
+  console.log('router.query', router.query.term);
+  console.log('searchTerm', searchTerm);
+  console.log('newQuiz.quiz.keyword', newQuiz.quiz.keyword);
+
+  useEffect(() => {
+    if (quizPickModal || quizErrorModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [quizPickModal, quizErrorModal]); // 스크롤 방지 로직
 
   useEffect(() => {
     if (searchTerm === '') {
