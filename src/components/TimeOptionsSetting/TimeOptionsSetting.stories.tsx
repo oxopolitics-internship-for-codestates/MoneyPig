@@ -8,5 +8,5 @@ export default {
   component: TimeOptionsSetting,
 } as ComponentMeta<typeof TimeOptionsSetting>;
 
-export const timeOptionDropDown: ComponentStory<typeof TimeOptionsSetting> =
+export const TimeOptionDropDown: ComponentStory<typeof TimeOptionsSetting> =
   () => <TimeOptionsSetting />;

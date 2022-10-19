@@ -33,13 +33,13 @@ export const ModalBox: ComponentStory<typeof Modal> = () => {
         </div>
       </div>
       <div className=" text-center translate-y-6 ">
-        <Button children="확인" style="w-20 h-12 drop-shadow-lg" />
+        <Button style="w-20 h-12 drop-shadow-lg">확인</Button>
       </div>
     </Modal>
   );
 };
 
-export const firstPick: ComponentStory<typeof Modal> = () => {
+export const FirstPick: ComponentStory<typeof Modal> = () => {
   const [tempState, setTempState] = useState<boolean>(false);
   return (
     <Modal
@@ -63,13 +63,13 @@ export const firstPick: ComponentStory<typeof Modal> = () => {
         </div>
       </div>
       <div className=" text-center translate-y-6 ">
-        <Button children="확인" style="w-20 h-12 drop-shadow-lg" />
+        <Button style="w-20 h-12 drop-shadow-lg">확인</Button>
       </div>
     </Modal>
   );
 };
 
-export const secondPick: ComponentStory<typeof Modal> = () => {
+export const SecondPick: ComponentStory<typeof Modal> = () => {
   const [tempState, setTempState] = useState<boolean>(false);
   return (
     <Modal
@@ -93,7 +93,7 @@ export const secondPick: ComponentStory<typeof Modal> = () => {
         </div>
       </div>
       <div className=" text-center translate-y-6 ">
-        <Button children="확인" style="w-20 h-12 drop-shadow-lg" />
+        <Button style="w-20 h-12 drop-shadow-lg">확인</Button>
       </div>
     </Modal>
   );

@@ -28,7 +28,7 @@ const QuizPage: NextPage<QuizPageProps> = observer(
           return quiz.keyword.includes(searchTerm);
         });
       }
-    }, [searchTerm]);
+    }, [searchTerm, quizes]);
 
     const clickDropDownItem = (clickSearchTerm: string) => {
       setSearchTerm(clickSearchTerm);

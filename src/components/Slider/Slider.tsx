@@ -11,7 +11,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-export default () => {
+const Slider = () => {
   return (
     <Swiper
       // install Swiper modules
@@ -63,3 +63,4 @@ export default () => {
     </Swiper>
   );
 };
+export default Slider;
