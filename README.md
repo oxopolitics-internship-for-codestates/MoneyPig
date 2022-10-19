@@ -35,11 +35,12 @@ MoneyPig 의 자세한 Project분배를 확인해보고 싶으시다면 아래 �
 
 # Used Stack
 
-<img src="https://cdn.discordapp.com/attachments/1023837766724894784/1032227551235551262/Screenshot_from_2022-10-19_18-43-03.png" />
+![Screenshot from 2022-10-19 18-45-39](https://user-images.githubusercontent.com/93773242/196701738-8335ef5f-71b8-493c-9bbd-5de55086bae0.png)
+
 # Team Introduction
 
 |NAME|POSITION|GITHUB ID|
 |:---:|:---:|:---:|
-|허인재|Front-End|[![github](https://img.shields.io/badge/shren207-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Applehole)|
-|오민석|Front-End|[![github](https://img.shields.io/badge/forcoding97-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/oh930428)|
+|허인재|Front-End|[![github](https://img.shields.io/badge/Applehole-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Applehole)|
+|오민석|Front-End|[![github](https://img.shields.io/badge/oh930428-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/oh930428)|
 |홍승빈|Front-End|[![github](https://img.shields.io/badge/tmdqls2257-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/tmdqls2257)|
