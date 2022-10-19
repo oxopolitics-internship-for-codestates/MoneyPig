@@ -110,6 +110,14 @@ const MakeAQuiz: NextPage = () => {
 
   const onSubmit = () => {
     const { title, keyword, description, options, answer } = newQuiz.quiz;
+    const {
+      setAnswer,
+      setDescription,
+      setKeyWord,
+      setOptions,
+      setTime,
+      setTitle,
+    } = newQuiz;
     if (keyword.length) {
       //키워드를 선택했는지 확인하는 로직
       if (title.includes(keyword) || options.includes(keyword)) {
@@ -124,6 +132,15 @@ const MakeAQuiz: NextPage = () => {
               quizService.quizUpload(newQuiz.makeAQuiz);
               router.push('quiz');
               //여기까지 들어와야지만 문제 설정 가능
+              setAnswer('');
+              setDescription('');
+              setKeyWord('');
+              setOptions('', 0);
+              setOptions('', 1);
+              setOptions('', 2);
+              setOptions('', 3);
+              setTime(15);
+              setTitle('');
               return;
             }
           }
