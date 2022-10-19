@@ -14,12 +14,12 @@ import EconomyData from '../public/economyData.json';
 
 const Search: NextPage = () => {
   const divRef = useRef<HTMLDivElement>(null);
-  console.log(divRef);
+
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [term, setTerm] = useState<TermProps[]>([]);
   const [clickTerm, setClickTerm] = useState<TermProps[] | undefined>([]);
   const [isDropDownList, setIsDropDownList] = useState<boolean>(false);
-
+  console.log(term);
   useEffect(() => {
     if (searchTerm === '') {
       setIsDropDownList(false);
@@ -47,7 +47,7 @@ const Search: NextPage = () => {
   return (
     <div
       className={classNameJoiner(
-        divRef.current && divRef.current?.clientHeight > 840 ? '' : 'h-screen',
+        divRef.current && divRef.current?.clientHeight > 700 ? '' : 'h-screen',
         'relative w-full flex gap-4 flex-col items-center justify-center bg-[#E9E7E7] p-10',
       )}
     >
