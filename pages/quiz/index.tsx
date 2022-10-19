@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react';
 import { NextPage } from 'next';
+import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import quizService from '../../service/QuizService';
 
@@ -37,6 +38,34 @@ const QuizPage: NextPage<QuizPageProps> = observer(
 
     return (
       <section className="h-screen w-full flex flex-col justify-center space-y-12">
+        <Head>
+          <title>Economy Quiz Page</title>
+          <meta name="description" property="og:title" content="Solve A Quiz" />
+          <meta property="og:image" content="/ChoiceAQuiz.webp" />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://moneypig.vercel.app/quiz" />
+          <meta
+            property="og:title"
+            content="당신이 풀고 싶은 퀴즈를 선택하세요."
+          />
+          <meta
+            property="og:description"
+            content="당신이 풀고 싶은 퀴즈를 선택하여 풀 수 있습니다."
+          />
+          <meta property="og:site_name" content="Money Pig Make" />
+          <meta property="og:locale" content="ko_KR" />
+          {/* twitter */}
+          <meta name="twitter:card" content="/ChoiceAQuiz.webp" />
+          <meta
+            name="twitter:title"
+            content="당신이 풀고 싶은 퀴즈를 선택하세요."
+          />
+          <meta
+            name="twitter:description"
+            content="당신이 풀고 싶은 퀴즈를 선택하여 풀 수 있습니다."
+          />
+          <meta name="twitter:image" content="/ChoiceAQuiz.webp" />
+        </Head>
         <Input
           type={InputTypeProps.text}
           placeholder={'Search...'}
