@@ -8,6 +8,7 @@ Object.defineProperty(NextImage, 'default', {
   value: props => <OriginalNextImage {...props} unoptimized />,
 });
 export const parameters = {
+  layout: 'fullscreen',
   actions: { argTypesRegex: '^on[A-Z].*' },
   // controls: {
   //   matchers: {

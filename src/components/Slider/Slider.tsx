@@ -25,20 +25,32 @@ const Slider = () => {
     >
       <SwiperSlide>
         <OnboardingDescription
-          description={'Make A Quiz 탭에서 문제를 만들 수 있습니다.'}
-          image={'/MakeAQuiz.webp'}
+          description={'경제 용어에 대해 찾아볼 수 있습니다.'}
+          image={'/Economic_term_search.webp'}
           imgLocation={Image_Location_Position.RIGHT}
           width={300}
           height={400}
+          alt={'경제용어를 찾을 수 있는 이미지'}
         />
       </SwiperSlide>
       <SwiperSlide>
         <OnboardingDescription
           description={'Make A Quiz 탭에서 문제를 만들 수 있습니다.'}
+          image={'/MakeAQuiz.webp'}
+          imgLocation={Image_Location_Position.RIGHT}
+          width={300}
+          height={400}
+          alt={'퀴즈를 만들 수 있는 이미지'}
+        />
+      </SwiperSlide>
+      <SwiperSlide>
+        <OnboardingDescription
+          description={'다른 유저가 만든 퀴즈를 풀 수 있습니다.'}
           image={'/ChoiceAQuiz.webp'}
           imgLocation={Image_Location_Position.RIGHT}
           width={300}
           height={400}
+          alt={'퀴즈를 풀 수 있는 기능 설명 이미지'}
         />
       </SwiperSlide>
       <SwiperSlide>
@@ -48,6 +60,7 @@ const Slider = () => {
           imgLocation={Image_Location_Position.RIGHT}
           width={300}
           height={400}
+          alt={'결과를 알 수 있는 이미지'}
         />
       </SwiperSlide>
       <SwiperSlide>
@@ -57,9 +70,9 @@ const Slider = () => {
           imgLocation={Image_Location_Position.RIGHT}
           width={300}
           height={400}
+          alt={'다른 유저가 만든 퀴즈'}
         />
       </SwiperSlide>
-      ...
     </Swiper>
   );
 };

@@ -23,13 +23,27 @@ import quizService from '../service/QuizService';
 import { useRouter } from 'next/router';
 
 const MakeAQuiz: NextPage = () => {
+  const router = useRouter();
   const [quizPickModal, setQuizPickModal] = useState<boolean>(false);
   const [quizErrorModal, setQuizErrorModal] = useState<boolean>(false);
   const [quizSelect, setQuizSelect] = useState<boolean>(false);
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [searchTerm, setSearchTerm] = useState<string>(() => {
+    if (router.query.searchTerm === undefined) {
+      return '';
+    } else {
+      return String(router.query.searchTerm);
+    }
+  }); //사전에서 값을 받아오는지 아닌지 확인하기
   const [term, setTerm] = useState<TermProps[]>([]);
   const [isDropDownList, setIsDropDownList] = useState<boolean>(false);
-  const router = useRouter();
+
+  useEffect(() => {
+    if (quizPickModal || quizErrorModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [quizPickModal, quizErrorModal]); // 스크롤 방지 로직
 
   useEffect(() => {
     if (searchTerm === '') {
@@ -96,6 +110,14 @@ const MakeAQuiz: NextPage = () => {
 
   const onSubmit = () => {
     const { title, keyword, description, options, answer } = newQuiz.quiz;
+    const {
+      setAnswer,
+      setDescription,
+      setKeyWord,
+      setOptions,
+      setTime,
+      setTitle,
+    } = newQuiz;
     if (keyword.length) {
       //키워드를 선택했는지 확인하는 로직
       if (title.includes(keyword) || options.includes(keyword)) {
@@ -110,6 +132,15 @@ const MakeAQuiz: NextPage = () => {
               quizService.quizUpload(newQuiz.makeAQuiz);
               router.push('quiz');
               //여기까지 들어와야지만 문제 설정 가능
+              setAnswer('');
+              setDescription('');
+              setKeyWord('');
+              setOptions('', 0);
+              setOptions('', 1);
+              setOptions('', 2);
+              setOptions('', 3);
+              setTime(15);
+              setTitle('');
               return;
             }
           }
@@ -121,6 +152,33 @@ const MakeAQuiz: NextPage = () => {
 
   return (
     <div className=" bg-grey">
+      <Head>
+        <title>Making a quiz page</title>
+
+        {/* default */}
+        <meta name="description" property="og:title" content="Making a Quiz" />
+        <meta property="og:image" content="/MakeAQuiz.webp" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://moneypig.vercel.app/makeAQuiz"
+        />
+        <meta property="og:title" content="경제 퀴즈 만들기" />
+        <meta
+          property="og:description"
+          content="경제 퀴즈를 풀 수 있는 사이트"
+        />
+        <meta property="og:site_name" content="Money Pig Make" />
+        <meta property="og:locale" content="ko_KR" />
+        {/* twitter */}
+        <meta name="twitter:card" content="/MakeAQuiz.webp" />
+        <meta name="twitter:title" content="Economy Inside" />
+        <meta
+          name="twitter:description"
+          content="경제 퀴즈를 풀 수 있는 사이트"
+        />
+        <meta name="twitter:image" content="/MakeAQuiz.webp" />
+      </Head>
       <Modal
         title="퀴즈 에러 모음"
         modalState={quizErrorModal}
@@ -276,10 +334,6 @@ const MakeAQuiz: NextPage = () => {
           </Button>
         </div>
       </Modal>
-      <Head>
-        <title>Making a quiz page</title>
-        <meta name="description" content="Making a Quiz" />
-      </Head>
       <div className=" w-4/5 m-auto">
         <div className="text-5xl h-20 p-4 ">키워드</div>
         <Input
@@ -328,7 +382,7 @@ const MakeAQuiz: NextPage = () => {
             </>
           )}
         </>
-        <div className="flex space-x-4 mt-6 w-full ">
+        <div className="flex justify-evenly mt-6 w-full ">
           <div>
             <div className="text-5xl text-center my-2 w-40 ">시간</div>
             <TimeOptionsSetting />
@@ -344,10 +398,7 @@ const MakeAQuiz: NextPage = () => {
         <div className=" h-auto flex flex-col">
           {quizSelect ? (
             <>
-              <label
-                htmlFor="oxChoice"
-                className="block text-5xl mb-2 font-medium text-gray-900"
-              >
+              <label htmlFor="oxChoice" className="block text-5xl h-20 p-4">
                 정답
               </label>
               <select
@@ -364,10 +415,7 @@ const MakeAQuiz: NextPage = () => {
             </>
           ) : (
             <>
-              <label
-                htmlFor="fourChoice"
-                className="block text-5xl mb-2 font-medium text-gray-900"
-              >
+              <label htmlFor="fourChoice" className="block text-5xl h-20 p-4">
                 정답
               </label>
               <select
