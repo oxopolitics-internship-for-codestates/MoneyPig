@@ -349,7 +349,7 @@ const MakeAQuiz: NextPage = () => {
           setSearchTerm={setSearchTerm}
           setIsDropDownList={setIsDropDownList}
         />
-        <>
+        <div className="mt-4 h-24 relative">
           {isDropDownList && (
             <>
               {term && term.length === 0 && (
@@ -365,7 +365,7 @@ const MakeAQuiz: NextPage = () => {
                     term &&
                       term.length > 5 &&
                       'h-60 scrollbar overflow-y-scroll overflow-x-hidden',
-                    'mt-4 bg-[#E9E7E7] border-2 border-[#CFCFCF] rounded-[10px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]',
+                    'w-full absolute z-10 bg-[#E9E7E7] border-2 border-[#CFCFCF] rounded-[10px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]',
                   )}
                 >
                   {term?.map(item => (
@@ -381,7 +381,7 @@ const MakeAQuiz: NextPage = () => {
               )}
             </>
           )}
-        </>
+        </div>
         <div className="flex justify-evenly mt-6 w-full ">
           <div>
             <div className="text-5xl text-center my-2 w-40 ">시간</div>
