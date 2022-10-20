@@ -40,7 +40,7 @@ const QuizPage: NextPage<QuizPageProps> = observer(
     };
 
     return (
-      <section className="h-screen w-full flex flex-col justify-center space-y-12">
+      <section className="h-screen w-full flex flex-col justify-center space-y-4">
         <Head>
           <title>Economy Quiz Page</title>
           <meta name="description" property="og:title" content="Solve A Quiz" />
@@ -82,26 +82,26 @@ const QuizPage: NextPage<QuizPageProps> = observer(
           setSearchTerm={setSearchTerm}
           setIsDropDownList={setIsDropDownList}
         />
-        <>
+        <div className="mt-4 h-48 relative">
           {isDropDownList && (
             <>
-              {quizes && quizes.length === 0 && (
-                <div className="mt-4 px-12">
+              {searchQuiz && searchQuiz.length === 0 && (
+                <div className="px-12">
                   <span className="text-[#D61616]">
                     경제 사전에 없는 단어입니다
                   </span>
                 </div>
               )}
-              {quizes && quizes.length > 0 && (
+              {searchQuiz && searchQuiz.length > 0 && (
                 <ul
                   className={classNameJoiner(
-                    quizes &&
-                      quizes.length > 5 &&
+                    searchQuiz &&
+                      searchQuiz.length > 5 &&
                       'h-60 scrollbar overflow-y-scroll overflow-x-hidden',
-                    'mt-2.5 bg-[#E9E7E7] border-2 border-[#CFCFCF] rounded-[10px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]',
+                    'w-full absolute z-10 bg-[#E9E7E7] border-2 border-[#CFCFCF] rounded-[10px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]',
                   )}
                 >
-                  {quizes?.map(item => (
+                  {searchQuiz?.map(item => (
                     <li
                       key={String(item.id)}
                       className="px-11 py-3 rounded-[10px] hover:bg-[#5D5656] hover:text-[#ffffff]"
@@ -114,7 +114,7 @@ const QuizPage: NextPage<QuizPageProps> = observer(
               )}
             </>
           )}
-        </>
+        </div>
 
         <ul className="gap-4 w-full flex flex-col h-112 overflow-y-scroll scrollbarHide sm:flex-row sm:flex-wrap sm:justify-center ">
           {searchQuiz.length === 0 || searchTerm === ''
