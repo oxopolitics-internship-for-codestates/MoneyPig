@@ -161,7 +161,7 @@ const MakeAQuiz: NextPage = () => {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content="https://moneypig.vercel.app/makeAQuiz"
+          content="https://money-pig.vercel.app/makeAQuiz"
         />
         <meta property="og:title" content="경제 퀴즈 만들기" />
         <meta

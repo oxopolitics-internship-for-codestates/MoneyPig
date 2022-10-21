@@ -56,7 +56,7 @@ const Search: NextPage = () => {
         <meta name="description" property="og:title" content="Making a Quiz" />
         <meta property="og:image" content="/Economic_term_search.webp" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://moneypig.vercel.app/search" />
+        <meta property="og:url" content="https://money-pig.vercel.app/search" />
         <meta property="og:title" content="경제 용어를 찾을 수 있는 사이트" />
         <meta
           property="og:description"

@@ -46,7 +46,7 @@ const QuizPage: NextPage<QuizPageProps> = observer(
           <meta name="description" property="og:title" content="Solve A Quiz" />
           <meta property="og:image" content="/ChoiceAQuiz.webp" />
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://moneypig.vercel.app/quiz" />
+          <meta property="og:url" content="https://money-pig.vercel.app/quiz" />
           <meta
             property="og:title"
             content="당신이 풀고 싶은 퀴즈를 선택하세요."

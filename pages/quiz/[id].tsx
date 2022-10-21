@@ -26,7 +26,7 @@ const QuizDetail: NextPage<QuizDetailProps> = ({ quiz }: QuizDetailProps) => {
         <meta name="description" property="og:title" content="Solve A Quiz" />
         <meta property="og:image" content="/SolveAQuiz.webp" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://moneypig.vercel.app/quiz" />
+        <meta property="og:url" content="https://money-pig.vercel.app/quiz" />
         <meta property="og:title" content="경제 퀴즈를 풀기" />
         <meta
           property="og:description"
