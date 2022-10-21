@@ -33,7 +33,7 @@ const Result: NextPage<ResultProps> = ({
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content="https://moneypig.vercel.app/quiz/result"
+          content="https://money-pig.vercel.app/quiz/result"
         />
         <meta property="og:title" content="퀴즈의 결과 확인" />
         <meta

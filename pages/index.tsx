@@ -25,7 +25,7 @@ const Home: NextPage = () => {
           content="https://img.freepik.com/free-vector/happy-rich-banker-celebrating-income-growth_74855-5867.jpg?t=st=1665825107~exp=1665825707~hmac=077258a5cb1d45d8c7d2389360266c414d032a1884388c25791fc48b89dc4dc3"
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://moneypig.vercel.app/" />
+        <meta property="og:url" content="https://money-pig.vercel.app/" />
         <meta property="og:title" content="경제 퀴즈" />
         <meta
           property="og:description"
